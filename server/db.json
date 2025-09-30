@@ -38,8 +38,8 @@
   "profiles": [
     {
       "id": 1,
-      "fullName": "Alex Johnson",
-      "email": "alex.johnson@easypark.io",
+      "fullName": "Rober Lewandoski",
+      "email": "robert.lewandoski@easypark.io",
       "phone": "+1 555 010 2030",
       "userType": "administrator",
       "companyName": "EasyPark Central"
