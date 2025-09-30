@@ -1,0 +1,17 @@
+<section class="profile-details">
+  <h2 class="profile-details__title">{{ 'PROFILES.DETAILS.TITLE' | translate }}</h2>
+  <dl class="profile-details__grid">
+    <div>
+      <dt>{{ 'PROFILES.DETAILS.NAME' | translate }}</dt>
+      <dd>{{ profile.fullName }}</dd>
+    </div>
+    <div>
+      <dt>{{ 'PROFILES.DETAILS.EMAIL' | translate }}</dt>
+      <dd>{{ profile.email }}</dd>
+    </div>
+    <div>
+      <dt>{{ 'PROFILES.DETAILS.PHONE' | translate }}</dt>
+      <dd>{{ profile.phone || ('PROFILES.DETAILS.NO_PHONE' | translate) }}</dd>
+    </div>
+  </dl>
+</section>

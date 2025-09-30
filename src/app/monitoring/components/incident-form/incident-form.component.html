@@ -1,0 +1,11 @@
+<form [formGroup]="form" (ngSubmit)="submit()" class="incident-form">
+  <label>
+    {{ 'MONITORING.INCIDENTS.LOCATION' | translate }}
+    <input formControlName="location" required />
+  </label>
+  <label>
+    {{ 'MONITORING.INCIDENTS.DESCRIPTION' | translate }}
+    <textarea formControlName="description" rows="3"></textarea>
+  </label>
+  <button type="submit">{{ 'MONITORING.INCIDENTS.SUBMIT' | translate }}</button>
+</form>

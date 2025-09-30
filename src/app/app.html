@@ -1,0 +1,32 @@
+<div class="layout">
+  <header class="layout__header">
+    <div class="layout__brand">EasyPark</div>
+    <nav class="layout__nav" aria-label="Main">
+      <a
+        *ngFor="let item of navItems"
+        [routerLink]="item.route"
+        routerLinkActive="layout__nav-link--active"
+        class="layout__nav-link"
+        [routerLinkActiveOptions]="{ exact: item.route === '/monitoring/dashboard' }"
+        >{{ item.label | translate }}</a
+      >
+    </nav>
+    <div class="layout__actions">
+      <div class="layout__language" role="group" aria-label="Language selector">
+        <button
+          *ngFor="let lang of availableLangs"
+          type="button"
+          (click)="switchLanguage(lang.code)"
+          [class.is-active]="currentLang() === lang.code"
+        >
+          {{ lang.label }}
+        </button>
+      </div>
+      <div class="layout__avatar" aria-hidden="true">AJ</div>
+    </div>
+  </header>
+
+  <main class="layout__main">
+    <router-outlet></router-outlet>
+  </main>
+</div>

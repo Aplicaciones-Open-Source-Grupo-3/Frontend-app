@@ -1,0 +1,9 @@
+<div class="plan-selector">
+  <h2>{{ 'SUBSCRIPTION.SELECTOR.TITLE' | translate }}</h2>
+  <div class="plan-selector__list">
+    <button type="button" *ngFor="let plan of plans" (click)="choose(plan)">
+      <span>{{ plan.name }}</span>
+      <small>${{ plan.price | number:'1.2-2' }}</small>
+    </button>
+  </div>
+</div>

@@ -1,0 +1,20 @@
+.subscriptions {
+  display: grid;
+  gap: 2rem;
+}
+
+.subscriptions__header h1 {
+  margin: 0;
+  font-size: 2rem;
+}
+
+.subscriptions__header p {
+  margin: 0.5rem 0 0;
+  color: #94a3b8;
+}
+
+.subscriptions__grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}

@@ -1,0 +1,61 @@
+{
+  "parkingOverview": {
+    "occupancyRate": 85,
+    "totalRevenue": 12500,
+    "incidents": 3,
+    "occupancyTrend": 12,
+    "revenueTrend": 14,
+    "incidentsTrend": -1
+  },
+  "incidents": [
+    {
+      "id": 1,
+      "time": "10:35",
+      "location": "Space A12",
+      "description": "Vehicle parked overtime",
+      "state": "open"
+    },
+    {
+      "id": 2,
+      "time": "11:20",
+      "location": "Space B05",
+      "description": "Unauthorized vehicle detected",
+      "state": "in_progress"
+    },
+    {
+      "id": 3,
+      "time": "12:45",
+      "location": "Space C21",
+      "description": "Payment issue",
+      "state": "closed"
+    }
+  ],
+  "entryExit": [
+    { "id": 1, "plate": "ABC-102", "entryTime": "10:15" },
+    { "id": 2, "plate": "JSD-421", "entryTime": "10:42" },
+    { "id": 3, "plate": "HGX-993", "entryTime": "11:10" }
+  ],
+  "profiles": [
+    {
+      "id": 1,
+      "fullName": "Alex Johnson",
+      "email": "alex.johnson@easypark.io",
+      "phone": "+1 555 010 2030",
+      "userType": "administrator",
+      "companyName": "EasyPark Central"
+    }
+  ],
+  "subscriptions": [
+    { "id": 1, "planId": 1, "status": "active", "renewsAt": "2024-12-01" },
+    { "id": 2, "planId": 2, "status": "active", "renewsAt": "2024-12-15" }
+  ],
+  "plans": [
+    { "id": 1, "name": "Standard", "price": 79, "benefits": ["Up to 100 active clients", "Email support"] },
+    { "id": 2, "name": "Professional", "price": 149, "benefits": ["Unlimited clients", "Priority support", "Advanced analytics"] }
+  ],
+  "reports": [
+    { "id": 1, "title": "Revenue", "period": "This month", "kpi": 12500, "trend": 12 },
+    { "id": 2, "title": "Occupancy", "period": "This week", "kpi": 78, "trend": 5 },
+    { "id": 3, "title": "Incidents", "period": "This week", "kpi": 3, "trend": -8 }
+  ]
+}

@@ -1,0 +1,17 @@
+<section class="overview-cards">
+  <article class="overview-card">
+    <h3>{{ 'MONITORING.DASHBOARD.OCCUPANCY' | translate }}</h3>
+    <p class="overview-card__value">{{ overview.occupancyRate }}%</p>
+    <span class="overview-card__trend positive">{{ overview.occupancyTrend }}%</span>
+  </article>
+  <article class="overview-card">
+    <h3>{{ 'MONITORING.DASHBOARD.REVENUE' | translate }}</h3>
+    <p class="overview-card__value">${{ overview.totalRevenue | number:'1.0-0' }}</p>
+    <span class="overview-card__trend positive">{{ overview.revenueTrend }}%</span>
+  </article>
+  <article class="overview-card">
+    <h3>{{ 'MONITORING.DASHBOARD.INCIDENTS' | translate }}</h3>
+    <p class="overview-card__value">{{ overview.incidents }}</p>
+    <span class="overview-card__trend negative">{{ overview.incidentsTrend }}%</span>
+  </article>
+</section>

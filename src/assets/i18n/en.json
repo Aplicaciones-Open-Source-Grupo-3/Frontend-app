@@ -1,0 +1,100 @@
+{
+  "NAV": {
+    "DASHBOARD": "Dashboard",
+    "PARKING": "Parking",
+    "SPACES": "Spaces",
+    "SUBSCRIPTIONS": "Subscriptions",
+    "CLIENTS": "Clients",
+    "REPORTS": "Reports"
+  },
+  "IAM": {
+    "LOGIN": {
+      "TITLE": "Welcome back",
+      "SUBTITLE": "Access your EasyPark operator account",
+      "EMAIL": "Email",
+      "PASSWORD": "Password",
+      "ACTION": "Sign in"
+    },
+    "REGISTER": {
+      "TITLE": "Create your account",
+      "SUBTITLE": "Register to manage your parking operations",
+      "NAME": "Full name",
+      "EMAIL": "Email",
+      "PASSWORD": "Password",
+      "ROLE": "Select a role",
+      "ROLE_PLACEHOLDER": "Choose a role",
+      "ACTION": "Create account"
+    }
+  },
+  "PROFILES": {
+    "OVERVIEW": {
+      "TITLE": "Profile overview",
+      "DESCRIPTION": "Manage identity, notification preferences and business data for each EasyPark user."
+    },
+    "DETAILS": {
+      "TITLE": "Account details",
+      "NAME": "Name",
+      "EMAIL": "Email",
+      "PHONE": "Phone",
+      "NO_PHONE": "Not provided"
+    },
+    "SETTINGS": {
+      "TITLE": "Preferences",
+      "DESCRIPTION": "Configure alerts, notifications and accessibility options."
+    },
+    "BUSINESS": {
+      "TITLE": "Business information",
+      "DESCRIPTION": "Connect tax data and invoicing preferences for corporate accounts."
+    }
+  },
+  "MONITORING": {
+    "DASHBOARD": {
+      "TITLE": "Parking lot overview",
+      "HEADLINE": "Real-time insights",
+      "DESCRIPTION": "Review status, revenue and incidents to keep EasyPark operations under control.",
+      "OCCUPANCY": "Occupancy rate",
+      "REVENUE": "Total revenue",
+      "INCIDENTS": "Incidents",
+      "RECENT_INCIDENTS": "Recent incidents",
+      "TIME": "Time",
+      "LOCATION": "Location",
+      "DESCRIPTION": "Description",
+      "STATUS": "Status",
+      "ENTRY_EXIT": "Latest vehicle movements"
+    },
+    "INCIDENTS": {
+      "TITLE": "Incident management",
+      "DESCRIPTION": "Track, classify and resolve operational incidents inside your parking facility.",
+      "CREATE": "Register new incident",
+      "LOCATION": "Location",
+      "DESCRIPTION": "Description",
+      "SUBMIT": "Submit incident"
+    }
+  },
+  "SUBSCRIPTION": {
+    "OVERVIEW": {
+      "TITLE": "Subscriptions",
+      "DESCRIPTION": "Control customer plans, renewals and pricing models."
+    },
+    "CARD": {
+      "MONTH": "month",
+      "RENEWS": "Renews on {{date}}"
+    },
+    "SELECTOR": {
+      "TITLE": "Available plans"
+    }
+  },
+  "ANALYTICS": {
+    "OVERVIEW": {
+      "TITLE": "Analytics",
+      "DESCRIPTION": "Visualize KPIs and export reports for strategic decisions."
+    },
+    "GRAPH": {
+      "TITLE": "Revenue trend",
+      "PLACEHOLDER": "Graph placeholder"
+    },
+    "EXPORT": {
+      "TITLE": "Export reports"
+    }
+  }
+}

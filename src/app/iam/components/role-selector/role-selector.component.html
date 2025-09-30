@@ -1,0 +1,12 @@
+<div class="role-selector">
+  <label class="role-selector__label">{{ label | translate }}</label>
+  <select
+    class="role-selector__control"
+    [disabled]="disabled"
+    [value]="value ?? ''"
+    (change)="select($any($event.target).value)"
+  >
+    <option value="" disabled>{{ 'IAM.REGISTER.ROLE_PLACEHOLDER' | translate }}</option>
+    <option *ngFor="let role of roles$ | async" [value]="role.name">{{ role.name }}</option>
+  </select>
+</div>

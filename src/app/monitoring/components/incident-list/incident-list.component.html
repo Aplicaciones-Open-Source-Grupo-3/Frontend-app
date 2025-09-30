@@ -1,0 +1,25 @@
+<section class="incident-list">
+  <header class="incident-list__header">
+    <h2>{{ 'MONITORING.DASHBOARD.RECENT_INCIDENTS' | translate }}</h2>
+  </header>
+  <table>
+    <thead>
+      <tr>
+        <th>{{ 'MONITORING.DASHBOARD.TIME' | translate }}</th>
+        <th>{{ 'MONITORING.DASHBOARD.LOCATION' | translate }}</th>
+        <th>{{ 'MONITORING.DASHBOARD.DESCRIPTION' | translate }}</th>
+        <th>{{ 'MONITORING.DASHBOARD.STATUS' | translate }}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let incident of incidents">
+        <td>{{ incident.time }}</td>
+        <td>{{ incident.location }}</td>
+        <td>{{ incident.description }}</td>
+        <td>
+          <span class="badge" [ngClass]="incident.state">{{ capitalize(incident.state.replace('_', ' ')) }}</span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</section>

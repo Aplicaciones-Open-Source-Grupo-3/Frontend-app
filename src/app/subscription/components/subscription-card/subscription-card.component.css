@@ -1,0 +1,40 @@
+.subscription-card {
+  background: rgba(15, 23, 42, 0.55);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  color: #e2e8f0;
+  display: grid;
+  gap: 1rem;
+}
+
+.subscription-card header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.subscription-card__status {
+  padding: 0.25rem 0.75rem;
+  border-radius: 999px;
+  background: rgba(148, 163, 184, 0.2);
+  font-size: 0.75rem;
+}
+
+.subscription-card__price {
+  margin: 0;
+  font-size: 1.75rem;
+  font-weight: 600;
+}
+
+.subscription-card ul {
+  margin: 0;
+  padding-left: 1.25rem;
+  display: grid;
+  gap: 0.5rem;
+}
+
+.subscription-card__renewal {
+  margin: 0;
+  font-size: 0.875rem;
+  color: #94a3b8;
+}

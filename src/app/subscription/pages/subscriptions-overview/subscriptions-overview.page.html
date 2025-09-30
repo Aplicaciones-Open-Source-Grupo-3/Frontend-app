@@ -1,0 +1,14 @@
+<section class="subscriptions" *ngIf="vm$ | async as vm">
+  <header class="subscriptions__header">
+    <h1>{{ 'SUBSCRIPTION.OVERVIEW.TITLE' | translate }}</h1>
+    <p>{{ 'SUBSCRIPTION.OVERVIEW.DESCRIPTION' | translate }}</p>
+  </header>
+  <div class="subscriptions__grid">
+    <app-subscription-card
+      *ngFor="let item of vm.subscriptions"
+      [subscription]="item.subscription"
+      [plan]="item.plan"
+    ></app-subscription-card>
+  </div>
+  <app-plan-selector [plans]="vm.plans"></app-plan-selector>
+</section>

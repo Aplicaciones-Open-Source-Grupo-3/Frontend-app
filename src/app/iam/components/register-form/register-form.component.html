@@ -1,0 +1,16 @@
+<form [formGroup]="form" (ngSubmit)="submit()" class="form">
+  <label class="form__label">
+    <span>{{ 'IAM.REGISTER.NAME' | translate }}</span>
+    <input class="form__control" type="text" formControlName="name" required />
+  </label>
+  <label class="form__label">
+    <span>{{ 'IAM.REGISTER.EMAIL' | translate }}</span>
+    <input class="form__control" type="email" formControlName="email" required />
+  </label>
+  <label class="form__label">
+    <span>{{ 'IAM.REGISTER.PASSWORD' | translate }}</span>
+    <input class="form__control" type="password" formControlName="password" required />
+  </label>
+  <app-role-selector formControlName="role"></app-role-selector>
+  <button class="form__submit" type="submit">{{ 'IAM.REGISTER.ACTION' | translate }}</button>
+</form>

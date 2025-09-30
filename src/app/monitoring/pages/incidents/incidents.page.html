@@ -1,0 +1,24 @@
+<section class="incidents">
+  <header class="incidents__header">
+    <h1>{{ 'MONITORING.INCIDENTS.TITLE' | translate }}</h1>
+    <p>{{ 'MONITORING.INCIDENTS.DESCRIPTION' | translate }}</p>
+  </header>
+  <ng-container *ngIf="incidents$ | async as incidents; else emptyIncidents">
+    <div class="incidents__grid">
+      <app-incident-list class="incidents__list" [incidents]="incidents"></app-incident-list>
+      <div class="incidents__form">
+        <h2>{{ 'MONITORING.INCIDENTS.CREATE' | translate }}</h2>
+        <app-incident-form></app-incident-form>
+      </div>
+    </div>
+  </ng-container>
+  <ng-template #emptyIncidents>
+    <div class="incidents__grid">
+      <app-incident-list class="incidents__list" [incidents]="[]"></app-incident-list>
+      <div class="incidents__form">
+        <h2>{{ 'MONITORING.INCIDENTS.CREATE' | translate }}</h2>
+        <app-incident-form></app-incident-form>
+      </div>
+    </div>
+  </ng-template>
+</section>

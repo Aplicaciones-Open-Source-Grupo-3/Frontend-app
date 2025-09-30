@@ -1,0 +1,11 @@
+<section class="card">
+  <header class="card__header">
+    <h2>{{ 'MONITORING.DASHBOARD.ENTRY_EXIT' | translate }}</h2>
+  </header>
+  <ul class="card__list">
+    <li *ngFor="let item of movements">
+      <span>{{ item.plate }}</span>
+      <span>{{ formatTime(item.entryTime) }}</span>
+    </li>
+  </ul>
+</section>

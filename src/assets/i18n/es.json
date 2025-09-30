@@ -1,0 +1,100 @@
+{
+  "NAV": {
+    "DASHBOARD": "Tablero",
+    "PARKING": "Estacionamiento",
+    "SPACES": "Espacios",
+    "SUBSCRIPTIONS": "Suscripciones",
+    "CLIENTS": "Clientes",
+    "REPORTS": "Reportes"
+  },
+  "IAM": {
+    "LOGIN": {
+      "TITLE": "Bienvenido de nuevo",
+      "SUBTITLE": "Accede a tu cuenta de EasyPark",
+      "EMAIL": "Correo electrónico",
+      "PASSWORD": "Contraseña",
+      "ACTION": "Iniciar sesión"
+    },
+    "REGISTER": {
+      "TITLE": "Crea tu cuenta",
+      "SUBTITLE": "Regístrate para administrar las operaciones del parking",
+      "NAME": "Nombre completo",
+      "EMAIL": "Correo electrónico",
+      "PASSWORD": "Contraseña",
+      "ROLE": "Selecciona un rol",
+      "ROLE_PLACEHOLDER": "Elige un rol",
+      "ACTION": "Crear cuenta"
+    }
+  },
+  "PROFILES": {
+    "OVERVIEW": {
+      "TITLE": "Resumen del perfil",
+      "DESCRIPTION": "Gestiona identidad, notificaciones y datos empresariales de cada usuario EasyPark."
+    },
+    "DETAILS": {
+      "TITLE": "Detalles de la cuenta",
+      "NAME": "Nombre",
+      "EMAIL": "Correo",
+      "PHONE": "Teléfono",
+      "NO_PHONE": "Sin especificar"
+    },
+    "SETTINGS": {
+      "TITLE": "Preferencias",
+      "DESCRIPTION": "Configura alertas, notificaciones y opciones de accesibilidad."
+    },
+    "BUSINESS": {
+      "TITLE": "Información empresarial",
+      "DESCRIPTION": "Conecta datos fiscales y preferencias de facturación para cuentas corporativas."
+    }
+  },
+  "MONITORING": {
+    "DASHBOARD": {
+      "TITLE": "Vista general del estacionamiento",
+      "HEADLINE": "Información en tiempo real",
+      "DESCRIPTION": "Revisa estado, ingresos e incidencias para mantener el control de EasyPark.",
+      "OCCUPANCY": "Tasa de ocupación",
+      "REVENUE": "Ingresos totales",
+      "INCIDENTS": "Incidencias",
+      "RECENT_INCIDENTS": "Incidencias recientes",
+      "TIME": "Hora",
+      "LOCATION": "Ubicación",
+      "DESCRIPTION": "Descripción",
+      "STATUS": "Estado",
+      "ENTRY_EXIT": "Movimientos de vehículos"
+    },
+    "INCIDENTS": {
+      "TITLE": "Gestión de incidencias",
+      "DESCRIPTION": "Controla, clasifica y resuelve incidencias operativas dentro del estacionamiento.",
+      "CREATE": "Registrar nueva incidencia",
+      "LOCATION": "Ubicación",
+      "DESCRIPTION": "Descripción",
+      "SUBMIT": "Registrar"
+    }
+  },
+  "SUBSCRIPTION": {
+    "OVERVIEW": {
+      "TITLE": "Suscripciones",
+      "DESCRIPTION": "Controla planes, renovaciones y modelos de precio."
+    },
+    "CARD": {
+      "MONTH": "mes",
+      "RENEWS": "Renueva el {{date}}"
+    },
+    "SELECTOR": {
+      "TITLE": "Planes disponibles"
+    }
+  },
+  "ANALYTICS": {
+    "OVERVIEW": {
+      "TITLE": "Analítica",
+      "DESCRIPTION": "Visualiza indicadores y exporta reportes para la toma de decisiones."
+    },
+    "GRAPH": {
+      "TITLE": "Tendencia de ingresos",
+      "PLACEHOLDER": "Espacio reservado para gráfico"
+    },
+    "EXPORT": {
+      "TITLE": "Exportar reportes"
+    }
+  }
+}

@@ -1,0 +1,11 @@
+<form [formGroup]="form" (ngSubmit)="submit()" class="form">
+  <label class="form__label">
+    <span>{{ 'IAM.LOGIN.EMAIL' | translate }}</span>
+    <input class="form__control" type="email" formControlName="email" required />
+  </label>
+  <label class="form__label">
+    <span>{{ 'IAM.LOGIN.PASSWORD' | translate }}</span>
+    <input class="form__control" type="password" formControlName="password" required />
+  </label>
+  <button class="form__submit" type="submit">{{ 'IAM.LOGIN.ACTION' | translate }}</button>
+</form>

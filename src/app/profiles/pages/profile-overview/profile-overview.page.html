@@ -1,0 +1,11 @@
+<section class="profile-overview" *ngIf="profile$ | async as profile">
+  <header class="profile-overview__header">
+    <h1>{{ 'PROFILES.OVERVIEW.TITLE' | translate }}</h1>
+    <p>{{ 'PROFILES.OVERVIEW.DESCRIPTION' | translate }}</p>
+  </header>
+  <div class="profile-overview__grid">
+    <app-profile-details [profile]="profile"></app-profile-details>
+    <app-profile-settings></app-profile-settings>
+    <app-business-data-settings></app-business-data-settings>
+  </div>
+</section>

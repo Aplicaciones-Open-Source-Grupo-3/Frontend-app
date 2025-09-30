@@ -1,0 +1,12 @@
+.role-selector {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.role-selector__control {
+  padding: 0.75rem;
+  border-radius: 0.75rem;
+  border: 1px solid rgba(148, 163, 184, 0.4);
+  background: rgba(15, 23, 42, 0.05);
+  color: inherit;
+}

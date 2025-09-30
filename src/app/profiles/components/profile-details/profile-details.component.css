@@ -1,0 +1,30 @@
+.profile-details {
+  padding: 1.5rem;
+  background: rgba(15, 23, 42, 0.4);
+  border-radius: 1rem;
+  color: #e2e8f0;
+  display: grid;
+  gap: 1.5rem;
+}
+
+.profile-details__title {
+  margin: 0;
+  font-size: 1.25rem;
+}
+
+.profile-details__grid {
+  display: grid;
+  gap: 1rem;
+}
+
+dt {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: rgba(226, 232, 240, 0.7);
+}
+
+dd {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 500;
+}

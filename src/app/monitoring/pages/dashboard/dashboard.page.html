@@ -1,0 +1,20 @@
+<section class="dashboard" *ngIf="vm$ | async as vm">
+  <header class="dashboard__header">
+    <div>
+      <p class="dashboard__eyebrow">{{ 'MONITORING.DASHBOARD.TITLE' | translate }}</p>
+      <h1>{{ 'MONITORING.DASHBOARD.HEADLINE' | translate }}</h1>
+      <p class="dashboard__subtitle">{{ 'MONITORING.DASHBOARD.DESCRIPTION' | translate }}</p>
+    </div>
+  </header>
+
+  <div class="dashboard__map">
+    <div class="dashboard__map-placeholder">EasyPark Central</div>
+  </div>
+
+  <app-parking-lot-status [overview]="vm.overview"></app-parking-lot-status>
+
+  <div class="dashboard__grid">
+    <app-incident-list [incidents]="vm.incidents"></app-incident-list>
+    <app-vehicle-entry-exit [movements]="vm.movements"></app-vehicle-entry-exit>
+  </div>
+</section>

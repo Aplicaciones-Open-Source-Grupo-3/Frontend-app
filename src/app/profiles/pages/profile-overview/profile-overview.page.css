@@ -1,0 +1,20 @@
+.profile-overview {
+  display: grid;
+  gap: 2rem;
+}
+
+.profile-overview__header h1 {
+  margin: 0;
+  font-size: 2rem;
+}
+
+.profile-overview__header p {
+  margin: 0.25rem 0 0;
+  color: #94a3b8;
+}
+
+.profile-overview__grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}

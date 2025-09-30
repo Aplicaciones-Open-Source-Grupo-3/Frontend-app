@@ -1,0 +1,11 @@
+<section class="analytics" *ngIf="reports$ | async as reports">
+  <header class="analytics__header">
+    <h1>{{ 'ANALYTICS.OVERVIEW.TITLE' | translate }}</h1>
+    <p>{{ 'ANALYTICS.OVERVIEW.DESCRIPTION' | translate }}</p>
+    <app-report-export></app-report-export>
+  </header>
+  <div class="analytics__widgets">
+    <app-dashboard-widget *ngFor="let report of reports" [report]="report"></app-dashboard-widget>
+  </div>
+  <app-kpi-graph [title]="'ANALYTICS.GRAPH.TITLE' | translate"></app-kpi-graph>
+</section>

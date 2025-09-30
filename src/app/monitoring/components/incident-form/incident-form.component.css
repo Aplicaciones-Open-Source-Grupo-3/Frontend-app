@@ -1,0 +1,29 @@
+.incident-form {
+  display: grid;
+  gap: 1rem;
+}
+
+label {
+  display: grid;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+}
+
+input,
+textarea {
+  padding: 0.75rem;
+  border-radius: 0.75rem;
+  border: 1px solid rgba(148, 163, 184, 0.4);
+  background: rgba(15, 23, 42, 0.1);
+  color: inherit;
+}
+
+button {
+  padding: 0.75rem;
+  border-radius: 0.75rem;
+  border: none;
+  background: #2563eb;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+}

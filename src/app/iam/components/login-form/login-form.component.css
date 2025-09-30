@@ -1,0 +1,33 @@
+.form {
+  display: grid;
+  gap: 1rem;
+  max-width: 320px;
+}
+
+.form__label {
+  display: grid;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+}
+
+.form__control {
+  padding: 0.75rem;
+  border-radius: 0.75rem;
+  border: 1px solid rgba(148, 163, 184, 0.4);
+  background: rgba(15, 23, 42, 0.05);
+  color: inherit;
+}
+
+.form__submit {
+  padding: 0.75rem;
+  background: #2563eb;
+  color: #fff;
+  border: none;
+  border-radius: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.form__submit:hover {
+  background: #1d4ed8;
+}

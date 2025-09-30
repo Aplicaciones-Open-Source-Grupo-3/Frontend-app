@@ -1,0 +1,33 @@
+.widget {
+  background: rgba(15, 23, 42, 0.55);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  color: #e2e8f0;
+  display: grid;
+  gap: 0.5rem;
+}
+
+.widget header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.widget__kpi {
+  margin: 0;
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.widget__trend {
+  margin: 0;
+  font-size: 0.875rem;
+}
+
+.widget__trend.positive {
+  color: #34d399;
+}
+
+.widget__trend.negative {
+  color: #f87171;
+}

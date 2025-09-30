@@ -1,0 +1,11 @@
+<article class="subscription-card">
+  <header>
+    <h3>{{ plan.name }}</h3>
+    <span class="subscription-card__status">{{ subscription.status | titlecase }}</span>
+  </header>
+  <p class="subscription-card__price">${{ plan.price | number:'1.2-2' }}/{{ 'SUBSCRIPTION.CARD.MONTH' | translate }}</p>
+  <ul>
+    <li *ngFor="let benefit of plan.benefits">{{ benefit }}</li>
+  </ul>
+  <p class="subscription-card__renewal">{{ 'SUBSCRIPTION.CARD.RENEWS' | translate:{ date: subscription.renewsAt } }}</p>
+</article>

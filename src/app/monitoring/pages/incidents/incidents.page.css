@@ -1,0 +1,39 @@
+.incidents {
+  display: grid;
+  gap: 2rem;
+}
+
+.incidents__header h1 {
+  margin: 0;
+  font-size: 2rem;
+}
+
+.incidents__header p {
+  margin: 0.5rem 0 0;
+  color: #94a3b8;
+}
+
+.incidents__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+  gap: 1.5rem;
+}
+
+.incidents__form {
+  background: rgba(15, 23, 42, 0.55);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  color: #e2e8f0;
+  display: grid;
+  gap: 1rem;
+}
+
+.incidents__form h2 {
+  margin: 0;
+}
+
+@media (max-width: 1024px) {
+  .incidents__grid {
+    grid-template-columns: 1fr;
+  }
+}
