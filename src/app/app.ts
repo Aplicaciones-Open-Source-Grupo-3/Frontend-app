@@ -34,7 +34,7 @@ export class AppComponent {
     { label: 'NAV.PARKING', route: '/monitoring/incidents' },
     { label: 'NAV.SPACES', route: '/profiles/overview' },
     { label: 'NAV.SUBSCRIPTIONS', route: '/subscription/overview' },
-    { label: 'NAV.CLIENTS', route: '/iam/login' },
+    { label: 'NAV.CLIENTS', route: '/clients/operators' },
     { label: 'NAV.REPORTS', route: '/analytics/overview' }
   ];
 

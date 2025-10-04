@@ -84,6 +84,64 @@
       "TITLE": "Available plans"
     }
   },
+  "CLIENTS": {
+    "OPERATORS": {
+      "EYEBROW": "Team directory",
+      "TITLE": "Operators",
+      "SEARCH_LABEL": "Filter operators",
+      "SEARCH_PLACEHOLDER": "Search operators",
+      "NEW_OPERATOR": "New operator",
+      "ALL_OPERATORS": "All operators",
+      "ALL_OPERATORS_DESCRIPTION": "Manage administrator and operator access for EasyPark.",
+      "TABLE_LABEL": "Operators table",
+      "COLUMNS": {
+        "NAME": "Name",
+        "EMAIL": "Email",
+        "ROLE": "Role",
+        "STATUS": "Status",
+        "LAST_ACTIVE": "Last active",
+        "ACTIONS": "Actions"
+      },
+      "ACTIONS": {
+        "MORE": "More actions"
+      },
+      "ROLES": {
+        "ADMIN": "Admin",
+        "OPERATOR": "Operator"
+      },
+      "STATUS": {
+        "ACTIVE": "Active",
+        "INACTIVE": "Inactive"
+      },
+      "LAST_ACTIVE": {
+        "DAY_1": "1 day ago",
+        "DAYS_2": "2 days ago",
+        "DAYS_4": "4 days ago",
+        "HOURS_6": "6 hours ago",
+        "MONTHS_2": "2 months ago",
+        "WEEKS_1": "1 week ago",
+        "JUST_NOW": "Just now"
+      },
+      "EMPTY_STATE": "No operators match your search.",
+      "DIALOG": {
+        "EYEBROW": "Add operator",
+        "TITLE": "New operator",
+        "CLOSE": "Close dialog"
+      },
+      "FORM": {
+        "NAME": "Full name",
+        "NAME_PLACEHOLDER": "Enter full name",
+        "NAME_ERROR": "Please provide a name.",
+        "EMAIL": "Email",
+        "EMAIL_PLACEHOLDER": "name@example.com",
+        "EMAIL_ERROR": "Enter a valid email address.",
+        "ROLE": "Role",
+        "ROLE_HINT": "New team members are created as operators. Administrators can be updated later from the table.",
+        "CANCEL": "Cancel",
+        "SUBMIT": "Add operator"
+      }
+    }
+  },
   "ANALYTICS": {
     "OVERVIEW": {
       "TITLE": "Analytics",

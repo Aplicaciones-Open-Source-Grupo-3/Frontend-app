@@ -84,6 +84,64 @@
       "TITLE": "Planes disponibles"
     }
   },
+  "CLIENTS": {
+    "OPERATORS": {
+      "EYEBROW": "Directorio de equipo",
+      "TITLE": "Operadores",
+      "SEARCH_LABEL": "Filtrar operadores",
+      "SEARCH_PLACEHOLDER": "Buscar operadores",
+      "NEW_OPERATOR": "Nuevo operador",
+      "ALL_OPERATORS": "Todos los operadores",
+      "ALL_OPERATORS_DESCRIPTION": "Administra el acceso de administradores y operadores de EasyPark.",
+      "TABLE_LABEL": "Tabla de operadores",
+      "COLUMNS": {
+        "NAME": "Nombre",
+        "EMAIL": "Correo",
+        "ROLE": "Rol",
+        "STATUS": "Estado",
+        "LAST_ACTIVE": "Última actividad",
+        "ACTIONS": "Acciones"
+      },
+      "ACTIONS": {
+        "MORE": "Más acciones"
+      },
+      "ROLES": {
+        "ADMIN": "Administrador",
+        "OPERATOR": "Operador"
+      },
+      "STATUS": {
+        "ACTIVE": "Activo",
+        "INACTIVE": "Inactivo"
+      },
+      "LAST_ACTIVE": {
+        "DAY_1": "Hace 1 día",
+        "DAYS_2": "Hace 2 días",
+        "DAYS_4": "Hace 4 días",
+        "HOURS_6": "Hace 6 horas",
+        "MONTHS_2": "Hace 2 meses",
+        "WEEKS_1": "Hace 1 semana",
+        "JUST_NOW": "Hace un momento"
+      },
+      "EMPTY_STATE": "Ningún operador coincide con tu búsqueda.",
+      "DIALOG": {
+        "EYEBROW": "Agregar operador",
+        "TITLE": "Nuevo operador",
+        "CLOSE": "Cerrar diálogo"
+      },
+      "FORM": {
+        "NAME": "Nombre completo",
+        "NAME_PLACEHOLDER": "Ingresa el nombre completo",
+        "NAME_ERROR": "Proporciona un nombre.",
+        "EMAIL": "Correo electrónico",
+        "EMAIL_PLACEHOLDER": "nombre@ejemplo.com",
+        "EMAIL_ERROR": "Ingresa un correo válido.",
+        "ROLE": "Rol",
+        "ROLE_HINT": "Los nuevos miembros se crean como operadores. Puedes actualizarlos luego desde la tabla.",
+        "CANCEL": "Cancelar",
+        "SUBMIT": "Agregar operador"
+      }
+    }
+  },
   "ANALYTICS": {
     "OVERVIEW": {
       "TITLE": "Analítica",
