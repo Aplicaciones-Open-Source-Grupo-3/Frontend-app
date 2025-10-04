@@ -57,5 +57,31 @@
     { "id": 1, "title": "Revenue", "period": "This month", "kpi": 12500, "trend": 12 },
     { "id": 2, "title": "Occupancy", "period": "This week", "kpi": 78, "trend": 5 },
     { "id": 3, "title": "Incidents", "period": "This week", "kpi": 3, "trend": -8 }
+  ],
+  "operators": [
+    {
+      "id": 1,
+      "name": "Ethan Harper",
+      "email": "ethan.harper@example.com",
+      "role": "admin",
+      "status": "active",
+      "lastActiveKey": "CLIENTS.OPERATORS.LAST_ACTIVE.DAYS_2"
+    },
+    {
+      "id": 2,
+      "name": "Olivia Bennett",
+      "email": "olivia.bennett@example.com",
+      "role": "operator",
+      "status": "active",
+      "lastActiveKey": "CLIENTS.OPERATORS.LAST_ACTIVE.DAY_1"
+    },
+    {
+      "id": 3,
+      "name": "Noah Carter",
+      "email": "noah.carter@example.com",
+      "role": "operator",
+      "status": "inactive",
+      "lastActiveKey": "CLIENTS.OPERATORS.LAST_ACTIVE.MONTHS_2"
+    }
   ]
 }

@@ -52,6 +52,21 @@ export const routes: Routes = [
     ]
   },
   {
+    path: 'clients',
+    children: [
+      {
+        path: '',
+        pathMatch: 'full',
+        redirectTo: 'operators'
+      },
+      {
+        path: 'operators',
+        loadComponent: () =>
+          import('./clients/pages/operators/operators.page').then((m) => m.ClientsOperatorsPageComponent)
+      }
+    ]
+  },
+  {
     path: 'analytics',
     children: [
       {
