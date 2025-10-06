@@ -84,6 +84,7 @@
       "TITLE": "Available plans"
     }
   },
+  "COMMON": { "NO_DATA": "No data" },
   "CLIENTS": {
     "OPERATORS": {
       "EYEBROW": "Team directory",
@@ -143,16 +144,28 @@
     }
   },
   "ANALYTICS": {
-    "OVERVIEW": {
-      "TITLE": "Analytics",
-      "DESCRIPTION": "Visualize KPIs and export reports for strategic decisions."
+    "OVERVIEW": { "TITLE": "Reports & Analytics", "DESCRIPTION": "Gain insights into your parking operations with detailed reports and analytics." },
+    "INCOME": { "TITLE": "Income Overview", "PERIOD": "Income by Period", "BY_METHOD": "Income by Payment Method", "LAST_MONTH": "Last Month" },
+    "PAYMENT": { "CARD": "Card", "CASH": "Cash", "MOBILE": "Mobile" },
+    "OCC": { "TITLE": "Occupancy & Usage", "AVERAGE": "Average Occupancy", "PEAK": "Peak Usage Times", "LAST_MONTH": "Last Month", "PEAK_RANGE": "3 PM - 6 PM" },
+    "HISTORY": {
+      "TITLE": "Customer & Subscription History",
+      "CUSTOMER": "Customer Name",
+      "TYPE": "Subscription Type",
+      "START": "Start Date",
+      "END": "End Date",
+      "STATUS": "Status",
+      "EXPORT": "Export",
+      "GENERATE": "Generate Report"
     },
-    "GRAPH": {
-      "TITLE": "Revenue trend",
-      "PLACEHOLDER": "Graph placeholder"
+    "KPIS": {
+      "REVENUE": "Revenue",
+      "OCCUPANCY": "Occupancy",
+      "INCIDENTS": "Incidents",
+      "THIS_MONTH": "This month",
+      "THIS_WEEK": "This week"
     },
-    "EXPORT": {
-      "TITLE": "Export reports"
-    }
+    "GRAPH": { "TITLE": "Revenue trend", "PLACEHOLDER": "Graph placeholder" },
+    "EXPORT": { "TITLE": "Export reports" }
   }
 }
