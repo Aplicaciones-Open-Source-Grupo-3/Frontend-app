@@ -81,3 +81,4 @@ export const routes: Routes = [
     redirectTo: 'monitoring/dashboard'
   }
 ];
+
