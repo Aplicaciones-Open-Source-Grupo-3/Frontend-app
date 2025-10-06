@@ -84,6 +84,7 @@
       "TITLE": "Planes disponibles"
     }
   },
+  "COMMON": { "NO_DATA": "Sin datos" },
   "CLIENTS": {
     "OPERATORS": {
       "EYEBROW": "Directorio de equipo",
@@ -143,16 +144,28 @@
     }
   },
   "ANALYTICS": {
-    "OVERVIEW": {
-      "TITLE": "Analítica",
-      "DESCRIPTION": "Visualiza indicadores y exporta reportes para la toma de decisiones."
+    "OVERVIEW": { "TITLE": "Reportes & Analítica", "DESCRIPTION": "Obtén insights de tus operaciones con reportes y analítica detallada." },
+    "INCOME": { "TITLE": "Resumen de ingresos", "PERIOD": "Ingresos por período", "BY_METHOD": "Ingresos por método de pago", "LAST_MONTH": "Último mes" },
+    "PAYMENT": { "CARD": "Tarjeta", "CASH": "Efectivo", "MOBILE": "Móvil" },
+    "OCC": { "TITLE": "Ocupación y uso", "AVERAGE": "Ocupación promedio", "PEAK": "Horas pico", "LAST_MONTH": "Último mes" , "PEAK_RANGE": "3 PM - 6 PM"},
+    "HISTORY": {
+      "TITLE": "Historial de clientes y suscripciones",
+      "CUSTOMER": "Cliente",
+      "TYPE": "Tipo de suscripción",
+      "START": "Inicio",
+      "END": "Fin",
+      "STATUS": "Estado",
+      "EXPORT": "Exportar",
+      "GENERATE": "Generar reporte"
     },
-    "GRAPH": {
-      "TITLE": "Tendencia de ingresos",
-      "PLACEHOLDER": "Espacio reservado para gráfico"
+    "KPIS": {
+      "REVENUE": "Ingresos",
+      "OCCUPANCY": "Ocupación",
+      "INCIDENTS": "Incidencias",
+      "THIS_MONTH": "Este mes",
+      "THIS_WEEK": "Esta semana"
     },
-    "EXPORT": {
-      "TITLE": "Exportar reportes"
-    }
+    "GRAPH": { "TITLE": "Tendencia de ingresos", "PLACEHOLDER": "Espacio reservado para gráfico" },
+    "EXPORT": { "TITLE": "Exportar reportes" }
   }
 }
