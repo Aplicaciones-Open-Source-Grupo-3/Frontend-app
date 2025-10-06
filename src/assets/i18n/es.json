@@ -58,7 +58,7 @@
       "RECENT_INCIDENTS": "Incidencias recientes",
       "TIME": "Hora",
       "LOCATION": "Ubicación",
-      "DESCRIPTION": "Descripción",
+      "DESCRIPTION_LABEL": "Descripción",
       "STATUS": "Estado",
       "ENTRY_EXIT": "Movimientos de vehículos"
     },
@@ -67,7 +67,7 @@
       "DESCRIPTION": "Controla, clasifica y resuelve incidencias operativas dentro del estacionamiento.",
       "CREATE": "Registrar nueva incidencia",
       "LOCATION": "Ubicación",
-      "DESCRIPTION": "Descripción",
+      "DESCRIPTION_LABEL": "Descripción",
       "SUBMIT": "Registrar"
     }
   },
@@ -84,17 +84,88 @@
       "TITLE": "Planes disponibles"
     }
   },
-  "ANALYTICS": {
-    "OVERVIEW": {
-      "TITLE": "Analítica",
-      "DESCRIPTION": "Visualiza indicadores y exporta reportes para la toma de decisiones."
-    },
-    "GRAPH": {
-      "TITLE": "Tendencia de ingresos",
-      "PLACEHOLDER": "Espacio reservado para gráfico"
-    },
-    "EXPORT": {
-      "TITLE": "Exportar reportes"
+  "COMMON": { "NO_DATA": "Sin datos" },
+  "CLIENTS": {
+    "OPERATORS": {
+      "EYEBROW": "Directorio de equipo",
+      "TITLE": "Operadores",
+      "SEARCH_LABEL": "Filtrar operadores",
+      "SEARCH_PLACEHOLDER": "Buscar operadores",
+      "NEW_OPERATOR": "Nuevo operador",
+      "ALL_OPERATORS": "Todos los operadores",
+      "ALL_OPERATORS_DESCRIPTION": "Administra el acceso de administradores y operadores de EasyPark.",
+      "TABLE_LABEL": "Tabla de operadores",
+      "COLUMNS": {
+        "NAME": "Nombre",
+        "EMAIL": "Correo",
+        "ROLE": "Rol",
+        "STATUS": "Estado",
+        "LAST_ACTIVE": "Última actividad",
+        "ACTIONS": "Acciones"
+      },
+      "ACTIONS": {
+        "MORE": "Más acciones"
+      },
+      "ROLES": {
+        "ADMIN": "Administrador",
+        "OPERATOR": "Operador"
+      },
+      "STATUS": {
+        "ACTIVE": "Activo",
+        "INACTIVE": "Inactivo"
+      },
+      "LAST_ACTIVE": {
+        "DAY_1": "Hace 1 día",
+        "DAYS_2": "Hace 2 días",
+        "DAYS_4": "Hace 4 días",
+        "HOURS_6": "Hace 6 horas",
+        "MONTHS_2": "Hace 2 meses",
+        "WEEKS_1": "Hace 1 semana",
+        "JUST_NOW": "Hace un momento"
+      },
+      "EMPTY_STATE": "Ningún operador coincide con tu búsqueda.",
+      "DIALOG": {
+        "EYEBROW": "Agregar operador",
+        "TITLE": "Nuevo operador",
+        "CLOSE": "Cerrar diálogo"
+      },
+      "FORM": {
+        "NAME": "Nombre completo",
+        "NAME_PLACEHOLDER": "Ingresa el nombre completo",
+        "NAME_ERROR": "Proporciona un nombre.",
+        "EMAIL": "Correo electrónico",
+        "EMAIL_PLACEHOLDER": "nombre@ejemplo.com",
+        "EMAIL_ERROR": "Ingresa un correo válido.",
+        "ROLE": "Rol",
+        "ROLE_HINT": "Los nuevos miembros se crean como operadores. Puedes actualizarlos luego desde la tabla.",
+        "CANCEL": "Cancelar",
+        "SUBMIT": "Agregar operador"
+      }
     }
+  },
+  "ANALYTICS": {
+    "OVERVIEW": { "TITLE": "Reportes & Analítica", "DESCRIPTION": "Obtén insights de tus operaciones con reportes y analítica detallada." },
+    "INCOME": { "TITLE": "Resumen de ingresos", "PERIOD": "Ingresos por período", "BY_METHOD": "Ingresos por método de pago", "LAST_MONTH": "Último mes" },
+    "PAYMENT": { "CARD": "Tarjeta", "CASH": "Efectivo", "MOBILE": "Móvil" },
+    "OCC": { "TITLE": "Ocupación y uso", "AVERAGE": "Ocupación promedio", "PEAK": "Horas pico", "LAST_MONTH": "Último mes" , "PEAK_RANGE": "3 PM - 6 PM"},
+    "HISTORY": {
+      "TITLE": "Historial de clientes y suscripciones",
+      "CUSTOMER": "Cliente",
+      "TYPE": "Tipo de suscripción",
+      "START": "Inicio",
+      "END": "Fin",
+      "STATUS": "Estado",
+      "EXPORT": "Exportar",
+      "GENERATE": "Generar reporte"
+    },
+    "KPIS": {
+      "REVENUE": "Ingresos",
+      "OCCUPANCY": "Ocupación",
+      "INCIDENTS": "Incidencias",
+      "THIS_MONTH": "Este mes",
+      "THIS_WEEK": "Esta semana"
+    },
+    "GRAPH": { "TITLE": "Tendencia de ingresos", "PLACEHOLDER": "Espacio reservado para gráfico" },
+    "EXPORT": { "TITLE": "Exportar reportes" }
   }
 }
