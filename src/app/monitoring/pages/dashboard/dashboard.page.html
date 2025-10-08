@@ -1,20 +1,81 @@
 <section class="dashboard" *ngIf="vm$ | async as vm">
   <header class="dashboard__header">
-    <div>
-      <p class="dashboard__eyebrow">{{ 'MONITORING.DASHBOARD.TITLE' | translate }}</p>
-      <h1>{{ 'MONITORING.DASHBOARD.HEADLINE' | translate }}</h1>
-      <p class="dashboard__subtitle">{{ 'MONITORING.DASHBOARD.DESCRIPTION' | translate }}</p>
-    </div>
+    <p class="dashboard__eyebrow">{{ 'MONITORING.DASHBOARD.TITLE' | translate }}</p>
+    <h1>{{ 'MONITORING.DASHBOARD.HEADLINE' | translate }}</h1>
+    <p class="dashboard__subtitle">{{ 'MONITORING.DASHBOARD.DESCRIPTION' | translate }}</p>
   </header>
 
+  <!-- 🗺️ Mapa con buscador moderno -->
   <div class="dashboard__map">
-    <div class="dashboard__map-placeholder">EasyPark Central</div>
+    <!-- 🔍 Nuevo Autocomplete -->
+    <gmp-place-autocomplete
+      id="placeAutocomplete"
+      class="map-search"
+      placeholder="Buscar dirección..."
+    ></gmp-place-autocomplete>
+
+    <google-map
+      height="400px"
+      width="100%"
+      [center]="center"
+      [zoom]="zoom"
+    >
+      <map-marker *ngIf="marker" [position]="marker" [title]="markerTitle"></map-marker>
+    </google-map>
   </div>
 
-  <app-parking-lot-status [overview]="vm.overview"></app-parking-lot-status>
+  <!-- 🧮 Tarjetas de resumen -->
+  <div class="dashboard__overview">
+    <div class="overview-card">
+      <p class="label">{{ 'MONITORING.DASHBOARD.OCCUPANCY' | translate }}</p>
+      <h2 class="value">{{ vm.overview.occupancyRate }}%</h2>
+      <p class="trend positive">{{ vm.overview.occupancyTrend }}%</p>
+    </div>
 
-  <div class="dashboard__grid">
-    <app-incident-list [incidents]="vm.incidents"></app-incident-list>
-    <app-vehicle-entry-exit [movements]="vm.movements"></app-vehicle-entry-exit>
+    <div class="overview-card">
+      <p class="label">{{ 'MONITORING.DASHBOARD.REVENUE' | translate }}</p>
+      <h2 class="value">${{ vm.overview.totalRevenue | number }}</h2>
+      <p class="trend positive">{{ vm.overview.revenueTrend }}%</p>
+    </div>
+
+    <div class="overview-card">
+      <p class="label">{{ 'MONITORING.DASHBOARD.INCIDENTS' | translate }}</p>
+      <h2 class="value">{{ vm.overview.incidents }}</h2>
+      <p class="trend negative">{{ vm.overview.incidentsTrend }}%</p>
+    </div>
   </div>
+
+  <!-- 📋 Incidentes recientes -->
+  <section class="recent-incidents">
+    <h3>{{ 'MONITORING.DASHBOARD.RECENT_INCIDENTS' | translate }}</h3>
+    <table class="incident-table">
+      <thead>
+      <tr>
+        <th>{{ 'MONITORING.DASHBOARD.TIME' | translate }}</th>
+        <th>{{ 'MONITORING.DASHBOARD.LOCATION' | translate }}</th>
+        <th>{{ 'MONITORING.DASHBOARD.DESCRIPTION' | translate }}</th>
+        <th>{{ 'MONITORING.DASHBOARD.STATUS' | translate }}</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let incident of vm.incidents">
+        <td>{{ incident.time }}</td>
+        <td>{{ incident.location }}</td>
+        <td>{{ incident.description }}</td>
+        <td>
+            <span
+              class="status-badge"
+              [ngClass]="{
+                open: incident.state === 'open',
+                closed: incident.state === 'closed',
+                'in-progress': incident.state === 'in_progress'
+              }"
+            >
+              {{ incident.state }}
+            </span>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </section>
 </section>
