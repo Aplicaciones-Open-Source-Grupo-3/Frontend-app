@@ -21,13 +21,29 @@
 4. Selecciona la rama `main`
 
 ### Paso 3: Configurar el servicio
+
+**IMPORTANTE**: Hay dos formas de configurar según la interfaz de Koyeb:
+
+#### **Opción 1: Con campo "Root Directory" visible**
+- **Name**: `easypark-backend`
+- **Region**: Selecciona la más cercana (Frankfurt, Washington, etc.)
+- **Builder**: Buildpack
+- **Root directory**: `server` ← **ESCRIBE ESTO AQUÍ**
+- **Build command**: `npm install`
+- **Run command**: `npm start`
+- **Port**: `8000`
+- **Instance type**: Free (Nano)
+
+#### **Opción 2: SIN campo "Root Directory" (usa cd en los comandos)**
 - **Name**: `easypark-backend`
 - **Region**: Selecciona la más cercana (Frankfurt, Washington, etc.)
 - **Builder**: Buildpack
 - **Build command**: `cd server && npm install`
 - **Run command**: `cd server && npm start`
-- **Port**: `10000`
+- **Port**: `8000`
 - **Instance type**: Free (Nano)
+
+**💡 Usa la opción que se ajuste a lo que veas en tu pantalla de Koyeb.**
 
 ### Paso 4: Variables de entorno
 - Koyeb asigna automáticamente `PORT=8000`
@@ -58,4 +74,3 @@ export const environment = {
 - 512MB RAM
 - 2GB disco
 - Suficiente para json-server
-
