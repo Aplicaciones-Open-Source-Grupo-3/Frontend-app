@@ -1,3 +1,5 @@
+
+/* Layout general */
 .analytics {
   display: grid;
   gap: 2rem;
@@ -11,6 +13,7 @@
 .analytics__header h1 {
   margin: 0;
   font-size: 2rem;
+  color: #e2e8f0;
 }
 
 .analytics__header p {
@@ -18,8 +21,191 @@
   color: #94a3b8;
 }
 
+/* Widgets KPI superiores */
 .analytics__widgets {
   display: grid;
   gap: 1.5rem;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
 }
+
+/* Títulos de sección */
+.section-title {
+  margin: 0;
+  font-size: 1.25rem;
+  color: #e2e8f0;
+}
+
+/* Grid de tarjetas (Income / Occupancy) */
+.cards-grid {
+  display: grid;
+  gap: 1.25rem;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+/* Tarjeta base */
+.card {
+  background: rgba(15, 23, 42, 0.55);
+  border: 1px solid rgba(148, 163, 184, 0.12);
+  border-radius: 1rem;
+  padding: 1.25rem;
+  color: #e2e8f0;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.card.no-pad {
+  padding: 0;
+}
+
+/* Headings dentro de la tarjeta */
+.card h4 {
+  margin: 0;
+  font-size: 1rem;
+  color: #e2e8f0;
+}
+
+.card small {
+  color: #94a3b8;
+}
+
+/* KPIs dentro de la tarjeta */
+.kpi {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.kpi-sub {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+/* Barras para gráficos */
+.chart-bars {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.5rem;
+  height: 140px;
+  padding: 0.5rem 0;
+}
+
+.chart-bars.slim {
+  height: 90px;
+}
+
+.bar {
+  width: 12px;
+  border-radius: 6px;
+  background: linear-gradient(
+    180deg,
+    rgba(148, 163, 184, 0.35) 0%,
+    rgba(71, 85, 105, 0.35) 100%
+  );
+}
+
+/* Línea placeholder (ocupación) */
+.chart-line {
+  height: 140px;
+  border-radius: 0.75rem;
+  background: repeating-linear-gradient(
+    -45deg,
+    rgba(148, 163, 184, 0.08),
+    rgba(148, 163, 184, 0.08) 10px,
+    rgba(71, 85, 105, 0.12) 10px,
+    rgba(71, 85, 105, 0.12) 20px
+  );
+}
+
+/* Leyenda */
+.legend {
+  display: flex;
+  gap: 0.75rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  color: #94a3b8;
+}
+
+/* Tabla de historial */
+.table-scroll {
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 720px;
+}
+
+.table thead th {
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.875rem;
+  color: #cbd5e1;
+  background: rgba(15, 23, 42, 0.65);
+  border-bottom: 1px solid rgba(148, 163, 184, 0.15);
+  padding: 0.75rem 1rem;
+}
+
+.table tbody td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.08);
+  color: #e2e8f0;
+}
+
+/* Badges de estado */
+.badge {
+  display: inline-block;
+  padding: 0.25rem 0.625rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  border: 1px solid rgba(148, 163, 184, 0.25);
+  background: rgba(15, 23, 42, 0.35);
+  color: #e2e8f0;
+}
+
+.badge--active {
+  border-color: rgba(52, 211, 153, 0.5);
+  color: #34d399;
+}
+
+.badge--expired {
+  border-color: rgba(248, 113, 113, 0.5);
+  color: #f87171;
+}
+
+/* Acciones de la tabla */
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  padding: 1rem;
+  border-top: 1px solid rgba(148, 163, 184, 0.12);
+}
+
+/* Botones */
+.btn {
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+  border: 1px solid rgba(148, 163, 184, 0.4);
+  background: rgba(15, 23, 42, 0.35);
+  color: #e2e8f0;
+  cursor: pointer;
+}
+
+.btn--primary {
+  border-color: transparent;
+  background: rgba(59, 130, 246, 0.85);
+  color: #e2e8f0;
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  .analytics__widgets {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .cards-grid {
+    grid-template-columns: 1fr;
+  }
+}
+

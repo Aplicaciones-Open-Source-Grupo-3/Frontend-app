@@ -1,7 +1,7 @@
 <article class="widget">
   <header>
-    <h3>{{ report.title }}</h3>
-    <span>{{ report.period }}</span>
+    <h3>{{ titleKey | translate }}</h3>
+    <span>{{ periodKey | translate }}</span>
   </header>
   <p class="widget__kpi">{{ report.kpi | number:'1.0-0' }}</p>
   <p class="widget__trend" [class.positive]="report.trend >= 0" [class.negative]="report.trend < 0">
