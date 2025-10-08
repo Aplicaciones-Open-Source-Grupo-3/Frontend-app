@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://TU-URL-DE-KOYEB.koyeb.app' // Reemplaza con la URL real que te dio Koyeb (SIN BARRA FINAL)
+  apiUrl: 'https://wittering-kesley-quickpark-038b2cfd.koyeb.app'
 };
