@@ -1,0 +1,75 @@
+<div class="accounting-summary">
+  <h2 class="accounting-summary__title">{{ 'ACCOUNTING.SUMMARY.TITLE' | translate }}</h2>
+
+  <div class="accounting-summary__grid">
+    <div class="summary-card summary-card--primary">
+      <div class="summary-card__icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="12" y1="1" x2="12" y2="23"></line>
+          <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+        </svg>
+      </div>
+      <div class="summary-card__content">
+        <p class="summary-card__label">{{ 'ACCOUNTING.SUMMARY.TOTAL_REVENUE' | translate }}</p>
+        <p class="summary-card__value">{{ summary().currency }}{{ summary().totalRevenue | number:'1.2-2' }}</p>
+      </div>
+    </div>
+
+    <div class="summary-card summary-card--info">
+      <div class="summary-card__icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+          <circle cx="9" cy="7" r="4"></circle>
+          <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+          <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+        </svg>
+      </div>
+      <div class="summary-card__content">
+        <p class="summary-card__label">{{ 'ACCOUNTING.SUMMARY.TOTAL_VEHICLES' | translate }}</p>
+        <p class="summary-card__value">{{ summary().totalVehicles }}</p>
+      </div>
+    </div>
+
+    <div class="summary-card summary-card--success">
+      <div class="summary-card__icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M14 16H9m10 0h3v-3.15a1 1 0 0 0-.84-.99L16 11l-2.7-3.6a1 1 0 0 0-.8-.4H5.24a2 2 0 0 0-1.8 1.1l-.8 1.63A6 6 0 0 0 2 12.42V16h2"></path>
+          <circle cx="6.5" cy="16.5" r="2.5"></circle>
+          <circle cx="16.5" cy="16.5" r="2.5"></circle>
+        </svg>
+      </div>
+      <div class="summary-card__content">
+        <p class="summary-card__label">{{ 'ACCOUNTING.SUMMARY.CAR_REVENUE' | translate }}</p>
+        <p class="summary-card__value">{{ summary().currency }}{{ summary().carRevenue | number:'1.2-2' }}</p>
+      </div>
+    </div>
+
+    <div class="summary-card summary-card--warning">
+      <div class="summary-card__icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="5.5" cy="17.5" r="3.5"></circle>
+          <circle cx="18.5" cy="17.5" r="3.5"></circle>
+          <path d="M15 6a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"></path>
+          <path d="M8.5 10 12 6l3 4 2-2 1 6-9 2z"></path>
+        </svg>
+      </div>
+      <div class="summary-card__content">
+        <p class="summary-card__label">{{ 'ACCOUNTING.SUMMARY.MOTORCYCLE_REVENUE' | translate }}</p>
+        <p class="summary-card__value">{{ summary().currency }}{{ summary().motorcycleRevenue | number:'1.2-2' }}</p>
+      </div>
+    </div>
+
+    <div class="summary-card summary-card--secondary">
+      <div class="summary-card__icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"></circle>
+          <polyline points="12 6 12 12 16 14"></polyline>
+        </svg>
+      </div>
+      <div class="summary-card__content">
+        <p class="summary-card__label">{{ 'ACCOUNTING.SUMMARY.AVERAGE_STAY' | translate }}</p>
+        <p class="summary-card__value">{{ summary().averageStayTime | number:'1.1-1' }}h</p>
+      </div>
+    </div>
+  </div>
+</div>

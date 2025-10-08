@@ -2,8 +2,8 @@
   "NAV": {
     "DASHBOARD": "Dashboard",
     "PARKING": "Parking",
-    "SPACES": "Spaces",
-    "SUBSCRIPTIONS": "Subscriptions",
+    "SPACES": "Settings",
+    "ACCOUNTING": "Accounting",
     "CLIENTS": "Clients",
     "REPORTS": "Reports"
   },
@@ -39,8 +39,23 @@
       "NO_PHONE": "Not provided"
     },
     "SETTINGS": {
-      "TITLE": "Preferences",
-      "DESCRIPTION": "Configure alerts, notifications and accessibility options."
+      "TITLE": "Settings",
+      "DESCRIPTION": "Configure schedules, rates and operational parameters for the parking lot.",
+      "SCHEDULE_TITLE": "Operating Hours",
+      "OPENING_TIME": "Opening Time",
+      "CLOSING_TIME": "Closing Time",
+      "RATES_TITLE": "Hourly Rates",
+      "MOTORCYCLE_RATE": "Motorcycles",
+      "CAR_TRUCK_RATE": "Cars/Trucks",
+      "PER_HOUR": "soles/hour",
+      "GENERAL_TITLE": "General Settings",
+      "MAX_CAPACITY": "Maximum Capacity",
+      "CURRENCY": "Currency",
+      "GRACE_PERIOD": "Grace Period",
+      "MINUTES": "minutes",
+      "ALLOW_OVERNIGHT": "Allow Overnight Parking",
+      "SAVE_CHANGES": "Save Changes",
+      "SAVE_SUCCESS": "Settings saved successfully"
     },
     "BUSINESS": {
       "TITLE": "Business information",
@@ -69,6 +84,45 @@
       "LOCATION": "Location",
       "DESCRIPTION": "Description",
       "SUBMIT": "Submit incident"
+    },
+    "MANAGEMENT": {
+      "TITLE": "Vehicle Management",
+      "DESCRIPTION": "Monitor and manage all vehicles in the parking lot in real-time.",
+      "NEW_VEHICLE": "Add Vehicle",
+      "CANCEL": "Cancel",
+      "CAPACITY": "Capacity",
+      "AVAILABLE_SPACES": "Available spaces",
+      "SEARCH_PLACEHOLDER": "Search by plate...",
+      "NO_RESULTS": "No vehicles found with that plate",
+      "ADD_VEHICLE_TITLE": "Register New Vehicle",
+      "PLATE": "License Plate",
+      "PLATE_PLACEHOLDER": "Enter plate number",
+      "VEHICLE_TYPE": "Vehicle Type",
+      "AUTO_TRUCK": "Auto/Truck",
+      "MOTORCYCLE": "Motorcycle",
+      "ADD_VEHICLE": "Add Vehicle",
+      "REGISTRATION_NUMBER": "Registration #",
+      "ENTRY_DATE": "Entry Date",
+      "ENTRY_TIME": "Entry Time",
+      "STATUS": "Status",
+      "STATUS_IN_SPACE": "In Space",
+      "STATUS_OUT": "Out",
+      "ACTIONS": "Actions",
+      "EXIT": "Exit",
+      "DELETE": "Delete",
+      "NO_VEHICLES": "No vehicles currently in the parking lot",
+      "EXIT_TITLE": "Vehicle Exit",
+      "ENTRY_TIME_FULL": "Entry Time",
+      "EXIT_TIME_FULL": "Exit Time",
+      "HOURS_PARKED": "Time Parked",
+      "HOURS_TO_PAY": "Hours to Pay",
+      "HOURS": "hours",
+      "RATE_PER_HOUR": "Rate per Hour",
+      "TOTAL_AMOUNT": "Total Amount",
+      "VEHICLE_EXIT": "Confirm Exit",
+      "PARKING_FULL_TITLE": "Parking Full",
+      "PARKING_FULL_MESSAGE": "There are no available spaces at this time. Please wait for a vehicle to exit before registering a new one.",
+      "UNDERSTAND": "Understood"
     }
   },
   "SUBSCRIPTION": {
@@ -167,5 +221,38 @@
     },
     "GRAPH": { "TITLE": "Revenue trend", "PLACEHOLDER": "Graph placeholder" },
     "EXPORT": { "TITLE": "Export reports" }
+  },
+  "ACCOUNTING": {
+    "OVERVIEW": {
+      "TITLE": "Accounting",
+      "DESCRIPTION": "Manage and view all records of vehicles that have exited the parking lot.",
+      "FILTER_BY_TYPE": "Filter by vehicle type",
+      "ALL": "All",
+      "CARS_TRUCKS": "Cars/Trucks",
+      "MOTORCYCLES": "Motorcycles",
+      "SEARCH_BY_PLATE": "Search by plate",
+      "SEARCH_PLACEHOLDER": "Enter plate number..."
+    },
+    "TABLE": {
+      "NO_RECORDS": "No accounting records available",
+      "REGISTRATION_NUMBER": "Registration #",
+      "ENTRY_DATE": "Entry Date",
+      "EXIT_DATE": "Exit Date",
+      "VEHICLE_TYPE": "Vehicle Type",
+      "PLATE": "Plate",
+      "ENTRY_TIME": "Entry Time",
+      "EXIT_TIME": "Exit Time",
+      "AMOUNT_PAID": "Amount Paid",
+      "MOTORCYCLE": "Motorcycle",
+      "CAR_TRUCK": "Car/Truck"
+    },
+    "SUMMARY": {
+      "TITLE": "Overall Summary",
+      "TOTAL_REVENUE": "Total Revenue",
+      "TOTAL_VEHICLES": "Total Vehicles",
+      "CAR_REVENUE": "Cars/Trucks Revenue",
+      "MOTORCYCLE_REVENUE": "Motorcycles Revenue",
+      "AVERAGE_STAY": "Average Stay Time"
+    }
   }
 }

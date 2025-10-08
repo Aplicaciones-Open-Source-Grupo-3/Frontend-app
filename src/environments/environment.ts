@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'http://localhost:3000' // Url of the data server
+  apiUrl: 'https://easypark-backend.onrender.com' // Reemplaza con tu URL de Render
 };

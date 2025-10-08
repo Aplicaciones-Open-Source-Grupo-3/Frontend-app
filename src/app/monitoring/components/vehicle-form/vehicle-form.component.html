@@ -1,0 +1,37 @@
+<form [formGroup]="vehicleForm" (ngSubmit)="onSubmit()" class="vehicle-form">
+  <div class="vehicle-form__field">
+    <label for="plate" class="vehicle-form__label">
+      {{ 'MONITORING.MANAGEMENT.PLATE' | translate }}
+    </label>
+    <input
+      id="plate"
+      type="text"
+      formControlName="plate"
+      class="vehicle-form__input"
+      [placeholder]="'MONITORING.MANAGEMENT.PLATE_PLACEHOLDER' | translate"
+    />
+  </div>
+
+  <div class="vehicle-form__field">
+    <label for="vehicleType" class="vehicle-form__label">
+      {{ 'MONITORING.MANAGEMENT.VEHICLE_TYPE' | translate }}
+    </label>
+    <select
+      id="vehicleType"
+      formControlName="vehicleType"
+      class="vehicle-form__select"
+    >
+      <option value="auto-camioneta">{{ 'MONITORING.MANAGEMENT.AUTO_TRUCK' | translate }}</option>
+      <option value="moto">{{ 'MONITORING.MANAGEMENT.MOTORCYCLE' | translate }}</option>
+    </select>
+  </div>
+
+  <button
+    type="submit"
+    class="vehicle-form__submit"
+    [disabled]="!vehicleForm.valid"
+  >
+    {{ 'MONITORING.MANAGEMENT.ADD_VEHICLE' | translate }}
+  </button>
+</form>
+

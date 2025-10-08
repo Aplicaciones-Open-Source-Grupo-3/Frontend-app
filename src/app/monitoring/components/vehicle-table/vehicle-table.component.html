@@ -1,0 +1,39 @@
+<div class="vehicle-table">
+  <div class="vehicle-table__header">
+    <div class="vehicle-table__cell">{{ 'MONITORING.MANAGEMENT.REGISTRATION_NUMBER' | translate }}</div>
+    <div class="vehicle-table__cell">{{ 'MONITORING.MANAGEMENT.ENTRY_DATE' | translate }}</div>
+    <div class="vehicle-table__cell">{{ 'MONITORING.MANAGEMENT.VEHICLE_TYPE' | translate }}</div>
+    <div class="vehicle-table__cell">{{ 'MONITORING.MANAGEMENT.PLATE' | translate }}</div>
+    <div class="vehicle-table__cell">{{ 'MONITORING.MANAGEMENT.ENTRY_TIME' | translate }}</div>
+    <div class="vehicle-table__cell">{{ 'MONITORING.MANAGEMENT.STATUS' | translate }}</div>
+    <div class="vehicle-table__cell">{{ 'MONITORING.MANAGEMENT.ACTIONS' | translate }}</div>
+  </div>
+
+  <div *ngIf="vehicles().length === 0" class="vehicle-table__empty">
+    {{ 'MONITORING.MANAGEMENT.NO_VEHICLES' | translate }}
+  </div>
+
+  <div *ngFor="let vehicle of vehicles()" class="vehicle-table__row">
+    <div class="vehicle-table__cell">{{ vehicle.registrationNumber }}</div>
+    <div class="vehicle-table__cell">{{ vehicle.entryDate }}</div>
+    <div class="vehicle-table__cell">{{ vehicle.vehicleType }}</div>
+    <div class="vehicle-table__cell">{{ vehicle.plate }}</div>
+    <div class="vehicle-table__cell">{{ vehicle.entryTime }}</div>
+    <div class="vehicle-table__cell">
+      <span class="status-badge" [class.status-badge--in-space]="vehicle.status === 'in-space' || !vehicle.status" [class.status-badge--out]="vehicle.status === 'out'">
+        {{ vehicle.status === 'out' ? ('MONITORING.MANAGEMENT.STATUS_OUT' | translate) : ('MONITORING.MANAGEMENT.STATUS_IN_SPACE' | translate) }}
+      </span>
+    </div>
+    <div class="vehicle-table__cell">
+      <button
+        *ngIf="vehicle.status !== 'out'"
+        class="vehicle-table__exit"
+        (click)="onExit(vehicle.id)"
+        [title]="'MONITORING.MANAGEMENT.EXIT' | translate"
+      >
+        {{ 'MONITORING.MANAGEMENT.EXIT' | translate }}
+      </button>
+      <span *ngIf="vehicle.status === 'out'" class="vehicle-table__no-action">-</span>
+    </div>
+  </div>
+</div>

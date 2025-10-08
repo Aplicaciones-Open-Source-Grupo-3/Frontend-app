@@ -2,8 +2,8 @@
   "NAV": {
     "DASHBOARD": "Tablero",
     "PARKING": "Estacionamiento",
-    "SPACES": "Espacios",
-    "SUBSCRIPTIONS": "Suscripciones",
+    "SPACES": "Ajustes",
+    "ACCOUNTING": "Contabilidad",
     "CLIENTS": "Clientes",
     "REPORTS": "Reportes"
   },
@@ -39,8 +39,23 @@
       "NO_PHONE": "Sin especificar"
     },
     "SETTINGS": {
-      "TITLE": "Preferencias",
-      "DESCRIPTION": "Configura alertas, notificaciones y opciones de accesibilidad."
+      "TITLE": "Ajustes",
+      "DESCRIPTION": "Configura horarios, tarifas y parámetros operacionales del estacionamiento.",
+      "SCHEDULE_TITLE": "Horario de Atención",
+      "OPENING_TIME": "Hora de Apertura",
+      "CLOSING_TIME": "Hora de Cierre",
+      "RATES_TITLE": "Tarifas por Hora",
+      "MOTORCYCLE_RATE": "Motos",
+      "CAR_TRUCK_RATE": "Autos/Camionetas",
+      "PER_HOUR": "soles/hora",
+      "GENERAL_TITLE": "Configuración General",
+      "MAX_CAPACITY": "Capacidad Máxima",
+      "CURRENCY": "Moneda",
+      "GRACE_PERIOD": "Período de Gracia",
+      "MINUTES": "minutos",
+      "ALLOW_OVERNIGHT": "Permitir Estacionamiento Nocturno",
+      "SAVE_CHANGES": "Guardar Cambios",
+      "SAVE_SUCCESS": "Configuración guardada exitosamente"
     },
     "BUSINESS": {
       "TITLE": "Información empresarial",
@@ -69,6 +84,45 @@
       "LOCATION": "Ubicación",
       "DESCRIPTION": "Descripción",
       "SUBMIT": "Registrar"
+    },
+    "MANAGEMENT": {
+      "TITLE": "Gestión de Vehículos",
+      "DESCRIPTION": "Monitorea y administra todos los vehículos en el estacionamiento en tiempo real.",
+      "NEW_VEHICLE": "Añadir Vehículo",
+      "CANCEL": "Cancelar",
+      "CAPACITY": "Capacidad",
+      "AVAILABLE_SPACES": "Espacios libres",
+      "SEARCH_PLACEHOLDER": "Buscar por placa...",
+      "NO_RESULTS": "No se encontraron vehículos con esa placa",
+      "ADD_VEHICLE_TITLE": "Registrar Nuevo Vehículo",
+      "PARKING_FULL_TITLE": "Estacionamiento Lleno",
+      "PARKING_FULL_MESSAGE": "No hay espacios disponibles en este momento. Por favor, espere a que un vehículo salga para registrar uno nuevo.",
+      "UNDERSTAND": "Entendido",
+      "PLATE": "Placa",
+      "PLATE_PLACEHOLDER": "Ingresa la placa",
+      "VEHICLE_TYPE": "Tipo de Vehículo",
+      "AUTO_TRUCK": "Auto/Camioneta",
+      "MOTORCYCLE": "Moto",
+      "ADD_VEHICLE": "Añadir Vehículo",
+      "REGISTRATION_NUMBER": "N° Registro",
+      "ENTRY_DATE": "Fecha Ingreso",
+      "ENTRY_TIME": "Hora Entrada",
+      "STATUS": "Estado",
+      "STATUS_IN_SPACE": "En Espacio",
+      "STATUS_OUT": "Salió",
+      "ACTIONS": "Acciones",
+      "EXIT": "Salida",
+      "DELETE": "Eliminar",
+      "NO_VEHICLES": "No hay vehículos en el estacionamiento actualmente",
+      "EXIT_TITLE": "Salida de Vehículo",
+      "ENTRY_TIME_FULL": "Hora de Entrada",
+      "EXIT_TIME_FULL": "Hora de Salida",
+      "HOURS_PARKED": "Tiempo Estacionado",
+      "HOURS_TO_PAY": "Horas a Pagar",
+      "HOURS": "horas",
+      "RATE_PER_HOUR": "Tarifa por Hora",
+      "TOTAL_AMOUNT": "Total a Pagar",
+      "VEHICLE_EXIT": "Confirmar Salida"
     }
   },
   "SUBSCRIPTION": {
@@ -167,5 +221,38 @@
     },
     "GRAPH": { "TITLE": "Tendencia de ingresos", "PLACEHOLDER": "Espacio reservado para gráfico" },
     "EXPORT": { "TITLE": "Exportar reportes" }
+  },
+  "ACCOUNTING": {
+    "OVERVIEW": {
+      "TITLE": "Contabilidad",
+      "DESCRIPTION": "Gestiona y visualiza todos los registros de vehículos que han salido del estacionamiento.",
+      "FILTER_BY_TYPE": "Filtrar por tipo de vehículo",
+      "ALL": "Todos",
+      "CARS_TRUCKS": "Autos/Camionetas",
+      "MOTORCYCLES": "Motos",
+      "SEARCH_BY_PLATE": "Buscar por placa",
+      "SEARCH_PLACEHOLDER": "Ingresa la placa..."
+    },
+    "TABLE": {
+      "NO_RECORDS": "No hay registros de contabilidad disponibles",
+      "REGISTRATION_NUMBER": "N° Registro",
+      "ENTRY_DATE": "Fecha Entrada",
+      "EXIT_DATE": "Fecha Salida",
+      "VEHICLE_TYPE": "Tipo Vehículo",
+      "PLATE": "Placa",
+      "ENTRY_TIME": "Hora Entrada",
+      "EXIT_TIME": "Hora Salida",
+      "AMOUNT_PAID": "Tarifa Pagada",
+      "MOTORCYCLE": "Moto",
+      "CAR_TRUCK": "Auto/Camioneta"
+    },
+    "SUMMARY": {
+      "TITLE": "Resumen General",
+      "TOTAL_REVENUE": "Ingresos Totales",
+      "TOTAL_VEHICLES": "Total Vehículos",
+      "CAR_REVENUE": "Ingresos Autos/Camionetas",
+      "MOTORCYCLE_REVENUE": "Ingresos Motos",
+      "AVERAGE_STAY": "Tiempo Promedio"
+    }
   }
 }

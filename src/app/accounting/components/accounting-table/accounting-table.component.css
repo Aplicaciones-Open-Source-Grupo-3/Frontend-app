@@ -1,0 +1,84 @@
+.accounting-table {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.accounting-table__empty {
+  padding: 3rem;
+  text-align: center;
+  color: #666;
+}
+
+.accounting-table__wrapper {
+  overflow-x: auto;
+}
+
+.accounting-table__table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 1000px;
+}
+
+.accounting-table__table thead {
+  background-color: #f8f9fa;
+  border-bottom: 2px solid #dee2e6;
+}
+
+.accounting-table__table th {
+  padding: 1rem;
+  text-align: left;
+  font-weight: 600;
+  color: #495057;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.accounting-table__table tbody tr {
+  border-bottom: 1px solid #dee2e6;
+  transition: background-color 0.2s;
+}
+
+.accounting-table__table tbody tr:hover {
+  background-color: #f8f9fa;
+}
+
+.accounting-table__table td {
+  padding: 1rem;
+  color: #212529;
+  font-size: 0.9rem;
+}
+
+.vehicle-type {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.vehicle-type--car {
+  background-color: #e3f2fd;
+  color: #1976d2;
+}
+
+.vehicle-type--moto {
+  background-color: #f3e5f5;
+  color: #7b1fa2;
+}
+
+.plate {
+  font-weight: 600;
+  font-family: monospace;
+  font-size: 1rem;
+}
+
+.amount {
+  font-weight: 700;
+  color: #28a745;
+  font-size: 1rem;
+}
+

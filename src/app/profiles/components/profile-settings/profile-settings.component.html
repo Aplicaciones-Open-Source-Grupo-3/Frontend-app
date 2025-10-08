@@ -1,0 +1,153 @@
+<section class="settings">
+  <div class="settings__header">
+    <h2>{{ 'PROFILES.SETTINGS.TITLE' | translate }}</h2>
+    <p>{{ 'PROFILES.SETTINGS.DESCRIPTION' | translate }}</p>
+  </div>
+
+  <form [formGroup]="settingsForm" (ngSubmit)="onSubmit()" class="settings__form">
+    <!-- Horario de Atención -->
+    <div class="settings__section">
+      <h3 class="settings__section-title">{{ 'PROFILES.SETTINGS.SCHEDULE_TITLE' | translate }}</h3>
+      <div class="settings__row">
+        <div class="settings__field">
+          <label for="openingTime" class="settings__label">
+            {{ 'PROFILES.SETTINGS.OPENING_TIME' | translate }}
+          </label>
+          <input
+            id="openingTime"
+            type="time"
+            formControlName="openingTime"
+            class="settings__input"
+          />
+        </div>
+        <div class="settings__field">
+          <label for="closingTime" class="settings__label">
+            {{ 'PROFILES.SETTINGS.CLOSING_TIME' | translate }}
+          </label>
+          <input
+            id="closingTime"
+            type="time"
+            formControlName="closingTime"
+            class="settings__input"
+          />
+        </div>
+      </div>
+    </div>
+
+    <!-- Tarifas -->
+    <div class="settings__section">
+      <h3 class="settings__section-title">{{ 'PROFILES.SETTINGS.RATES_TITLE' | translate }}</h3>
+      <div class="settings__row">
+        <div class="settings__field">
+          <label for="motorcycleRate" class="settings__label">
+            {{ 'PROFILES.SETTINGS.MOTORCYCLE_RATE' | translate }}
+          </label>
+          <div class="settings__input-group">
+            <input
+              id="motorcycleRate"
+              type="number"
+              formControlName="motorcycleRate"
+              class="settings__input"
+              min="0"
+              step="0.5"
+            />
+            <span class="settings__input-addon">{{ 'PROFILES.SETTINGS.PER_HOUR' | translate }}</span>
+          </div>
+        </div>
+        <div class="settings__field">
+          <label for="carTruckRate" class="settings__label">
+            {{ 'PROFILES.SETTINGS.CAR_TRUCK_RATE' | translate }}
+          </label>
+          <div class="settings__input-group">
+            <input
+              id="carTruckRate"
+              type="number"
+              formControlName="carTruckRate"
+              class="settings__input"
+              min="0"
+              step="0.5"
+            />
+            <span class="settings__input-addon">{{ 'PROFILES.SETTINGS.PER_HOUR' | translate }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Configuraciones Generales -->
+    <div class="settings__section">
+      <h3 class="settings__section-title">{{ 'PROFILES.SETTINGS.GENERAL_TITLE' | translate }}</h3>
+      <div class="settings__row">
+        <div class="settings__field">
+          <label for="maxCapacity" class="settings__label">
+            {{ 'PROFILES.SETTINGS.MAX_CAPACITY' | translate }}
+          </label>
+          <input
+            id="maxCapacity"
+            type="number"
+            formControlName="maxCapacity"
+            class="settings__input"
+            min="1"
+          />
+        </div>
+        <div class="settings__field">
+          <label for="currency" class="settings__label">
+            {{ 'PROFILES.SETTINGS.CURRENCY' | translate }}
+          </label>
+          <select
+            id="currency"
+            formControlName="currency"
+            class="settings__input"
+          >
+            <option value="PEN">Soles (S/)</option>
+            <option value="USD">Dólares ($)</option>
+            <option value="EUR">Euros (€)</option>
+          </select>
+        </div>
+      </div>
+      <div class="settings__row">
+        <div class="settings__field">
+          <label for="gracePeriodMinutes" class="settings__label">
+            {{ 'PROFILES.SETTINGS.GRACE_PERIOD' | translate }}
+          </label>
+          <div class="settings__input-group">
+            <input
+              id="gracePeriodMinutes"
+              type="number"
+              formControlName="gracePeriodMinutes"
+              class="settings__input"
+              min="0"
+            />
+            <span class="settings__input-addon">{{ 'PROFILES.SETTINGS.MINUTES' | translate }}</span>
+          </div>
+        </div>
+        <div class="settings__field settings__field--checkbox">
+          <label class="settings__checkbox-label">
+            <input
+              type="checkbox"
+              formControlName="allowOvernight"
+              class="settings__checkbox"
+            />
+            <span>{{ 'PROFILES.SETTINGS.ALLOW_OVERNIGHT' | translate }}</span>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <!-- Botón de Guardar -->
+    <div class="settings__actions">
+      <button
+        type="submit"
+        class="settings__submit"
+        [disabled]="!settingsForm.valid"
+      >
+        {{ 'PROFILES.SETTINGS.SAVE_CHANGES' | translate }}
+      </button>
+      @if (saveSuccess()) {
+        <div class="settings__success">
+          {{ 'PROFILES.SETTINGS.SAVE_SUCCESS' | translate }}
+        </div>
+      }
+    </div>
+  </form>
+</section>
+

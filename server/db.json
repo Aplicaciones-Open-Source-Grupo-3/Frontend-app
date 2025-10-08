@@ -7,37 +7,173 @@
     "revenueTrend": 14,
     "incidentsTrend": -1
   },
+  "parkingSettings": {
+    "id": 1,
+    "openingTime": "08:00",
+    "closingTime": "22:00",
+    "motorcycleRate": 2,
+    "carTruckRate": 4,
+    "maxCapacity": 100,
+    "currency": "PEN",
+    "gracePeriodMinutes": 15,
+    "allowOvernight": true
+  },
   "incidents": [
     {
-      "id": 1,
+      "id": "1",
       "time": "10:35",
       "location": "Space A12",
       "description": "Vehicle parked overtime",
       "state": "open"
     },
     {
-      "id": 2,
+      "id": "2",
       "time": "11:20",
       "location": "Space B05",
       "description": "Unauthorized vehicle detected",
       "state": "in_progress"
     },
     {
-      "id": 3,
+      "id": "3",
       "time": "12:45",
       "location": "Space C21",
       "description": "Payment issue",
       "state": "closed"
     }
   ],
+  "vehicles": [
+    {
+      "id": "1",
+      "registrationNumber": "0003",
+      "entryDate": "15-08-2025",
+      "vehicleType": "auto-camioneta",
+      "plate": "BYG475",
+      "entryTime": "19:30",
+      "status": "in-space"
+    },
+    {
+      "id": "2",
+      "registrationNumber": "0002",
+      "entryDate": "15-08-2025",
+      "vehicleType": "moto",
+      "plate": "VTY451",
+      "entryTime": "18:25",
+      "status": "in-space"
+    },
+    {
+      "id": "3",
+      "registrationNumber": "0001",
+      "entryDate": "15-08-2025",
+      "vehicleType": "auto-camioneta",
+      "plate": "HYC784",
+      "entryTime": "17:15",
+      "status": "in-space"
+    },
+    {
+      "id": "a8a0",
+      "plate": "BKY714",
+      "vehicleType": "auto-camioneta",
+      "entryDate": "08-10-2025",
+      "entryTime": "13:11",
+      "registrationNumber": "0004",
+      "status": "out",
+      "exitDate": "08-10-2025",
+      "exitTime": "15:50"
+    },
+    {
+      "id": "dc26",
+      "plate": "TRY481",
+      "vehicleType": "auto-camioneta",
+      "entryDate": "08-10-2025",
+      "entryTime": "13:30",
+      "registrationNumber": "0006",
+      "status": "out",
+      "exitDate": "08-10-2025",
+      "exitTime": "14:59"
+    },
+    {
+      "id": "6034",
+      "plate": "GTY154",
+      "vehicleType": "moto",
+      "entryDate": "08-10-2025",
+      "entryTime": "13:30",
+      "registrationNumber": "0007",
+      "status": "out",
+      "exitDate": "08-10-2025",
+      "exitTime": "14:37"
+    },
+    {
+      "id": "8a0b",
+      "plate": "BTY655",
+      "vehicleType": "auto-camioneta",
+      "entryDate": "08-10-2025",
+      "entryTime": "14:52",
+      "registrationNumber": "0008",
+      "status": "out",
+      "exitDate": "08-10-2025",
+      "exitTime": "15:51"
+    },
+    {
+      "id": "92e4",
+      "plate": "ATH455",
+      "vehicleType": "moto",
+      "entryDate": "08-10-2025",
+      "entryTime": "14:59",
+      "registrationNumber": "0009",
+      "status": "out",
+      "exitDate": "08-10-2025",
+      "exitTime": "15:11"
+    },
+    {
+      "id": "3078",
+      "plate": "TRE487",
+      "vehicleType": "auto-camioneta",
+      "entryDate": "08-10-2025",
+      "entryTime": "15:24",
+      "registrationNumber": "0010",
+      "status": "in-space"
+    },
+    {
+      "id": "8eb0",
+      "plate": "UYG125",
+      "vehicleType": "auto-camioneta",
+      "entryDate": "08-10-2025",
+      "entryTime": "15:51",
+      "registrationNumber": "0011",
+      "status": "in-space"
+    },
+    {
+      "id": "dde1",
+      "plate": "RTC487",
+      "vehicleType": "moto",
+      "entryDate": "08-10-2025",
+      "entryTime": "15:52",
+      "registrationNumber": "0012",
+      "status": "out",
+      "exitDate": "08-10-2025",
+      "exitTime": "15:54"
+    }
+  ],
   "entryExit": [
-    { "id": 1, "plate": "ABC-102", "entryTime": "10:15" },
-    { "id": 2, "plate": "JSD-421", "entryTime": "10:42" },
-    { "id": 3, "plate": "HGX-993", "entryTime": "11:10" }
+    {
+      "id": "1",
+      "plate": "ABC-102",
+      "entryTime": "10:15"
+    },
+    {
+      "id": "2",
+      "plate": "JSD-421",
+      "entryTime": "10:42"
+    },
+    {
+      "id": "3",
+      "plate": "HGX-993",
+      "entryTime": "11:10"
+    }
   ],
   "profiles": [
     {
-      "id": 1,
+      "id": "1",
       "fullName": "Rober Lewandoski",
       "email": "robert.lewandoski@easypark.io",
       "phone": "+1 555 010 2030",
@@ -46,16 +182,108 @@
     }
   ],
   "subscriptions": [
-    { "id": 1, "planId": 1, "status": "active", "renewsAt": "2024-12-01" },
-    { "id": 2, "planId": 2, "status": "active", "renewsAt": "2024-12-15" }
+    {
+      "id": "1",
+      "planId": 1,
+      "status": "active",
+      "renewsAt": "2024-12-01"
+    },
+    {
+      "id": "2",
+      "planId": 2,
+      "status": "active",
+      "renewsAt": "2024-12-15"
+    }
   ],
   "plans": [
-    { "id": 1, "name": "Standard", "price": 79, "benefits": ["Up to 100 active clients", "Email support"] },
-    { "id": 2, "name": "Professional", "price": 149, "benefits": ["Unlimited clients", "Priority support", "Advanced analytics"] }
+    {
+      "id": "1",
+      "name": "Standard",
+      "price": 79,
+      "benefits": [
+        "Up to 100 active clients",
+        "Email support"
+      ]
+    },
+    {
+      "id": "2",
+      "name": "Professional",
+      "price": 149,
+      "benefits": [
+        "Unlimited clients",
+        "Priority support",
+        "Advanced analytics"
+      ]
+    }
   ],
   "reports": [
-    { "id": 1, "title": "Revenue", "period": "This month", "kpi": 12500, "trend": 12 },
-    { "id": 2, "title": "Occupancy", "period": "This week", "kpi": 78, "trend": 5 },
-    { "id": 3, "title": "Incidents", "period": "This week", "kpi": 3, "trend": -8 }
+    {
+      "id": "1",
+      "title": "Revenue",
+      "period": "This month",
+      "kpi": 12500,
+      "trend": 12
+    },
+    {
+      "id": "2",
+      "title": "Occupancy",
+      "period": "This week",
+      "kpi": 78,
+      "trend": 5
+    },
+    {
+      "id": "3",
+      "title": "Incidents",
+      "period": "This week",
+      "kpi": 3,
+      "trend": -8
+    }
+  ],
+  "accounting-records": [
+    {
+      "id": "b8e4",
+      "registrationNumber": "a8a0",
+      "entryDate": "08-10-2025",
+      "exitDate": "08-10-2025",
+      "vehicleType": "auto-camioneta",
+      "plate": "BKY714",
+      "entryTime": "13:11",
+      "exitTime": "15:50",
+      "amountPaid": 12,
+      "currency": "S/",
+      "hoursParked": 2.6553702777777777,
+      "hoursToPay": 3,
+      "ratePerHour": 4
+    },
+    {
+      "id": "4f30",
+      "registrationNumber": "8a0b",
+      "entryDate": "08-10-2025",
+      "exitDate": "08-10-2025",
+      "vehicleType": "auto-camioneta",
+      "plate": "BTY655",
+      "entryTime": "14:52",
+      "exitTime": "15:51",
+      "amountPaid": 4,
+      "currency": "S/",
+      "hoursParked": 0.9856580555555555,
+      "hoursToPay": 1,
+      "ratePerHour": 4
+    },
+    {
+      "id": "9f7d",
+      "registrationNumber": "dde1",
+      "entryDate": "08-10-2025",
+      "exitDate": "08-10-2025",
+      "vehicleType": "moto",
+      "plate": "RTC487",
+      "entryTime": "15:52",
+      "exitTime": "15:54",
+      "amountPaid": 2,
+      "currency": "S/",
+      "hoursParked": 0.03381027777777778,
+      "hoursToPay": 1,
+      "ratePerHour": 2
+    }
   ]
 }

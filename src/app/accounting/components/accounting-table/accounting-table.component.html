@@ -1,0 +1,44 @@
+<div class="accounting-table">
+  @if (records().length === 0) {
+    <div class="accounting-table__empty">
+      <p>{{ 'ACCOUNTING.TABLE.NO_RECORDS' | translate }}</p>
+    </div>
+  } @else {
+    <div class="accounting-table__wrapper">
+      <table class="accounting-table__table">
+        <thead>
+          <tr>
+            <th>{{ 'ACCOUNTING.TABLE.REGISTRATION_NUMBER' | translate }}</th>
+            <th>{{ 'ACCOUNTING.TABLE.ENTRY_DATE' | translate }}</th>
+            <th>{{ 'ACCOUNTING.TABLE.EXIT_DATE' | translate }}</th>
+            <th>{{ 'ACCOUNTING.TABLE.VEHICLE_TYPE' | translate }}</th>
+            <th>{{ 'ACCOUNTING.TABLE.PLATE' | translate }}</th>
+            <th>{{ 'ACCOUNTING.TABLE.ENTRY_TIME' | translate }}</th>
+            <th>{{ 'ACCOUNTING.TABLE.EXIT_TIME' | translate }}</th>
+            <th>{{ 'ACCOUNTING.TABLE.AMOUNT_PAID' | translate }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (record of records(); track record.id) {
+            <tr>
+              <td>{{ record.registrationNumber }}</td>
+              <td>{{ record.entryDate }}</td>
+              <td>{{ record.exitDate }}</td>
+              <td>
+                <span class="vehicle-type" [class.vehicle-type--car]="record.vehicleType === 'auto-camioneta'"
+                      [class.vehicle-type--moto]="record.vehicleType === 'moto'">
+                  {{ record.vehicleType === 'moto' ? ('ACCOUNTING.TABLE.MOTORCYCLE' | translate) : ('ACCOUNTING.TABLE.CAR_TRUCK' | translate) }}
+                </span>
+              </td>
+              <td class="plate">{{ record.plate }}</td>
+              <td>{{ record.entryTime }}</td>
+              <td>{{ record.exitTime }}</td>
+              <td class="amount">{{ record.currency }}{{ record.amountPaid | number:'1.2-2' }}</td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+</div>
+

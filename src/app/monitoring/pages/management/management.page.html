@@ -1,0 +1,62 @@
+<section class="management">
+  <header class="management__header">
+    <div class="management__header-content">
+      <h1>{{ 'MONITORING.MANAGEMENT.TITLE' | translate }}</h1>
+      <p>{{ 'MONITORING.MANAGEMENT.DESCRIPTION' | translate }}</p>
+    </div>
+    <div class="management__header-actions">
+      <div class="management__capacity" *ngIf="capacity$ | async as capacity">
+        <span class="management__capacity-label">{{ 'MONITORING.MANAGEMENT.CAPACITY' | translate }}:</span>
+        <span class="management__capacity-value">{{ capacity.occupied }}/{{ capacity.total }}</span>
+      </div>
+      <button class="management__add-btn" (click)="toggleForm()">
+        {{ 'MONITORING.MANAGEMENT.NEW_VEHICLE' | translate }}
+      </button>
+    </div>
+  </header>
+
+  <div class="management__search">
+    <input
+      type="text"
+      class="management__search-input"
+      [placeholder]="'MONITORING.MANAGEMENT.SEARCH_PLACEHOLDER' | translate"
+      [(ngModel)]="searchPlate"
+      (ngModelChange)="onSearchChange($event)"
+    />
+  </div>
+
+  <ng-container *ngIf="vehicles$ | async as vehicles">
+    <ng-container *ngIf="filteredVehicles$ | async as filteredVehicles">
+      <div *ngIf="filteredVehicles.length === 0 && searchPlate()" class="management__no-results">
+        {{ 'MONITORING.MANAGEMENT.NO_RESULTS' | translate }}
+      </div>
+
+      <app-vehicle-table
+        *ngIf="filteredVehicles.length > 0"
+        [vehicles]="filteredVehicles"
+        (vehicleExit)="onVehicleExit($event)"
+      ></app-vehicle-table>
+    </ng-container>
+  </ng-container>
+
+  @if (showForm()) {
+    @if (vehicles$ | async; as vehicles) {
+      @if (capacity$ | async; as capacity) {
+        <app-add-vehicle-modal
+          [vehicles]="vehicles"
+          [capacity]="capacity"
+          (onCancel)="toggleForm()"
+          (onVehicleAdded)="onVehicleAdded()"
+        ></app-add-vehicle-modal>
+      }
+    }
+  }
+
+  @if (exitCalculation()) {
+    <app-vehicle-exit-modal
+      [calculation]="exitCalculation()!"
+      (onCancel)="onCancelExit()"
+      (onConfirm)="onConfirmExit($event)"
+    ></app-vehicle-exit-modal>
+  }
+</section>

@@ -36,18 +36,18 @@ export const routes: Routes = [
         loadComponent: () => import('./monitoring/pages/dashboard/dashboard.page').then((m) => m.MonitoringDashboardPageComponent)
       },
       {
-        path: 'incidents',
-        loadComponent: () => import('./monitoring/pages/incidents/incidents.page').then((m) => m.MonitoringIncidentsPageComponent)
+        path: 'management',
+        loadComponent: () => import('./monitoring/pages/management/management.page').then((m) => m.MonitoringManagementPageComponent)
       }
     ]
   },
   {
-    path: 'subscription',
+    path: 'accounting',
     children: [
       {
         path: 'overview',
         loadComponent: () =>
-          import('./subscription/pages/subscriptions-overview/subscriptions-overview.page').then((m) => m.SubscriptionsOverviewPageComponent)
+          import('./accounting/pages/accounting-overview/accounting-overview.page').then((m) => m.AccountingOverviewPageComponent)
       }
     ]
   },
@@ -81,4 +81,3 @@ export const routes: Routes = [
     redirectTo: 'monitoring/dashboard'
   }
 ];
-

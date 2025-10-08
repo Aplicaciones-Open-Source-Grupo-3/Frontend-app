@@ -1,0 +1,43 @@
+<div class="modal-overlay" (click)="cancel()">
+  <div class="modal" (click)="$event.stopPropagation()">
+    <div class="modal__header">
+      <h2>{{ 'MONITORING.MANAGEMENT.ADD_VEHICLE_TITLE' | translate }}</h2>
+      <button class="modal__close" (click)="cancel()" type="button">✕</button>
+    </div>
+
+    <div class="modal__body">
+      <div class="modal__capacity-info">
+        <div class="capacity-badge">
+          <span class="capacity-badge__label">{{ 'MONITORING.MANAGEMENT.AVAILABLE_SPACES' | translate }}:</span>
+          <span class="capacity-badge__value" [class.capacity-badge__value--full]="isFull">
+            {{ capacity().available }}
+          </span>
+        </div>
+      </div>
+
+      <div *ngIf="isFull" class="modal__alert">
+        <svg class="modal__alert-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+        </svg>
+        <div class="modal__alert-content">
+          <h3 class="modal__alert-title">{{ 'MONITORING.MANAGEMENT.PARKING_FULL_TITLE' | translate }}</h3>
+          <p class="modal__alert-message">{{ 'MONITORING.MANAGEMENT.PARKING_FULL_MESSAGE' | translate }}</p>
+        </div>
+      </div>
+
+      <div *ngIf="!isFull">
+        <app-vehicle-form
+          [vehicles]="vehicles()"
+          (vehicleAdded)="handleVehicleAdded()"
+        ></app-vehicle-form>
+      </div>
+    </div>
+
+    <div class="modal__footer" *ngIf="isFull">
+      <button class="btn btn--primary" (click)="cancel()" type="button">
+        {{ 'MONITORING.MANAGEMENT.UNDERSTAND' | translate }}
+      </button>
+    </div>
+  </div>
+</div>
+

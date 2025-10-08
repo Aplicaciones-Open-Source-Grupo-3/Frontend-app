@@ -1,0 +1,63 @@
+<div class="modal-overlay" (click)="cancel()">
+  <div class="modal" (click)="$event.stopPropagation()">
+    <div class="modal__header">
+      <h2>{{ 'MONITORING.MANAGEMENT.EXIT_TITLE' | translate }}</h2>
+      <button class="modal__close" (click)="cancel()" type="button">✕</button>
+    </div>
+
+    <div class="modal__body">
+      <div class="info-row">
+        <span class="info-label">{{ 'MONITORING.MANAGEMENT.PLATE' | translate }}:</span>
+        <span class="info-value">{{ calculation().plate }}</span>
+      </div>
+
+      <div class="info-row">
+        <span class="info-label">{{ 'MONITORING.MANAGEMENT.VEHICLE_TYPE' | translate }}:</span>
+        <span class="info-value">{{ calculation().vehicleType }}</span>
+      </div>
+
+      <div class="info-row">
+        <span class="info-label">{{ 'MONITORING.MANAGEMENT.ENTRY_TIME_FULL' | translate }}:</span>
+        <span class="info-value">{{ calculation().entryDate }} {{ calculation().entryTime }}</span>
+      </div>
+
+      <div class="info-row">
+        <span class="info-label">{{ 'MONITORING.MANAGEMENT.EXIT_TIME_FULL' | translate }}:</span>
+        <span class="info-value">{{ calculation().exitDate }} {{ calculation().exitTime }}</span>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="info-row">
+        <span class="info-label">{{ 'MONITORING.MANAGEMENT.HOURS_PARKED' | translate }}:</span>
+        <span class="info-value">{{ calculation().hoursParkedFormatted }}</span>
+      </div>
+
+      <div class="info-row">
+        <span class="info-label">{{ 'MONITORING.MANAGEMENT.HOURS_TO_PAY' | translate }}:</span>
+        <span class="info-value highlight">{{ calculation().hoursToPay }} {{ 'MONITORING.MANAGEMENT.HOURS' | translate }}</span>
+      </div>
+
+      <div class="info-row">
+        <span class="info-label">{{ 'MONITORING.MANAGEMENT.RATE_PER_HOUR' | translate }}:</span>
+        <span class="info-value">{{ calculation().currency }} {{ calculation().ratePerHour }}</span>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="info-row total">
+        <span class="info-label">{{ 'MONITORING.MANAGEMENT.TOTAL_AMOUNT' | translate }}:</span>
+        <span class="info-value">{{ calculation().currency }} {{ calculation().totalAmount }}</span>
+      </div>
+    </div>
+
+    <div class="modal__footer">
+      <button class="btn btn--secondary" (click)="cancel()" type="button">
+        {{ 'MONITORING.MANAGEMENT.CANCEL' | translate }}
+      </button>
+      <button class="btn btn--primary" (click)="confirm()" type="button">
+        {{ 'MONITORING.MANAGEMENT.VEHICLE_EXIT' | translate }}
+      </button>
+    </div>
+  </div>
+</div>

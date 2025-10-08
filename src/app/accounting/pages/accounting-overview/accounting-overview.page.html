@@ -1,0 +1,54 @@
+<section class="accounting-overview">
+  <header class="accounting-overview__header">
+    <div class="accounting-overview__header-content">
+      <h1>{{ 'ACCOUNTING.OVERVIEW.TITLE' | translate }}</h1>
+      <p>{{ 'ACCOUNTING.OVERVIEW.DESCRIPTION' | translate }}</p>
+    </div>
+  </header>
+
+  @if (summary$ | async; as summary) {
+    <app-accounting-summary [summary]="summary"></app-accounting-summary>
+  }
+
+  <div class="accounting-overview__filters">
+    <div class="filter-group">
+      <label class="filter-label">{{ 'ACCOUNTING.OVERVIEW.FILTER_BY_TYPE' | translate }}</label>
+      <div class="filter-buttons">
+        <button
+          class="filter-btn"
+          [class.filter-btn--active]="selectedVehicleType() === 'all'"
+          (click)="onVehicleTypeChange('all')">
+          {{ 'ACCOUNTING.OVERVIEW.ALL' | translate }}
+        </button>
+        <button
+          class="filter-btn"
+          [class.filter-btn--active]="selectedVehicleType() === 'auto-camioneta'"
+          (click)="onVehicleTypeChange('auto-camioneta')">
+          {{ 'ACCOUNTING.OVERVIEW.CARS_TRUCKS' | translate }}
+        </button>
+        <button
+          class="filter-btn"
+          [class.filter-btn--active]="selectedVehicleType() === 'moto'"
+          (click)="onVehicleTypeChange('moto')">
+          {{ 'ACCOUNTING.OVERVIEW.MOTORCYCLES' | translate }}
+        </button>
+      </div>
+    </div>
+
+    <div class="filter-group">
+      <label class="filter-label">{{ 'ACCOUNTING.OVERVIEW.SEARCH_BY_PLATE' | translate }}</label>
+      <input
+        type="text"
+        class="filter-input"
+        [placeholder]="'ACCOUNTING.OVERVIEW.SEARCH_PLACEHOLDER' | translate"
+        [value]="searchPlate()"
+        (input)="onSearchChange($any($event.target).value)"
+      />
+    </div>
+  </div>
+
+  @if (filteredRecords$ | async; as records) {
+    <app-accounting-table [records]="records"></app-accounting-table>
+  }
+</section>
+

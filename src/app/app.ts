@@ -31,9 +31,9 @@ export class AppComponent {
 
   readonly navItems: NavItem[] = [
     { label: 'NAV.DASHBOARD', route: '/monitoring/dashboard' },
-    { label: 'NAV.PARKING', route: '/monitoring/incidents' },
+    { label: 'NAV.PARKING', route: '/monitoring/management' },
     { label: 'NAV.SPACES', route: '/profiles/overview' },
-    { label: 'NAV.SUBSCRIPTIONS', route: '/subscription/overview' },
+    { label: 'NAV.ACCOUNTING', route: '/accounting/overview' },
     { label: 'NAV.CLIENTS', route: '/clients/operators' },
     { label: 'NAV.REPORTS', route: '/analytics/overview' }
   ];

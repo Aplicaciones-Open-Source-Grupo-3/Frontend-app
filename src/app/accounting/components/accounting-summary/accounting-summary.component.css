@@ -1,0 +1,91 @@
+.accounting-summary {
+  margin-bottom: 2rem;
+}
+
+.accounting-summary__title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #212529;
+  margin-bottom: 1.5rem;
+}
+
+.accounting-summary__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.summary-card {
+  background: white;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.summary-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.summary-card__icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.summary-card--primary .summary-card__icon {
+  background-color: #e3f2fd;
+  color: #1976d2;
+}
+
+.summary-card--info .summary-card__icon {
+  background-color: #e1f5fe;
+  color: #0288d1;
+}
+
+.summary-card--success .summary-card__icon {
+  background-color: #e8f5e9;
+  color: #388e3c;
+}
+
+.summary-card--warning .summary-card__icon {
+  background-color: #fff3e0;
+  color: #f57c00;
+}
+
+.summary-card--secondary .summary-card__icon {
+  background-color: #f3e5f5;
+  color: #7b1fa2;
+}
+
+.summary-card__content {
+  flex: 1;
+}
+
+.summary-card__label {
+  font-size: 0.875rem;
+  color: #6c757d;
+  margin-bottom: 0.25rem;
+}
+
+.summary-card__value {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #212529;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .accounting-summary__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
