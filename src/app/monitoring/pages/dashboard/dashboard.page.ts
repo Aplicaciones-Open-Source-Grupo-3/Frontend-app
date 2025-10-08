@@ -51,7 +51,7 @@ export class MonitoringDashboardPageComponent implements OnInit {
     })
   );
 
-  // 🗺️ Configuración del mapa
+  // Configuración del mapa
   center: google.maps.LatLngLiteral = { lat: -12.0464, lng: -77.0428 }; // Lima por defecto
   zoom = 13;
   marker: google.maps.LatLngLiteral | null = null;
@@ -61,7 +61,7 @@ export class MonitoringDashboardPageComponent implements OnInit {
     this.initAutocomplete();
   }
 
-  // 📍 Permitir marcar manualmente
+  // Permitir marcar manualmente
   onMapClick(event: google.maps.MapMouseEvent) {
     if (event.latLng) {
       this.marker = event.latLng.toJSON();
@@ -69,7 +69,7 @@ export class MonitoringDashboardPageComponent implements OnInit {
     }
   }
 
-  // 🔍 Nuevo sistema de autocomplete (PlaceAutocompleteElement)
+  // Nuevo sistema de autocomplete (PlaceAutocompleteElement)
   private initAutocomplete() {
     const autocompleteEl = document.getElementById('placeAutocomplete') as HTMLElement;
     if (!autocompleteEl) return;
@@ -77,7 +77,7 @@ export class MonitoringDashboardPageComponent implements OnInit {
     customElements.whenDefined('gmp-place-autocomplete').then(() => {
       const autocomplete = autocompleteEl as any;
 
-      // 🌍 Restringir a Perú y solo direcciones
+      // Restringir a Perú y solo direcciones
       autocomplete.componentRestrictions = { country: 'PE' };
       autocomplete.types = ['geocode'];
 
@@ -89,13 +89,13 @@ export class MonitoringDashboardPageComponent implements OnInit {
           const lat = place.location.lat();
           const lng = place.location.lng();
 
-          console.log('📍 Nueva ubicación:', place.displayName, lat, lng);
+          console.log('Nueva ubicación:', place.displayName, lat, lng);
 
           this.center = { lat, lng };
           this.marker = { lat, lng };
           this.markerTitle = place.displayName || 'Ubicación seleccionada';
         } else {
-          console.warn('⚠️ No se encontró ubicación para el lugar seleccionado:', place);
+          console.warn('No se encontró ubicación para el lugar seleccionado:', place);
         }
       });
     });
