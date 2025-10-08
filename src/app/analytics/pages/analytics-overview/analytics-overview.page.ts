@@ -36,7 +36,7 @@ interface SubHistoryRow {
   standalone: true,
   imports: [
     AsyncPipe, NgFor, NgIf, DatePipe, TitleCasePipe,
-    TranslateModule, DashboardWidgetComponent, KpiGraphComponent, ReportExportComponent, CurrencyPipe
+    TranslateModule, DashboardWidgetComponent, KpiGraphComponent, CurrencyPipe
   ],
   templateUrl: './analytics-overview.page.html',
   styleUrls: ['./analytics-overview.page.css'],
