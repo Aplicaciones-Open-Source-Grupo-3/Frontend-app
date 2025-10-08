@@ -8,7 +8,29 @@
   </header>
 
   <div class="dashboard__map">
-    <div class="dashboard__map-placeholder">EasyPark Central</div>
+    <ng-container *ngIf="mapUrl(); else loadingMap">
+      <iframe
+        class="dashboard__map-iframe"
+        [src]="mapUrl()"
+        frameborder="0"
+        scrolling="no"
+        marginheight="0"
+        marginwidth="0"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        allowfullscreen>
+      </iframe>
+    </ng-container>
+    <ng-template #loadingMap>
+      <div class="dashboard__map-placeholder">
+        <p>Cargando mapa...</p>
+      </div>
+    </ng-template>
+    <ng-container *ngIf="locationError() as error">
+      <div class="dashboard__map-error">
+        <small>{{ error }}</small>
+      </div>
+    </ng-container>
   </div>
 
   <app-parking-lot-status [overview]="vm.overview"></app-parking-lot-status>

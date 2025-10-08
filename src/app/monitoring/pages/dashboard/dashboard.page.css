@@ -27,6 +27,15 @@
   background: rgba(15, 23, 42, 0.65);
   border-radius: 1.5rem;
   padding: 1.5rem;
+  position: relative;
+}
+
+.dashboard__map-iframe {
+  width: 100%;
+  height: 220px;
+  border-radius: 1rem;
+  border: none;
+  display: block;
 }
 
 .dashboard__map-placeholder {
@@ -40,6 +49,19 @@
   color: #0f172a;
   font-weight: 600;
   backdrop-filter: brightness(0.9);
+}
+
+.dashboard__map-error {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(239, 68, 68, 0.9);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  font-size: 0.75rem;
+  backdrop-filter: blur(4px);
 }
 
 .dashboard__grid {
