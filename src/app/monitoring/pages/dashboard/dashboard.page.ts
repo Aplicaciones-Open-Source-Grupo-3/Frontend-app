@@ -13,6 +13,7 @@ import { IncidentListComponent } from '../../components/incident-list/incident-l
 import { VehicleEntryExitComponent } from '../../components/vehicle-entry-exit/vehicle-entry-exit.component';
 import { EntryExitService } from '../../services/entry-exit.service';
 import { EntryExitEntity } from '../../model/entry-exit.entity';
+import { OperationsControlComponent } from '../../components/operations-control/operations-control.component';
 
 interface DashboardViewModel {
   overview: ParkingOverview;
@@ -23,7 +24,7 @@ interface DashboardViewModel {
 @Component({
   selector: 'app-monitoring-dashboard-page',
   standalone: true,
-  imports: [AsyncPipe, NgIf, TranslateModule, ParkingLotStatusComponent, IncidentListComponent, VehicleEntryExitComponent],
+  imports: [AsyncPipe, NgIf, TranslateModule, ParkingLotStatusComponent, IncidentListComponent, VehicleEntryExitComponent, OperationsControlComponent],
   templateUrl: './dashboard.page.html',
   styleUrls: ['./dashboard.page.css'],
   changeDetection: ChangeDetectionStrategy.OnPush

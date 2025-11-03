@@ -195,38 +195,84 @@
         "CANCEL": "Cancel",
         "SUBMIT": "Add operator"
       }
+    },
+    "SUBSCRIBERS": {
+      "EYEBROW": "Client Management",
+      "TITLE": "Subscriber Clients",
+      "SEARCH_PLACEHOLDER": "Search by name, phone or plate...",
+      "NEW_SUBSCRIBER": "New Subscriber",
+      "ALL_SUBSCRIBERS": "All Subscribers",
+      "ALL_SUBSCRIBERS_DESCRIPTION": "Manage monthly subscription clients for EasyPark.",
+      "LOADING": "Loading subscribers...",
+      "NO_SUBSCRIBERS": "No subscriber clients registered",
+      "ADD_SUBSCRIBER": "Add New Subscriber",
+      "NAME": "Full Name",
+      "NAME_PLACEHOLDER": "Enter full name",
+      "NAME_REQUIRED": "Name is required",
+      "PHONE": "Phone Number",
+      "PHONE_PLACEHOLDER": "987654321",
+      "PHONE_INVALID": "Enter a valid phone number (9-15 digits)",
+      "EMAIL": "Email Address",
+      "EMAIL_PLACEHOLDER": "example@email.com",
+      "VEHICLE_PLATE": "Vehicle Plate",
+      "VEHICLE_PLATE_PLACEHOLDER": "ABC123",
+      "SUBSCRIPTION_MONTHS": "Subscription Months",
+      "AMOUNT": "Amount to Pay (S/)",
+      "START_DATE": "Start Date",
+      "PAYMENT_DATE": "Payment Date",
+      "EXPIRY_DATE": "Expiry Date",
+      "STATUS": "Status",
+      "STATUS_ACTIVE": "Active",
+      "STATUS_EXPIRED": "Expired",
+      "STATUS_PENDING": "Pending",
+      "ACTIONS": "Actions",
+      "CANCEL": "Cancel",
+      "ADD": "Add Subscriber"
     }
   },
   "ANALYTICS": {
-    "OVERVIEW": { "TITLE": "Reports & Analytics", "DESCRIPTION": "Gain insights into your parking operations with detailed reports and analytics." },
-    "INCOME": { "TITLE": "Income Overview", "PERIOD": "Income by Period", "BY_METHOD": "Income by Payment Method", "LAST_MONTH": "Last Month" },
-    "PAYMENT": { "CARD": "Card", "CASH": "Cash", "MOBILE": "Mobile" },
-    "OCC": { "TITLE": "Occupancy & Usage", "AVERAGE": "Average Occupancy", "PEAK": "Peak Usage Times", "LAST_MONTH": "Last Month", "PEAK_RANGE": "3 PM - 6 PM" },
-    "HISTORY": {
-      "TITLE": "Customer & Subscription History",
-      "CUSTOMER": "Customer Name",
-      "TYPE": "Subscription Type",
-      "START": "Start Date",
-      "END": "End Date",
-      "STATUS": "Status",
-      "EXPORT": "Export",
-      "GENERATE": "Generate Report"
+    "OVERVIEW": {
+      "EYEBROW": "Reports and Statistics",
+      "TITLE": "Data Analysis",
+      "DESCRIPTION": "Get complete insights from your operations with real data from accounting and parking."
     },
     "KPIS": {
+      "TOTAL_REVENUE": "Total Revenue",
+      "ALL_TIME": "Total accumulated",
+      "OCCUPANCY": "Occupancy Rate",
+      "VEHICLES_INSIDE": "vehicles inside",
+      "TOTAL_VEHICLES": "Total Vehicles",
+      "VEHICLES_PROCESSED": "Vehicles processed",
+      "AVERAGE_STAY": "Average Stay",
+      "AVERAGE_TIME": "Average time",
       "REVENUE": "Revenue",
-      "OCCUPANCY": "Occupancy",
       "INCIDENTS": "Incidents",
       "THIS_MONTH": "This month",
       "THIS_WEEK": "This week"
     },
-    "GRAPH": { "TITLE": "Revenue trend", "PLACEHOLDER": "Graph placeholder" },
-    "EXPORT": { "TITLE": "Export reports" }
+    "CHARTS": {
+      "DAILY_REVENUE": "Daily Revenue",
+      "LAST_7_DAYS": "Last 7 days",
+      "REVENUE_BY_TYPE": "Revenue by Vehicle Type",
+      "VEHICLE_DISTRIBUTION": "Revenue distribution",
+      "CARS_TRUCKS": "Cars/Trucks",
+      "MOTORCYCLES": "Motorcycles",
+      "VEHICLES": "vehicles",
+      "PEAK_HOURS": "Peak Hours",
+      "BUSIEST_TIMES": "Busiest times",
+      "ENTRIES": "entries"
+    },
+    "ACTIONS": {
+      "EXPORT_PDF": "Export PDF",
+      "EXPORT_EXCEL": "Export Excel"
+    }
   },
   "ACCOUNTING": {
     "OVERVIEW": {
       "TITLE": "Accounting",
       "DESCRIPTION": "Manage and view all records of vehicles that have exited the parking lot.",
       "FILTER_BY_TYPE": "Filter by vehicle type",
+      "FILTER_BY_DATE": "Filter by date",
       "ALL": "All",
       "CARS_TRUCKS": "Cars/Trucks",
       "MOTORCYCLES": "Motorcycles",
@@ -254,5 +300,36 @@
       "MOTORCYCLE_REVENUE": "Motorcycles Revenue",
       "AVERAGE_STAY": "Average Stay Time"
     }
+  },
+  "operations": {
+    "open": "Operations Open",
+    "closed": "Operations Closed",
+    "date": "Date",
+    "openTime": "Opening Time",
+    "closeTime": "Closing Time",
+    "startDay": "Start Daily Operations",
+    "closeDay": "Close Daily Operations",
+    "starting": "Starting...",
+    "closing": "Closing...",
+    "vehiclesInParking": "Vehicles in Parking",
+    "confirmClose": "Confirm Operations Closure",
+    "vehiclesStillInside": "Vehicles still inside the parking lot",
+    "nightRateWillApply": "Night rate will be applied to these vehicles. When opening operations tomorrow, they will continue accumulating regular rates.",
+    "noVehiclesInside": "No vehicles in the parking lot",
+    "safeToClose": "It is safe to close daily operations.",
+    "vehiclesList": "Vehicle list",
+    "entry": "Entry",
+    "cancel": "Cancel",
+    "confirmCloseButton": "Confirm Closure",
+    "pendingDebts": "Pending Debts",
+    "debtsGenerated": "Debts Generated on Closure",
+    "vehiclesRemaining": "Debts have been generated for vehicles remaining in the parking lot after closure:",
+    "regularHours": "Regular Hours",
+    "regularAmount": "Regular Amount",
+    "nightCharge": "Night Charge",
+    "totalDebt": "Total Debt"
+  },
+  "common": {
+    "close": "Close"
   }
 }

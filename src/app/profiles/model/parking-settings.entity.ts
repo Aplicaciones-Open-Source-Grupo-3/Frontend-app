@@ -9,5 +9,5 @@ export interface ParkingSettingsEntity extends BaseEntity {
   currency: string;
   gracePeriodMinutes: number;
   allowOvernight: boolean;
+  nightRate?: number; // Tarifa nocturna plana
 }
-

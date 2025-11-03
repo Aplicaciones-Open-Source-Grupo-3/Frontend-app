@@ -13,5 +13,7 @@ export interface AccountingRecord extends BaseEntity {
   hoursParked: number;
   hoursToPay: number;
   ratePerHour: number;
+  operationDate?: string; // Fecha de operación en formato YYYY-MM-DD
+  nightCharge?: number; // Cargo nocturno si aplica
+  debtId?: string; // ID de la deuda asociada si existía
 }
-

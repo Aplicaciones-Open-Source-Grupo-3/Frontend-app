@@ -22,6 +22,7 @@ export class AccountingOverviewPageComponent implements OnInit {
 
   readonly searchPlate = signal('');
   readonly selectedVehicleType = signal<'all' | 'auto-camioneta' | 'moto'>('all');
+  readonly selectedDate = signal('');
 
   records$!: Observable<AccountingRecord[]>;
   filteredRecords$!: Observable<AccountingRecord[]>;
@@ -43,9 +44,15 @@ export class AccountingOverviewPageComponent implements OnInit {
     this.filterRecords();
   }
 
+  onDateChange(date: string): void {
+    this.selectedDate.set(date);
+    this.filterRecords();
+  }
+
   private filterRecords(): void {
     const searchTerm = this.searchPlate().trim().toUpperCase();
     const vehicleType = this.selectedVehicleType();
+    const selectedDate = this.selectedDate();
 
     this.filteredRecords$ = this.records$.pipe(
       map(records => {
@@ -54,6 +61,11 @@ export class AccountingOverviewPageComponent implements OnInit {
         // Filtrar por tipo de vehículo
         if (vehicleType !== 'all') {
           filtered = filtered.filter(r => r.vehicleType === vehicleType);
+        }
+
+        // Filtrar por fecha de operación
+        if (selectedDate !== '') {
+          filtered = filtered.filter(r => r.operationDate === selectedDate);
         }
 
         // Filtrar por placa
@@ -94,4 +106,3 @@ export class AccountingOverviewPageComponent implements OnInit {
     return symbols[currency] || currency;
   }
 }
-

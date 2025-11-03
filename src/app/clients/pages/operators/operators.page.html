@@ -1,117 +1,47 @@
-<section class="operators">
-  <header class="operators__header">
+<section class="subscribers">
+  <header class="subscribers__header">
     <div>
-      <p class="operators__eyebrow">{{ 'CLIENTS.OPERATORS.EYEBROW' | translate }}</p>
-      <h1 class="operators__title">{{ 'CLIENTS.OPERATORS.TITLE' | translate }}</h1>
+      <p class="subscribers__eyebrow">{{ 'CLIENTS.SUBSCRIBERS.EYEBROW' | translate }}</p>
+      <h1 class="subscribers__title">{{ 'CLIENTS.SUBSCRIBERS.TITLE' | translate }}</h1>
     </div>
-    <div class="operators__toolbar" role="search">
-      <label class="operators__search" [attr.aria-label]="'CLIENTS.OPERATORS.SEARCH_LABEL' | translate">
+    <div class="subscribers__toolbar">
+      <label class="subscribers__search">
         <span aria-hidden="true">🔍</span>
         <input
           type="search"
-          [placeholder]="'CLIENTS.OPERATORS.SEARCH_PLACEHOLDER' | translate"
-          (input)="onSearch($any($event.target).value)"
+          [placeholder]="'CLIENTS.SUBSCRIBERS.SEARCH_PLACEHOLDER' | translate"
+          (input)="onSearch($event)"
         />
       </label>
-      <button type="button" class="operators__cta" (click)="openForm()">
-        {{ 'CLIENTS.OPERATORS.NEW_OPERATOR' | translate }}
+      <button type="button" class="subscribers__cta" (click)="openForm()">
+        {{ 'CLIENTS.SUBSCRIBERS.NEW_SUBSCRIBER' | translate }}
       </button>
     </div>
   </header>
 
-  <section class="operators__content" aria-labelledby="operators-list-title">
-    <div class="operators__content-header">
-      <h2 id="operators-list-title">{{ 'CLIENTS.OPERATORS.ALL_OPERATORS' | translate }}</h2>
-      <p>{{ 'CLIENTS.OPERATORS.ALL_OPERATORS_DESCRIPTION' | translate }}</p>
+  <section class="subscribers__content">
+    <div class="subscribers__content-header">
+      <h2>{{ 'CLIENTS.SUBSCRIBERS.ALL_SUBSCRIBERS' | translate }}</h2>
+      <p>{{ 'CLIENTS.SUBSCRIBERS.ALL_SUBSCRIBERS_DESCRIPTION' | translate }}</p>
     </div>
 
-    <div class="operators__table-wrapper" role="region" [attr.aria-label]="'CLIENTS.OPERATORS.TABLE_LABEL' | translate">
-      <table class="operators__table">
-        <thead>
-          <tr>
-            <th scope="col">{{ 'CLIENTS.OPERATORS.COLUMNS.NAME' | translate }}</th>
-            <th scope="col">{{ 'CLIENTS.OPERATORS.COLUMNS.EMAIL' | translate }}</th>
-            <th scope="col">{{ 'CLIENTS.OPERATORS.COLUMNS.ROLE' | translate }}</th>
-            <th scope="col">{{ 'CLIENTS.OPERATORS.COLUMNS.STATUS' | translate }}</th>
-            <th scope="col">{{ 'CLIENTS.OPERATORS.COLUMNS.LAST_ACTIVE' | translate }}</th>
-            <th scope="col" class="operators__table-actions">{{ 'CLIENTS.OPERATORS.COLUMNS.ACTIONS' | translate }}</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let operator of filteredOperators(); trackBy: trackById">
-            <td data-title="{{ 'CLIENTS.OPERATORS.COLUMNS.NAME' | translate }}">{{ operator.name }}</td>
-            <td data-title="{{ 'CLIENTS.OPERATORS.COLUMNS.EMAIL' | translate }}">{{ operator.email }}</td>
-            <td data-title="{{ 'CLIENTS.OPERATORS.COLUMNS.ROLE' | translate }}">
-              <span class="operators__role" [attr.data-role]="operator.role">
-                {{ 'CLIENTS.OPERATORS.ROLES.' + (operator.role | uppercase) | translate }}
-              </span>
-            </td>
-            <td data-title="{{ 'CLIENTS.OPERATORS.COLUMNS.STATUS' | translate }}">
-              <span class="operators__status" [attr.data-status]="operator.status">
-                {{ 'CLIENTS.OPERATORS.STATUS.' + (operator.status | uppercase) | translate }}
-              </span>
-            </td>
-            <td data-title="{{ 'CLIENTS.OPERATORS.COLUMNS.LAST_ACTIVE' | translate }}">
-              {{ operator.lastActiveKey | translate }}
-            </td>
-            <td class="operators__table-actions" data-title="{{ 'CLIENTS.OPERATORS.COLUMNS.ACTIONS' | translate }}">
-              <button type="button" class="operators__action" [attr.aria-label]="'CLIENTS.OPERATORS.ACTIONS.MORE' | translate">⋯</button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      <p *ngIf="filteredOperators().length === 0" class="operators__empty">{{ 'CLIENTS.OPERATORS.EMPTY_STATE' | translate }}</p>
-    </div>
+    <ng-container *ngIf="isLoading(); else subscriberTable">
+      <div class="subscribers__loading">
+        <p>{{ 'CLIENTS.SUBSCRIBERS.LOADING' | translate }}</p>
+      </div>
+    </ng-container>
+    <ng-template #subscriberTable>
+      <app-subscriber-table
+        [subscribers]="filteredSubscribers"
+        (onDelete)="handleDelete($event)"
+      ></app-subscriber-table>
+    </ng-template>
   </section>
 
-  <div *ngIf="showForm()" class="operators__dialog" role="dialog" aria-modal="true" [attr.aria-labelledby]="'new-operator-title'">
-    <div class="operators__dialog-content">
-      <header class="operators__dialog-header">
-        <div>
-          <p class="operators__dialog-eyebrow">{{ 'CLIENTS.OPERATORS.DIALOG.EYEBROW' | translate }}</p>
-          <h2 id="new-operator-title">{{ 'CLIENTS.OPERATORS.DIALOG.TITLE' | translate }}</h2>
-        </div>
-        <button type="button" class="operators__dialog-close" (click)="closeForm()" [attr.aria-label]="'CLIENTS.OPERATORS.DIALOG.CLOSE' | translate">
-          ✕
-        </button>
-      </header>
-
-      <form [formGroup]="operatorForm" (ngSubmit)="submit()" class="operators__form">
-        <div class="operators__field">
-          <label for="operator-name">{{ 'CLIENTS.OPERATORS.FORM.NAME' | translate }}</label>
-          <input id="operator-name" type="text" formControlName="name" [attr.placeholder]="'CLIENTS.OPERATORS.FORM.NAME_PLACEHOLDER' | translate" />
-          <p *ngIf="operatorForm.controls.name.touched && operatorForm.controls.name.invalid" class="operators__error">
-            {{ 'CLIENTS.OPERATORS.FORM.NAME_ERROR' | translate }}
-          </p>
-        </div>
-
-        <div class="operators__field">
-          <label for="operator-email">{{ 'CLIENTS.OPERATORS.FORM.EMAIL' | translate }}</label>
-          <input
-            id="operator-email"
-            type="email"
-            formControlName="email"
-            [attr.placeholder]="'CLIENTS.OPERATORS.FORM.EMAIL_PLACEHOLDER' | translate"
-          />
-          <p *ngIf="operatorForm.controls.email.touched && operatorForm.controls.email.invalid" class="operators__error">
-            {{ 'CLIENTS.OPERATORS.FORM.EMAIL_ERROR' | translate }}
-          </p>
-        </div>
-
-        <div class="operators__field">
-          <label>{{ 'CLIENTS.OPERATORS.FORM.ROLE' | translate }}</label>
-          <p class="operators__role-hint">{{ 'CLIENTS.OPERATORS.FORM.ROLE_HINT' | translate }}</p>
-        </div>
-
-        <div class="operators__form-actions">
-          <button type="button" class="operators__ghost" (click)="closeForm()">
-            {{ 'CLIENTS.OPERATORS.FORM.CANCEL' | translate }}
-          </button>
-          <button type="submit" class="operators__submit" [disabled]="operatorForm.invalid">
-            {{ 'CLIENTS.OPERATORS.FORM.SUBMIT' | translate }}
-          </button>
-        </div>
-      </form>
-    </div>
-  </div>
+  <ng-container *ngIf="showForm()">
+    <app-subscriber-form
+      (onCancel)="closeForm()"
+      (onSubmit)="handleSubmit($event)"
+    ></app-subscriber-form>
+  </ng-container>
 </section>

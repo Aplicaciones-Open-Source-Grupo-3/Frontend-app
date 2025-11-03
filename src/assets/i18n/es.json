@@ -47,7 +47,9 @@
       "RATES_TITLE": "Tarifas por Hora",
       "MOTORCYCLE_RATE": "Motos",
       "CAR_TRUCK_RATE": "Autos/Camionetas",
+      "NIGHT_RATE": "Tarifa Nocturna",
       "PER_HOUR": "soles/hora",
+      "FLAT_RATE": "tarifa plana",
       "GENERAL_TITLE": "Configuración General",
       "MAX_CAPACITY": "Capacidad Máxima",
       "CURRENCY": "Moneda",
@@ -195,38 +197,84 @@
         "CANCEL": "Cancelar",
         "SUBMIT": "Agregar operador"
       }
+    },
+    "SUBSCRIBERS": {
+      "EYEBROW": "Gestión de Clientes",
+      "TITLE": "Clientes Abonados",
+      "SEARCH_PLACEHOLDER": "Buscar por nombre, teléfono o placa...",
+      "NEW_SUBSCRIBER": "Nuevo Abonado",
+      "ALL_SUBSCRIBERS": "Todos los Abonados",
+      "ALL_SUBSCRIBERS_DESCRIPTION": "Administra los clientes con suscripción mensual de EasyPark.",
+      "LOADING": "Cargando abonados...",
+      "NO_SUBSCRIBERS": "No hay clientes abonados registrados",
+      "ADD_SUBSCRIBER": "Agregar Nuevo Abonado",
+      "NAME": "Nombre Completo",
+      "NAME_PLACEHOLDER": "Ingresa el nombre completo",
+      "NAME_REQUIRED": "El nombre es requerido",
+      "PHONE": "Teléfono",
+      "PHONE_PLACEHOLDER": "987654321",
+      "PHONE_INVALID": "Ingresa un número de teléfono válido (9-15 dígitos)",
+      "EMAIL": "Correo Electrónico",
+      "EMAIL_PLACEHOLDER": "ejemplo@correo.com",
+      "VEHICLE_PLATE": "Placa del Vehículo",
+      "VEHICLE_PLATE_PLACEHOLDER": "ABC123",
+      "SUBSCRIPTION_MONTHS": "Meses de Abono",
+      "AMOUNT": "Monto a Pagar (S/)",
+      "START_DATE": "Fecha de Inicio",
+      "PAYMENT_DATE": "Fecha de Pago",
+      "EXPIRY_DATE": "Fecha de Vencimiento",
+      "STATUS": "Estado",
+      "STATUS_ACTIVE": "Activo",
+      "STATUS_EXPIRED": "Vencido",
+      "STATUS_PENDING": "Pendiente",
+      "ACTIONS": "Acciones",
+      "CANCEL": "Cancelar",
+      "ADD": "Agregar Abonado"
     }
   },
   "ANALYTICS": {
-    "OVERVIEW": { "TITLE": "Reportes & Analítica", "DESCRIPTION": "Obtén insights de tus operaciones con reportes y analítica detallada." },
-    "INCOME": { "TITLE": "Resumen de ingresos", "PERIOD": "Ingresos por período", "BY_METHOD": "Ingresos por método de pago", "LAST_MONTH": "Último mes" },
-    "PAYMENT": { "CARD": "Tarjeta", "CASH": "Efectivo", "MOBILE": "Móvil" },
-    "OCC": { "TITLE": "Ocupación y uso", "AVERAGE": "Ocupación promedio", "PEAK": "Horas pico", "LAST_MONTH": "Último mes" , "PEAK_RANGE": "3 PM - 6 PM"},
-    "HISTORY": {
-      "TITLE": "Historial de clientes y suscripciones",
-      "CUSTOMER": "Cliente",
-      "TYPE": "Tipo de suscripción",
-      "START": "Inicio",
-      "END": "Fin",
-      "STATUS": "Estado",
-      "EXPORT": "Exportar",
-      "GENERATE": "Generar reporte"
+    "OVERVIEW": {
+      "EYEBROW": "Reportes y Estadísticas",
+      "TITLE": "Análisis de Datos",
+      "DESCRIPTION": "Obtén insights completos de tus operaciones con datos reales de contabilidad y estacionamiento."
     },
     "KPIS": {
+      "TOTAL_REVENUE": "Ingresos Totales",
+      "ALL_TIME": "Acumulado total",
+      "OCCUPANCY": "Tasa de Ocupación",
+      "VEHICLES_INSIDE": "vehículos dentro",
+      "TOTAL_VEHICLES": "Vehículos Totales",
+      "VEHICLES_PROCESSED": "Vehículos procesados",
+      "AVERAGE_STAY": "Estadía Promedio",
+      "AVERAGE_TIME": "Tiempo promedio",
       "REVENUE": "Ingresos",
-      "OCCUPANCY": "Ocupación",
       "INCIDENTS": "Incidencias",
       "THIS_MONTH": "Este mes",
       "THIS_WEEK": "Esta semana"
     },
-    "GRAPH": { "TITLE": "Tendencia de ingresos", "PLACEHOLDER": "Espacio reservado para gráfico" },
-    "EXPORT": { "TITLE": "Exportar reportes" }
+    "CHARTS": {
+      "DAILY_REVENUE": "Ingresos Diarios",
+      "LAST_7_DAYS": "Últimos 7 días",
+      "REVENUE_BY_TYPE": "Ingresos por Tipo de Vehículo",
+      "VEHICLE_DISTRIBUTION": "Distribución de ingresos",
+      "CARS_TRUCKS": "Autos/Camionetas",
+      "MOTORCYCLES": "Motos",
+      "VEHICLES": "vehículos",
+      "PEAK_HOURS": "Horarios Pico",
+      "BUSIEST_TIMES": "Horarios con mayor afluencia",
+      "ENTRIES": "entradas"
+    },
+    "ACTIONS": {
+      "EXPORT_PDF": "Exportar PDF",
+      "EXPORT_EXCEL": "Exportar Excel"
+    }
   },
   "ACCOUNTING": {
     "OVERVIEW": {
       "TITLE": "Contabilidad",
       "DESCRIPTION": "Gestiona y visualiza todos los registros de vehículos que han salido del estacionamiento.",
       "FILTER_BY_TYPE": "Filtrar por tipo de vehículo",
+      "FILTER_BY_DATE": "Filtrar por fecha",
       "ALL": "Todos",
       "CARS_TRUCKS": "Autos/Camionetas",
       "MOTORCYCLES": "Motos",
@@ -254,5 +302,36 @@
       "MOTORCYCLE_REVENUE": "Ingresos Motos",
       "AVERAGE_STAY": "Tiempo Promedio"
     }
+  },
+  "operations": {
+    "open": "Operaciones Abiertas",
+    "closed": "Operaciones Cerradas",
+    "date": "Fecha",
+    "openTime": "Hora de Apertura",
+    "closeTime": "Hora de Cierre",
+    "startDay": "Iniciar Operaciones del Día",
+    "closeDay": "Cerrar Operaciones del Día",
+    "starting": "Iniciando...",
+    "closing": "Cerrando...",
+    "vehiclesInParking": "Vehículos en el Estacionamiento",
+    "confirmClose": "Confirmar Cierre de Operaciones",
+    "vehiclesStillInside": "Vehículos aún dentro del estacionamiento",
+    "nightRateWillApply": "Se aplicará la tarifa nocturna a estos vehículos. Al abrir operaciones mañana, continuarán acumulando tarifas regulares.",
+    "noVehiclesInside": "No hay vehículos en el estacionamiento",
+    "safeToClose": "Es seguro cerrar las operaciones del día.",
+    "vehiclesList": "Lista de vehículos",
+    "entry": "Entrada",
+    "cancel": "Cancelar",
+    "confirmCloseButton": "Confirmar Cierre",
+    "pendingDebts": "Deudas Pendientes",
+    "debtsGenerated": "Deudas Generadas por Cierre",
+    "vehiclesRemaining": "Se han generado deudas para los vehículos que permanecen en el estacionamiento después del cierre:",
+    "regularHours": "Horas Regulares",
+    "regularAmount": "Monto Regular",
+    "nightCharge": "Cargo Nocturno",
+    "totalDebt": "Deuda Total"
+  },
+  "common": {
+    "close": "Cerrar"
   }
 }

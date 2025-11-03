@@ -1,107 +1,43 @@
-import { ChangeDetectionStrategy, Component, computed, inject, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
-
-interface Operator {
-  id: number;
-  name: string;
-  email: string;
-  role: 'admin' | 'operator';
-  status: 'active' | 'inactive';
-  lastActiveKey: string;
-}
-
-const INITIAL_OPERATORS: Operator[] = [
-  {
-    id: 1,
-    name: 'Ethan Harper',
-    email: 'ethan.harper@example.com',
-    role: 'admin',
-    status: 'active',
-    lastActiveKey: 'CLIENTS.OPERATORS.LAST_ACTIVE.DAYS_2'
-  },
-  {
-    id: 2,
-    name: 'Olivia Bennett',
-    email: 'olivia.bennett@example.com',
-    role: 'operator',
-    status: 'active',
-    lastActiveKey: 'CLIENTS.OPERATORS.LAST_ACTIVE.DAY_1'
-  },
-  {
-    id: 3,
-    name: 'Noah Carter',
-    email: 'noah.carter@example.com',
-    role: 'operator',
-    status: 'inactive',
-    lastActiveKey: 'CLIENTS.OPERATORS.LAST_ACTIVE.MONTHS_2'
-  },
-  {
-    id: 4,
-    name: 'Ava Mitchell',
-    email: 'ava.mitchell@example.com',
-    role: 'admin',
-    status: 'active',
-    lastActiveKey: 'CLIENTS.OPERATORS.LAST_ACTIVE.HOURS_6'
-  },
-  {
-    id: 5,
-    name: 'Liam Foster',
-    email: 'liam.foster@example.com',
-    role: 'operator',
-    status: 'active',
-    lastActiveKey: 'CLIENTS.OPERATORS.LAST_ACTIVE.DAYS_4'
-  },
-  {
-    id: 6,
-    name: 'Sophia Turner',
-    email: 'sophia.turner@example.com',
-    role: 'operator',
-    status: 'active',
-    lastActiveKey: 'CLIENTS.OPERATORS.LAST_ACTIVE.WEEKS_1'
-  }
-];
+import { SubscriberService } from '../../services/subscriber.service';
+import { SubscriberEntity } from '../../model/subscriber.entity';
+import { SubscriberTableComponent } from '../../components/subscriber-table/subscriber-table.component';
+import { SubscriberFormComponent } from '../../components/subscriber-form/subscriber-form.component';
 
 @Component({
-  selector: 'app-clients-operators-page',
+  selector: 'app-clients-subscribers-page',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, TranslateModule],
+  imports: [CommonModule, TranslateModule, SubscriberTableComponent, SubscriberFormComponent],
   templateUrl: './operators.page.html',
   styleUrls: ['./operators.page.css'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ClientsOperatorsPageComponent {
-  private readonly fb = inject(FormBuilder);
+  private readonly subscriberService = inject(SubscriberService);
 
-  private nextId = INITIAL_OPERATORS.length + 1;
-
-  readonly operators = signal<Operator[]>(INITIAL_OPERATORS);
-  readonly searchTerm = signal('');
+  readonly subscribers = signal<SubscriberEntity[]>([]);
   readonly showForm = signal(false);
+  readonly searchTerm = signal('');
+  readonly isLoading = signal(false);
 
-  readonly operatorForm = this.fb.nonNullable.group({
-    name: ['', [Validators.required, Validators.maxLength(80)]],
-    email: ['', [Validators.required, Validators.email]]
-  });
+  constructor() {
+    this.loadSubscribers();
+  }
 
-  readonly filteredOperators = computed(() => {
-    const term = this.searchTerm().trim().toLowerCase();
-
-    if (!term) {
-      return this.operators();
-    }
-
-    return this.operators().filter((operator) => {
-      const haystack = `${operator.name} ${operator.email}`.toLowerCase();
-      return haystack.includes(term);
+  loadSubscribers(): void {
+    this.isLoading.set(true);
+    this.subscriberService.getAll().subscribe({
+      next: (subscribers) => {
+        this.subscribers.set(subscribers);
+        this.isLoading.set(false);
+      },
+      error: (err) => {
+        console.error('Error loading subscribers:', err);
+        this.isLoading.set(false);
+      }
     });
-  });
-
-  readonly trackById = (_: number, operator: Operator) => operator.id;
-
-  onSearch(term: string): void {
-    this.searchTerm.set(term);
   }
 
   openForm(): void {
@@ -109,28 +45,48 @@ export class ClientsOperatorsPageComponent {
   }
 
   closeForm(): void {
-    this.operatorForm.reset({ name: '', email: '' });
     this.showForm.set(false);
   }
 
-  submit(): void {
-    if (this.operatorForm.invalid) {
-      this.operatorForm.markAllAsTouched();
-      return;
+  handleSubmit(subscriber: Omit<SubscriberEntity, 'id'>): void {
+    this.subscriberService.create(subscriber).subscribe({
+      next: () => {
+        this.loadSubscribers();
+        this.closeForm();
+      },
+      error: (err) => {
+        console.error('Error creating subscriber:', err);
+      }
+    });
+  }
+
+  handleDelete(id: string): void {
+    if (confirm('¿Está seguro que desea eliminar este abonado?')) {
+      this.subscriberService.delete(id).subscribe({
+        next: () => {
+          this.loadSubscribers();
+        },
+        error: (err) => {
+          console.error('Error deleting subscriber:', err);
+        }
+      });
     }
+  }
 
-    const { name, email } = this.operatorForm.getRawValue();
+  get filteredSubscribers(): SubscriberEntity[] {
+    const term = this.searchTerm().toLowerCase().trim();
+    if (!term) {
+      return this.subscribers();
+    }
+    return this.subscribers().filter(sub =>
+      sub.name.toLowerCase().includes(term) ||
+      sub.phone.includes(term) ||
+      (sub.vehiclePlate && sub.vehiclePlate.toLowerCase().includes(term))
+    );
+  }
 
-    const newOperator: Operator = {
-      id: this.nextId++,
-      name,
-      email,
-      role: 'operator',
-      status: 'active',
-      lastActiveKey: 'CLIENTS.OPERATORS.LAST_ACTIVE.JUST_NOW'
-    };
-
-    this.operators.update((current) => [newOperator, ...current]);
-    this.closeForm();
+  onSearch(event: Event): void {
+    const input = event.target as HTMLInputElement;
+    this.searchTerm.set(input.value);
   }
 }

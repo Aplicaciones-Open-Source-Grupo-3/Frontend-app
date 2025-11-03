@@ -25,6 +25,7 @@ export class ProfileSettingsComponent {
       closingTime: ['22:00', Validators.required],
       motorcycleRate: [2, [Validators.required, Validators.min(0)]],
       carTruckRate: [4, [Validators.required, Validators.min(0)]],
+      nightRate: [20, [Validators.required, Validators.min(0)]],
       maxCapacity: [100, [Validators.required, Validators.min(1)]],
       currency: ['PEN', Validators.required],
       gracePeriodMinutes: [15, [Validators.required, Validators.min(0)]],

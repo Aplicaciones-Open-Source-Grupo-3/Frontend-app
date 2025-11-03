@@ -1,0 +1,113 @@
+.table-container {
+  overflow-x: auto;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.subscribers-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  font-size: 0.9rem;
+}
+
+.subscribers-table thead {
+  background-color: #f8f9fa;
+  border-bottom: 2px solid #e0e0e0;
+}
+
+.subscribers-table th {
+  padding: 1rem;
+  text-align: left;
+  font-weight: 600;
+  color: #333;
+  white-space: nowrap;
+}
+
+.subscribers-table tbody tr {
+  border-bottom: 1px solid #f0f0f0;
+  transition: background-color 0.2s;
+}
+
+.subscribers-table tbody tr:hover {
+  background-color: #f8f9fa;
+}
+
+.subscribers-table td {
+  padding: 1rem;
+  color: #555;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.no-data {
+  text-align: center;
+  padding: 3rem !important;
+  color: #999;
+  font-style: italic;
+}
+
+.status-badge {
+  display: inline-block;
+  padding: 0.4rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.status-active {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.status-expired {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+.status-pending {
+  background-color: #fff3cd;
+  color: #856404;
+}
+
+.btn-delete {
+  background-color: transparent;
+  border: none;
+  color: #f44336;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 6px;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-delete:hover {
+  background-color: #ffebee;
+  transform: scale(1.1);
+}
+
+.btn-delete svg {
+  width: 18px;
+  height: 18px;
+}
+
+@media (max-width: 1200px) {
+  .subscribers-table {
+    font-size: 0.85rem;
+  }
+
+  .subscribers-table th,
+  .subscribers-table td {
+    padding: 0.75rem;
+  }
+}
+

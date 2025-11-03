@@ -36,6 +36,16 @@
     </div>
 
     <div class="filter-group">
+      <label class="filter-label">{{ 'ACCOUNTING.OVERVIEW.FILTER_BY_DATE' | translate }}</label>
+      <input
+        type="date"
+        class="filter-input"
+        [value]="selectedDate()"
+        (input)="onDateChange($any($event.target).value)"
+      />
+    </div>
+
+    <div class="filter-group">
       <label class="filter-label">{{ 'ACCOUNTING.OVERVIEW.SEARCH_BY_PLATE' | translate }}</label>
       <input
         type="text"
@@ -43,6 +53,7 @@
         [placeholder]="'ACCOUNTING.OVERVIEW.SEARCH_PLACEHOLDER' | translate"
         [value]="searchPlate()"
         (input)="onSearchChange($any($event.target).value)"
+        style="max-width: 200px;"
       />
     </div>
   </div>
@@ -51,4 +62,3 @@
     <app-accounting-table [records]="records"></app-accounting-table>
   }
 </section>
-

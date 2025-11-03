@@ -71,6 +71,24 @@
           </div>
         </div>
       </div>
+      <div class="settings__row">
+        <div class="settings__field">
+          <label for="nightRate" class="settings__label">
+            {{ 'PROFILES.SETTINGS.NIGHT_RATE' | translate }}
+          </label>
+          <div class="settings__input-group">
+            <input
+              id="nightRate"
+              type="number"
+              formControlName="nightRate"
+              class="settings__input"
+              min="0"
+              step="1"
+            />
+            <span class="settings__input-addon">{{ 'PROFILES.SETTINGS.FLAT_RATE' | translate }}</span>
+          </div>
+        </div>
+      </div>
     </div>
 
     <!-- Configuraciones Generales -->
@@ -150,4 +168,3 @@
     </div>
   </form>
 </section>
-

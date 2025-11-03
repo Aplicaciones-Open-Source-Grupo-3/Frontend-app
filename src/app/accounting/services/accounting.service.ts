@@ -31,6 +31,50 @@ export class AccountingService extends BaseService {
     );
   }
 
+  // Filtrar por fecha de operación
+  getRecordsByDate(date: string): Observable<AccountingRecord[]> {
+    return this.getAll().pipe(
+      map(records => records.filter(record => record.operationDate === date))
+    );
+  }
+
+  // Obtener registros en un rango de fechas
+  getRecordsByDateRange(startDate: string, endDate: string): Observable<AccountingRecord[]> {
+    return this.getAll().pipe(
+      map(records => records.filter(record => {
+        if (!record.operationDate) return false;
+        return record.operationDate >= startDate && record.operationDate <= endDate;
+      }))
+    );
+  }
+
+  // Obtener ingresos por día
+  getRevenueByDate(date: string): Observable<number> {
+    return this.getRecordsByDate(date).pipe(
+      map(records => records.reduce((sum, record) => sum + record.amountPaid, 0))
+    );
+  }
+
+  // Obtener ingresos agrupados por día
+  getRevenueGroupedByDate(): Observable<{ date: string; revenue: number }[]> {
+    return this.getAll().pipe(
+      map(records => {
+        const grouped = records.reduce((acc, record) => {
+          const date = record.operationDate || record.exitDate;
+          if (!acc[date]) {
+            acc[date] = 0;
+          }
+          acc[date] += record.amountPaid;
+          return acc;
+        }, {} as { [key: string]: number });
+
+        return Object.entries(grouped)
+          .map(([date, revenue]) => ({ date, revenue }))
+          .sort((a, b) => b.date.localeCompare(a.date));
+      })
+    );
+  }
+
   getTotalRevenue(): Observable<number> {
     return this.getAll().pipe(
       map(records => records.reduce((sum, record) => sum + record.amountPaid, 0))

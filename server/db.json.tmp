@@ -311,6 +311,23 @@
       "status": "in-space"
     }
   ],
+  "entryExit": [
+    {
+      "id": "1",
+      "plate": "ABC-102",
+      "entryTime": "10:15"
+    },
+    {
+      "id": "2",
+      "plate": "JSD-421",
+      "entryTime": "10:42"
+    },
+    {
+      "id": "3",
+      "plate": "HGX-993",
+      "entryTime": "11:10"
+    }
+  ],
   "profiles": [
     {
       "id": "1",
@@ -790,3 +807,4 @@
     }
   ]
 }
+

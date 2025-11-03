@@ -1,0 +1,176 @@
+import { Injectable, inject } from '@angular/core';
+import { Observable, map, switchMap, of, combineLatest, forkJoin } from 'rxjs';
+import { BaseService } from '../../shared/services/base.service';
+import { OperationsEntity, VehicleDebtEntity } from '../model/operations.entity';
+import { VehicleEntity } from '../model/vehicle.entity';
+import { VehicleService } from './vehicle.service';
+import { ParkingSettingsService } from '../../profiles/services/parking-settings.service';
+
+@Injectable({ providedIn: 'root' })
+export class OperationsService extends BaseService {
+  private readonly vehicleService = inject(VehicleService);
+  private readonly settingsService = inject(ParkingSettingsService);
+
+  // Obtener estado de operaciones del día
+  getTodayOperations(): Observable<OperationsEntity | null> {
+    const today = this.formatDate(new Date());
+    return this.get<OperationsEntity[]>('operations').pipe(
+      map(operations => operations.find(op => op.date === today) || null)
+    );
+  }
+
+  // Iniciar operaciones del día
+  startOperations(): Observable<OperationsEntity> {
+    const today = this.formatDate(new Date());
+    const now = this.formatTime(new Date());
+
+    return this.getTodayOperations().pipe(
+      switchMap(existing => {
+        if (existing) {
+          // Actualizar operación existente
+          return this.patch<OperationsEntity>(`operations/${existing.id}`, {
+            openTime: now,
+            status: 'open'
+          });
+        } else {
+          // Crear nueva operación
+          return this.post<OperationsEntity>('operations', {
+            date: today,
+            openTime: now,
+            status: 'open'
+          });
+        }
+      })
+    );
+  }
+
+  // Cerrar operaciones del día
+  closeOperations(): Observable<{ operation: OperationsEntity; debts: VehicleDebtEntity[] }> {
+    const today = this.formatDate(new Date());
+    const now = this.formatTime(new Date());
+
+    return combineLatest([
+      this.getTodayOperations(),
+      this.vehicleService.getVehicles(),
+      this.settingsService.getSettings()
+    ]).pipe(
+      switchMap(([operation, vehicles, settings]) => {
+        if (!operation) {
+          throw new Error('No hay operaciones abiertas para cerrar');
+        }
+
+        // Filtrar vehículos que aún están en el estacionamiento
+        const vehiclesInside = vehicles.filter(v => v.status === 'in-space');
+
+        // Actualizar operación
+        const updateOperation$ = this.patch<OperationsEntity>(`operations/${operation.id}`, {
+          closeTime: now,
+          status: 'closed'
+        });
+
+        // Si no hay vehículos dentro, retornar sin deudas
+        if (vehiclesInside.length === 0) {
+          return updateOperation$.pipe(
+            map(updatedOp => ({ operation: updatedOp, debts: [] }))
+          );
+        }
+
+        // Crear deudas para vehículos que quedan dentro
+        const debtObservables = vehiclesInside.map(vehicle =>
+          this.createOrUpdateDebt(vehicle, settings.nightRate || 20, settings)
+        );
+
+        // Combinar operación actualizada con las deudas creadas usando forkJoin
+        return combineLatest([updateOperation$, forkJoin(debtObservables)]).pipe(
+          map(([updatedOp, debts]) => ({
+            operation: updatedOp,
+            debts: debts
+          }))
+        );
+      })
+    );
+  }
+
+  // Crear o actualizar deuda de un vehículo
+  private createOrUpdateDebt(
+    vehicle: VehicleEntity,
+    nightRate: number,
+    settings: any
+  ): Observable<VehicleDebtEntity> {
+    return this.get<VehicleDebtEntity[]>('vehicle-debts').pipe(
+      switchMap(debts => {
+        const existingDebt = debts.find(d => d.vehicleId === vehicle.id && !d.isPaid);
+
+        // Calcular horas regulares desde la entrada o desde última actualización
+        const entryDateTime = new Date(`${vehicle.entryDate.split('-').reverse().join('-')}T${vehicle.entryTime}`);
+        const now = new Date();
+        const hoursSinceEntry = (now.getTime() - entryDateTime.getTime()) / (1000 * 60 * 60);
+
+        const rate = vehicle.vehicleType === 'moto' ? settings.motorcycleRate : settings.carTruckRate;
+
+        if (existingDebt) {
+          // Actualizar deuda existente
+          const newRegularHours = existingDebt.regularHours + hoursSinceEntry;
+          const newRegularAmount = existingDebt.regularAmount + (hoursSinceEntry * rate);
+          const newTotalDebt = newRegularAmount + existingDebt.nightCharge + nightRate;
+
+          return this.patch<VehicleDebtEntity>(`vehicle-debts/${existingDebt.id}`, {
+            regularHours: newRegularHours,
+            regularAmount: newRegularAmount,
+            nightCharge: existingDebt.nightCharge + nightRate,
+            totalDebt: newTotalDebt,
+            lastUpdated: now.toISOString()
+          });
+        } else {
+          // Crear nueva deuda
+          return this.post<VehicleDebtEntity>('vehicle-debts', {
+            vehicleId: vehicle.id,
+            plate: vehicle.plate,
+            vehicleType: vehicle.vehicleType,
+            entryDate: vehicle.entryDate,
+            entryTime: vehicle.entryTime,
+            regularHours: hoursSinceEntry,
+            regularAmount: hoursSinceEntry * rate,
+            nightCharge: nightRate,
+            totalDebt: (hoursSinceEntry * rate) + nightRate,
+            isPaid: false,
+            lastUpdated: now.toISOString()
+          });
+        }
+      })
+    );
+  }
+
+  // Obtener todas las deudas pendientes
+  getPendingDebts(): Observable<VehicleDebtEntity[]> {
+    return this.get<VehicleDebtEntity[]>('vehicle-debts').pipe(
+      map(debts => debts.filter(d => !d.isPaid))
+    );
+  }
+
+  // Marcar deuda como pagada
+  payDebt(debtId: string): Observable<VehicleDebtEntity> {
+    return this.patch<VehicleDebtEntity>(`vehicle-debts/${debtId}`, {
+      isPaid: true
+    });
+  }
+
+  // Obtener historial de operaciones
+  getOperationsHistory(): Observable<OperationsEntity[]> {
+    return this.get<OperationsEntity[]>('operations');
+  }
+
+  private formatDate(date: Date): string {
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, '0');
+    return `${year}-${month}-${day}`;
+  }
+
+  private formatTime(date: Date): string {
+    const hours = String(date.getHours()).padStart(2, '0');
+    const minutes = String(date.getMinutes()).padStart(2, '0');
+    return `${hours}:${minutes}`;
+  }
+}
+

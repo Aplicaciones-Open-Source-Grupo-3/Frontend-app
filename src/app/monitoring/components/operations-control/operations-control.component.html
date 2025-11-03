@@ -1,0 +1,119 @@
+<div class="operations-control">
+  <div class="operations-status">
+    <div class="status-badge" [class.open]="isOperationOpen" [class.closed]="!isOperationOpen">
+      <span class="status-icon">{{ isOperationOpen ? '🟢' : '🔴' }}</span>
+      <span class="status-text">
+        {{ isOperationOpen ? ('operations.open' | translate) : ('operations.closed' | translate) }}
+      </span>
+    </div>
+
+    @if (currentOperation()) {
+      <div class="operation-info">
+        <p>{{ 'operations.date' | translate }}: {{ currentOperation()?.date }}</p>
+        @if (currentOperation()?.openTime) {
+          <p>{{ 'operations.openTime' | translate }}: {{ currentOperation()?.openTime }}</p>
+        }
+        @if (currentOperation()?.closeTime) {
+          <p>{{ 'operations.closeTime' | translate }}: {{ currentOperation()?.closeTime }}</p>
+        }
+      </div>
+    }
+  </div>
+
+  <div class="operations-actions">
+    <button
+      class="btn btn-start"
+      [disabled]="!canStartOperations || isLoading()"
+      (click)="startOperations()">
+      {{ isLoading() ? ('operations.starting' | translate) : ('operations.startDay' | translate) }}
+    </button>
+
+    <button
+      class="btn btn-close"
+      [disabled]="!canCloseOperations || isLoading()"
+      (click)="requestCloseOperations()">
+      {{ isLoading() ? ('operations.closing' | translate) : ('operations.closeDay' | translate) }}
+    </button>
+  </div>
+
+  @if (isOperationOpen) {
+    <div class="vehicles-count-info">
+      <span class="info-icon">🚗</span>
+      <span>{{ 'operations.vehiclesInParking' | translate }}: <strong>{{ vehiclesInParking() }}</strong></span>
+    </div>
+  }
+</div>
+
+<!-- Modal de confirmación para cerrar operaciones -->
+@if (showConfirmModal()) {
+  <div class="modal-overlay" (click)="cancelCloseOperations()">
+    <div class="modal-content" (click)="$event.stopPropagation()">
+      <div class="modal-header">
+        <h3>{{ 'operations.confirmClose' | translate }}</h3>
+        <button class="close-btn" (click)="cancelCloseOperations()">×</button>
+      </div>
+      <div class="modal-body">
+        @if (vehiclesInParking() > 0) {
+          <p class="alert-message warning">{{ 'operations.vehiclesStillInside' | translate }}: <strong>{{ vehiclesInParking() }}</strong></p>
+          <p class="info-text">{{ 'operations.nightRateWillApply' | translate }}</p>
+
+          <div class="vehicles-list">
+            <h4>{{ 'operations.vehiclesList' | translate }}:</h4>
+            @for (vehicle of vehiclesInsideList(); track vehicle.id) {
+              <div class="vehicle-item-compact">
+                <span class="vehicle-icon">{{ vehicle.vehicleType === 'moto' ? '🏍️' : '🚗' }}</span>
+                <span class="vehicle-plate">{{ vehicle.plate }}</span>
+                <span class="vehicle-time">{{ 'operations.entry' | translate }}: {{ vehicle.entryTime }}</span>
+              </div>
+            }
+          </div>
+        } @else {
+          <p class="alert-message success">{{ 'operations.noVehiclesInside' | translate }}</p>
+          <p class="info-text">{{ 'operations.safeToClose' | translate }}</p>
+        }
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" (click)="cancelCloseOperations()">
+          {{ 'operations.cancel' | translate }}
+        </button>
+        <button class="btn btn-danger" (click)="confirmCloseOperations()">
+          {{ 'operations.confirmCloseButton' | translate }}
+        </button>
+      </div>
+    </div>
+  </div>
+}
+
+<!-- Modal de deudas generadas -->
+@if (showDebtsModal()) {
+  <div class="modal-overlay" (click)="closeDebtsModal()">
+    <div class="modal-content" (click)="$event.stopPropagation()">
+      <div class="modal-header">
+        <h3>{{ 'operations.debtsGenerated' | translate }}</h3>
+        <button class="close-btn" (click)="closeDebtsModal()">×</button>
+      </div>
+      <div class="modal-body">
+        <p class="alert-message">{{ 'operations.vehiclesRemaining' | translate }}</p>
+        <div class="debts-list">
+          @for (debt of pendingDebts(); track debt.id) {
+            <div class="debt-item">
+              <div class="debt-vehicle">
+                <span class="vehicle-plate">{{ debt.plate }}</span>
+                <span class="vehicle-type">({{ debt.vehicleType }})</span>
+              </div>
+              <div class="debt-details">
+                <p>{{ 'operations.regularHours' | translate }}: {{ debt.regularHours.toFixed(2) }}h</p>
+                <p>{{ 'operations.regularAmount' | translate }}: S/ {{ debt.regularAmount.toFixed(2) }}</p>
+                <p>{{ 'operations.nightCharge' | translate }}: S/ {{ debt.nightCharge.toFixed(2) }}</p>
+                <p class="total-debt">{{ 'operations.totalDebt' | translate }}: S/ {{ debt.totalDebt.toFixed(2) }}</p>
+              </div>
+            </div>
+          }
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary" (click)="closeDebtsModal()">{{ 'common.close' | translate }}</button>
+      </div>
+    </div>
+  </div>
+}
