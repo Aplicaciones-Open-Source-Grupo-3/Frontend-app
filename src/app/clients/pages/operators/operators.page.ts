@@ -1,8 +1,7 @@
 import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
-import { SubscriberService } from '../../services/subscriber.service';
-import { SubscriberEntity } from '../../model/subscriber.entity';
+import { SubscriberService, CreateSubscriberRequest, SubscriberResource } from '../../services/subscriber.service';
 import { SubscriberTableComponent } from '../../components/subscriber-table/subscriber-table.component';
 import { SubscriberFormComponent } from '../../components/subscriber-form/subscriber-form.component';
 
@@ -17,7 +16,7 @@ import { SubscriberFormComponent } from '../../components/subscriber-form/subscr
 export class ClientsOperatorsPageComponent {
   private readonly subscriberService = inject(SubscriberService);
 
-  readonly subscribers = signal<SubscriberEntity[]>([]);
+  readonly subscribers = signal<SubscriberResource[]>([]);
   readonly showForm = signal(false);
   readonly searchTerm = signal('');
   readonly isLoading = signal(false);
@@ -30,11 +29,12 @@ export class ClientsOperatorsPageComponent {
     this.isLoading.set(true);
     this.subscriberService.getAll().subscribe({
       next: (subscribers) => {
+        console.log('✅ Suscriptores cargados:', subscribers);
         this.subscribers.set(subscribers);
         this.isLoading.set(false);
       },
       error: (err) => {
-        console.error('Error loading subscribers:', err);
+        console.error('❌ Error loading subscribers:', err);
         this.isLoading.set(false);
       }
     });
@@ -48,14 +48,19 @@ export class ClientsOperatorsPageComponent {
     this.showForm.set(false);
   }
 
-  handleSubmit(subscriber: Omit<SubscriberEntity, 'id'>): void {
-    this.subscriberService.create(subscriber).subscribe({
-      next: () => {
+  handleSubmit(subscriberData: CreateSubscriberRequest): void {
+    console.log('📤 Creando suscriptor con datos:', subscriberData);
+
+    this.subscriberService.create(subscriberData).subscribe({
+      next: (response) => {
+        console.log('✅ Suscriptor creado exitosamente:', response);
         this.loadSubscribers();
         this.closeForm();
       },
-      error: (err) => {
-        console.error('Error creating subscriber:', err);
+      error: (err: any) => {
+        console.error('❌ Error creating subscriber:', err);
+        const errorMessage = err.error?.message || 'Error al crear el suscriptor';
+        alert(errorMessage);
       }
     });
   }
@@ -64,16 +69,21 @@ export class ClientsOperatorsPageComponent {
     if (confirm('¿Está seguro que desea eliminar este abonado?')) {
       this.subscriberService.delete(id).subscribe({
         next: () => {
+          console.log('✅ Suscriptor eliminado exitosamente');
           this.loadSubscribers();
         },
         error: (err) => {
-          console.error('Error deleting subscriber:', err);
+          console.error('❌ Error deleting subscriber:', err);
+          const errorMessage = err.status === 403
+            ? 'Solo los administradores pueden eliminar suscriptores'
+            : 'Error al eliminar el suscriptor';
+          alert(errorMessage);
         }
       });
     }
   }
 
-  get filteredSubscribers(): SubscriberEntity[] {
+  get filteredSubscribers(): SubscriberResource[] {
     const term = this.searchTerm().toLowerCase().trim();
     if (!term) {
       return this.subscribers();

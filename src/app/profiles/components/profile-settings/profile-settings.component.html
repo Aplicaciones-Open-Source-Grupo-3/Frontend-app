@@ -4,6 +4,18 @@
     <p>{{ 'PROFILES.SETTINGS.DESCRIPTION' | translate }}</p>
   </div>
 
+  <!-- Mensaje de advertencia para operadores -->
+  @if (!isAdmin()) {
+    <div class="settings__warning">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="12" cy="12" r="10"></circle>
+        <line x1="12" y1="8" x2="12" y2="12"></line>
+        <line x1="12" y1="16" x2="12.01" y2="16"></line>
+      </svg>
+      <span>{{ 'PROFILES.SETTINGS.READ_ONLY_MODE' | translate }}</span>
+    </div>
+  }
+
   <form [formGroup]="settingsForm" (ngSubmit)="onSubmit()" class="settings__form">
     <!-- Horario de Atención -->
     <div class="settings__section">
@@ -151,20 +163,23 @@
       </div>
     </div>
 
-    <!-- Botón de Guardar -->
-    <div class="settings__actions">
-      <button
-        type="submit"
-        class="settings__submit"
-        [disabled]="!settingsForm.valid"
-      >
-        {{ 'PROFILES.SETTINGS.SAVE_CHANGES' | translate }}
-      </button>
-      @if (saveSuccess()) {
-        <div class="settings__success">
-          {{ 'PROFILES.SETTINGS.SAVE_SUCCESS' | translate }}
-        </div>
-      }
-    </div>
+    <!-- Botón de Guardar (solo para admin) -->
+    @if (isAdmin()) {
+      <div class="settings__actions">
+        <button
+          type="submit"
+          class="settings__submit"
+          [disabled]="!settingsForm.valid"
+        >
+          {{ 'PROFILES.SETTINGS.SAVE_CHANGES' | translate }}
+        </button>
+        @if (saveSuccess()) {
+          <div class="settings__success">
+            {{ 'PROFILES.SETTINGS.SAVE_SUCCESS' | translate }}
+          </div>
+        }
+      </div>
+    }
   </form>
 </section>
+

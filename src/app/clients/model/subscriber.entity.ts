@@ -9,5 +9,5 @@ export interface SubscriberEntity {
   status: 'active' | 'expired' | 'pending';
   vehiclePlate?: string;
   email?: string;
+  businessId?: string;
 }
-

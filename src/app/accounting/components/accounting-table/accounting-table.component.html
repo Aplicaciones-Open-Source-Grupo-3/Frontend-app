@@ -25,9 +25,10 @@
               <td>{{ record.entryDate }}</td>
               <td>{{ record.exitDate }}</td>
               <td>
-                <span class="vehicle-type" [class.vehicle-type--car]="record.vehicleType === 'auto-camioneta'"
-                      [class.vehicle-type--moto]="record.vehicleType === 'moto'">
-                  {{ record.vehicleType === 'moto' ? ('ACCOUNTING.TABLE.MOTORCYCLE' | translate) : ('ACCOUNTING.TABLE.CAR_TRUCK' | translate) }}
+                <span class="vehicle-type"
+                      [class.vehicle-type--car]="isCarOrTruck(record.vehicleType)"
+                      [class.vehicle-type--moto]="isMotorcycle(record.vehicleType)">
+                  {{ getVehicleTypeLabel(record.vehicleType) | translate }}
                 </span>
               </td>
               <td class="plate">{{ record.plate }}</td>
@@ -41,4 +42,3 @@
     </div>
   }
 </div>
-

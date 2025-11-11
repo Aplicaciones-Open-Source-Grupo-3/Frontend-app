@@ -14,8 +14,8 @@ server.use((req, res, next) => {
 server.use(middlewares);
 server.use(router);
 
-const PORT = process.env.PORT || 8000; // Cambiado a 8000 para compatibilidad con Koyeb
+const PORT = process.env.PORT || 3000; // Cambiado a 3000 para desarrollo local
 server.listen(PORT, '0.0.0.0', () => {
   console.log(`JSON Server is running on port ${PORT}`);
-  console.log(`Access at: http://0.0.0.0:${PORT}`);
+  console.log(`Access at: http://localhost:${PORT}`);
 });

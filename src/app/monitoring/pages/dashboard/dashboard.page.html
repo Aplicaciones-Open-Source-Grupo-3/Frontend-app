@@ -36,10 +36,74 @@
   <!-- Control de operaciones diarias -->
   <app-operations-control></app-operations-control>
 
-  <app-parking-lot-status [overview]="vm.overview"></app-parking-lot-status>
 
-  <div class="dashboard__grid">
-    <app-incident-list [incidents]="vm.incidents"></app-incident-list>
-    <app-vehicle-entry-exit [movements]="vm.movements"></app-vehicle-entry-exit>
-  </div>
+
+  <!-- Resumen de Analíticas -->
+  <section class="analytics-summary">
+    <h2 class="analytics-summary__title">Resumen de Analíticas</h2>
+
+    <div class="analytics-summary__grid">
+      <!-- Ingresos del Mes -->
+      <article class="analytics-card">
+        <div class="analytics-card__icon revenue">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="12" y1="1" x2="12" y2="23"></line>
+            <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+          </svg>
+        </div>
+        <div class="analytics-card__content">
+          <h3>Ingresos Totales</h3>
+          <p class="analytics-card__value">S/ {{ vm.analytics.totalRevenue | number:'1.2-2' }}</p>
+          <span class="analytics-card__label">Este mes</span>
+        </div>
+      </article>
+
+      <!-- Vehículos Hoy -->
+      <article class="analytics-card">
+        <div class="analytics-card__icon vehicles">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"></path>
+            <circle cx="7" cy="17" r="2"></circle>
+            <circle cx="17" cy="17" r="2"></circle>
+          </svg>
+        </div>
+        <div class="analytics-card__content">
+          <h3>Vehículos Totales</h3>
+          <p class="analytics-card__value">{{ vm.analytics.totalVehicles }}</p>
+          <span class="analytics-card__label">Vehículos hoy</span>
+        </div>
+      </article>
+
+      <!-- Tasa de Ocupación -->
+      <article class="analytics-card">
+        <div class="analytics-card__icon occupancy">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+          </svg>
+        </div>
+        <div class="analytics-card__content">
+          <h3>Tasa de Ocupación</h3>
+          <p class="analytics-card__value">{{ vm.analytics.occupancyRate | number:'1.1-1' }}%</p>
+          <span class="analytics-card__label">Ocupación actual</span>
+        </div>
+      </article>
+
+      <!-- Tiempo Promedio de Estadía -->
+      <article class="analytics-card">
+        <div class="analytics-card__icon average-stay">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"></circle>
+            <polyline points="12 6 12 12 16 14"></polyline>
+          </svg>
+        </div>
+        <div class="analytics-card__content">
+          <h3>Estadía Promedio</h3>
+          <p class="analytics-card__value">{{ vm.analytics.averageStay | number:'1.1-1' }}h</p>
+          <span class="analytics-card__label">Tiempo promedio</span>
+        </div>
+      </article>
+    </div>
+  </section>
 </section>
+

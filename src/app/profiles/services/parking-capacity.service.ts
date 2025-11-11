@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Observable, combineLatest } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { VehicleService } from '../../monitoring/services/vehicle.service';
@@ -12,29 +12,30 @@ export interface ParkingCapacity {
 
 @Injectable({ providedIn: 'root' })
 export class ParkingCapacityService {
-  constructor(
-    private vehicleService: VehicleService,
-    private settingsService: ParkingSettingsService
-  ) {}
+  private readonly vehicleService = inject(VehicleService);
+  private readonly settingsService = inject(ParkingSettingsService);
 
   getCapacity(): Observable<ParkingCapacity> {
     return combineLatest([
       this.vehicleService.getVehicles(),
       this.settingsService.getSettings()
     ]).pipe(
-      map(([vehicles, settings]) => {
-        // Contar solo vehículos con estado 'in-space' o sin estado (por defecto están dentro)
-        const occupied = vehicles.filter(v => v.status === 'in-space' || !v.status).length;
-        const total = settings.maxCapacity;
+      map(([vehicles, settings]: [any[], any]) => {
+        // Contar solo vehículos con estado 'INSIDE' (del backend)
+        const occupied = vehicles.filter((v: any) => {
+          const status = v.status?.toString().toUpperCase();
+          return status === 'INSIDE' || v.status === 'in-space';
+        }).length;
+
+        const total = settings?.maxCapacity || 50;
         const available = total - occupied;
 
         return {
           total,
           occupied,
-          available
+          available: Math.max(0, available)
         };
       })
     );
   }
 }
-

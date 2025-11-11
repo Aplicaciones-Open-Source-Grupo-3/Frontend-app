@@ -25,53 +25,23 @@ export class VehicleFormComponent {
 
   onSubmit(): void {
     if (this.vehicleForm.valid) {
-      const now = new Date();
       const formValue = this.vehicleForm.value;
 
       const vehicle = {
         plate: formValue.plate.toUpperCase(),
-        vehicleType: formValue.vehicleType,
-        entryDate: this.formatDate(now),
-        entryTime: this.formatTime(now),
-        registrationNumber: this.generateNextRegistrationNumber(),
-        status: 'in-space' as const
+        vehicleType: formValue.vehicleType
       };
 
-      this.vehicleService.addVehicle(vehicle).subscribe(() => {
-        this.vehicleForm.reset({ vehicleType: 'auto-camioneta' });
-        this.vehicleAdded.emit();
+      this.vehicleService.addVehicle(vehicle).subscribe({
+        next: () => {
+          this.vehicleForm.reset({ vehicleType: 'auto-camioneta' });
+          this.vehicleAdded.emit();
+        },
+        error: (err) => {
+          console.error('❌ Error al registrar vehículo:', err);
+          alert('Error al registrar el vehículo. Por favor, intente nuevamente.');
+        }
       });
     }
-  }
-
-  private formatDate(date: Date): string {
-    const day = String(date.getDate()).padStart(2, '0');
-    const month = String(date.getMonth() + 1).padStart(2, '0');
-    const year = date.getFullYear();
-    return `${day}-${month}-${year}`;
-  }
-
-  private formatTime(date: Date): string {
-    const hours = String(date.getHours()).padStart(2, '0');
-    const minutes = String(date.getMinutes()).padStart(2, '0');
-    return `${hours}:${minutes}`;
-  }
-
-  private generateNextRegistrationNumber(): string {
-    const currentVehicles = this.vehicles();
-
-    if (currentVehicles.length === 0) {
-      return '0001';
-    }
-
-    // Encontrar el número más alto
-    const maxNumber = currentVehicles.reduce((max, vehicle) => {
-      const num = parseInt(vehicle.registrationNumber, 10);
-      return num > max ? num : max;
-    }, 0);
-
-    // Incrementar y formatear
-    const nextNumber = maxNumber + 1;
-    return String(nextNumber).padStart(4, '0');
   }
 }

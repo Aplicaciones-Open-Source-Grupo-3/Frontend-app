@@ -1,176 +1,156 @@
 import { Injectable, inject } from '@angular/core';
-import { Observable, map, switchMap, of, combineLatest, forkJoin } from 'rxjs';
-import { BaseService } from '../../shared/services/base.service';
-import { OperationsEntity, VehicleDebtEntity } from '../model/operations.entity';
-import { VehicleEntity } from '../model/vehicle.entity';
-import { VehicleService } from './vehicle.service';
-import { ParkingSettingsService } from '../../profiles/services/parking-settings.service';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { environment } from '../../../environments/environment';
+
+export interface OperationResource {
+  id: string | number; // Puede ser string o number
+  date: string;
+  openTime: string;
+  closeTime: string | null;
+  status: string; // Cambiar a string genérico para aceptar cualquier formato
+  businessId: string | number;
+}
+
+export interface StartOperationRequest {
+  initialCash?: number;
+}
+
+export interface CloseOperationRequest {
+  finalCash?: number;
+  notes?: string;
+}
 
 @Injectable({ providedIn: 'root' })
-export class OperationsService extends BaseService {
-  private readonly vehicleService = inject(VehicleService);
-  private readonly settingsService = inject(ParkingSettingsService);
+export class OperationsService {
+  private readonly http = inject(HttpClient);
+  private readonly baseUrl = `${environment.apiUrl}/api/v1/parking/operations`;
 
-  // Obtener estado de operaciones del día
-  getTodayOperations(): Observable<OperationsEntity | null> {
-    const today = this.formatDate(new Date());
-    return this.get<OperationsEntity[]>('operations').pipe(
-      map(operations => operations.find(op => op.date === today) || null)
-    );
+  /**
+   * Iniciar operaciones del día
+   * @param initialCash - Efectivo inicial en caja (opcional, default: 0.0)
+   */
+  startOperations(initialCash: number = 0.0): Observable<OperationResource> {
+    const body: StartOperationRequest = { initialCash };
+    return this.http.post<OperationResource>(`${this.baseUrl}/start`, body);
   }
 
-  // Iniciar operaciones del día
-  startOperations(): Observable<OperationsEntity> {
-    const today = this.formatDate(new Date());
-    const now = this.formatTime(new Date());
-
-    return this.getTodayOperations().pipe(
-      switchMap(existing => {
-        if (existing) {
-          // Actualizar operación existente
-          return this.patch<OperationsEntity>(`operations/${existing.id}`, {
-            openTime: now,
-            status: 'open'
-          });
-        } else {
-          // Crear nueva operación
-          return this.post<OperationsEntity>('operations', {
-            date: today,
-            openTime: now,
-            status: 'open'
-          });
-        }
-      })
-    );
+  /**
+   * Cerrar operaciones del día actual (busca automáticamente la operación abierta)
+   * @param finalCash - Efectivo final en caja (opcional, default: 0.0)
+   * @param notes - Notas del cierre (opcional, default: "Operación cerrada")
+   */
+  closeOperations(finalCash: number = 0.0, notes: string = 'Operación cerrada'): Observable<OperationResource> {
+    const body: CloseOperationRequest = { finalCash, notes };
+    return this.http.post<OperationResource>(`${this.baseUrl}/close`, body);
   }
 
-  // Cerrar operaciones del día
-  closeOperations(): Observable<{ operation: OperationsEntity; debts: VehicleDebtEntity[] }> {
-    const today = this.formatDate(new Date());
-    const now = this.formatTime(new Date());
+  /**
+   * Cerrar operación específica por ID
+   * @param operationId - ID de la operación a cerrar
+   * @param finalCash - Efectivo final en caja (opcional)
+   * @param notes - Notas del cierre (opcional)
+   */
+  closeOperationById(operationId: string, finalCash: number = 0.0, notes: string = 'Operación cerrada'): Observable<OperationResource> {
+    const body: CloseOperationRequest = { finalCash, notes };
+    return this.http.post<OperationResource>(`${this.baseUrl}/${operationId}/close`, body);
+  }
 
-    return combineLatest([
-      this.getTodayOperations(),
-      this.vehicleService.getVehicles(),
-      this.settingsService.getSettings()
-    ]).pipe(
-      switchMap(([operation, vehicles, settings]) => {
-        if (!operation) {
-          throw new Error('No hay operaciones abiertas para cerrar');
-        }
+  /**
+   * Obtener operación por ID
+   * @param operationId - ID de la operación
+   */
+  getOperationById(operationId: string | number): Observable<OperationResource> {
+    return this.http.get<OperationResource>(`${this.baseUrl}/${operationId}`);
+  }
 
-        // Filtrar vehículos que aún están en el estacionamiento
-        const vehiclesInside = vehicles.filter(v => v.status === 'in-space');
+  /**
+   * Obtener la operación de hoy desde el historial
+   * Como el endpoint /today está defectuoso, obtenemos el historial y buscamos la de hoy
+   */
+  getTodayOperations(): Observable<OperationResource> {
+    return new Observable(observer => {
+      // Primero intentar obtener del localStorage
+      const savedOperationId = localStorage.getItem('currentOperationId');
 
-        // Actualizar operación
-        const updateOperation$ = this.patch<OperationsEntity>(`operations/${operation.id}`, {
-          closeTime: now,
-          status: 'closed'
+      if (savedOperationId) {
+        // Si hay un ID guardado, obtener esa operación
+        this.getOperationById(savedOperationId).subscribe({
+          next: (operation) => {
+            const today = new Date().toISOString().split('T')[0]; // formato YYYY-MM-DD
+
+            // Verificar que sea de hoy
+            if (operation.date === today) {
+              observer.next(operation);
+              observer.complete();
+            } else {
+              // Si no es de hoy, limpiar localStorage y buscar en historial
+              localStorage.removeItem('currentOperationId');
+              this.findTodayOperationFromHistory(observer);
+            }
+          },
+          error: () => {
+            // Si falla, limpiar localStorage y buscar en historial
+            localStorage.removeItem('currentOperationId');
+            this.findTodayOperationFromHistory(observer);
+          }
         });
-
-        // Si no hay vehículos dentro, retornar sin deudas
-        if (vehiclesInside.length === 0) {
-          return updateOperation$.pipe(
-            map(updatedOp => ({ operation: updatedOp, debts: [] }))
-          );
-        }
-
-        // Crear deudas para vehículos que quedan dentro
-        const debtObservables = vehiclesInside.map(vehicle =>
-          this.createOrUpdateDebt(vehicle, settings.nightRate || 20, settings)
-        );
-
-        // Combinar operación actualizada con las deudas creadas usando forkJoin
-        return combineLatest([updateOperation$, forkJoin(debtObservables)]).pipe(
-          map(([updatedOp, debts]) => ({
-            operation: updatedOp,
-            debts: debts
-          }))
-        );
-      })
-    );
-  }
-
-  // Crear o actualizar deuda de un vehículo
-  private createOrUpdateDebt(
-    vehicle: VehicleEntity,
-    nightRate: number,
-    settings: any
-  ): Observable<VehicleDebtEntity> {
-    return this.get<VehicleDebtEntity[]>('vehicle-debts').pipe(
-      switchMap(debts => {
-        const existingDebt = debts.find(d => d.vehicleId === vehicle.id && !d.isPaid);
-
-        // Calcular horas regulares desde la entrada o desde última actualización
-        const entryDateTime = new Date(`${vehicle.entryDate.split('-').reverse().join('-')}T${vehicle.entryTime}`);
-        const now = new Date();
-        const hoursSinceEntry = (now.getTime() - entryDateTime.getTime()) / (1000 * 60 * 60);
-
-        const rate = vehicle.vehicleType === 'moto' ? settings.motorcycleRate : settings.carTruckRate;
-
-        if (existingDebt) {
-          // Actualizar deuda existente
-          const newRegularHours = existingDebt.regularHours + hoursSinceEntry;
-          const newRegularAmount = existingDebt.regularAmount + (hoursSinceEntry * rate);
-          const newTotalDebt = newRegularAmount + existingDebt.nightCharge + nightRate;
-
-          return this.patch<VehicleDebtEntity>(`vehicle-debts/${existingDebt.id}`, {
-            regularHours: newRegularHours,
-            regularAmount: newRegularAmount,
-            nightCharge: existingDebt.nightCharge + nightRate,
-            totalDebt: newTotalDebt,
-            lastUpdated: now.toISOString()
-          });
-        } else {
-          // Crear nueva deuda
-          return this.post<VehicleDebtEntity>('vehicle-debts', {
-            vehicleId: vehicle.id,
-            plate: vehicle.plate,
-            vehicleType: vehicle.vehicleType,
-            entryDate: vehicle.entryDate,
-            entryTime: vehicle.entryTime,
-            regularHours: hoursSinceEntry,
-            regularAmount: hoursSinceEntry * rate,
-            nightCharge: nightRate,
-            totalDebt: (hoursSinceEntry * rate) + nightRate,
-            isPaid: false,
-            lastUpdated: now.toISOString()
-          });
-        }
-      })
-    );
-  }
-
-  // Obtener todas las deudas pendientes
-  getPendingDebts(): Observable<VehicleDebtEntity[]> {
-    return this.get<VehicleDebtEntity[]>('vehicle-debts').pipe(
-      map(debts => debts.filter(d => !d.isPaid))
-    );
-  }
-
-  // Marcar deuda como pagada
-  payDebt(debtId: string): Observable<VehicleDebtEntity> {
-    return this.patch<VehicleDebtEntity>(`vehicle-debts/${debtId}`, {
-      isPaid: true
+      } else {
+        // Si no hay ID guardado, buscar en historial
+        this.findTodayOperationFromHistory(observer);
+      }
     });
   }
 
-  // Obtener historial de operaciones
-  getOperationsHistory(): Observable<OperationsEntity[]> {
-    return this.get<OperationsEntity[]>('operations');
+  /**
+   * Buscar la operación de hoy en el historial
+   */
+  private findTodayOperationFromHistory(observer: any): void {
+    this.getOperationsHistory().subscribe({
+      next: (operations) => {
+        const today = new Date().toISOString().split('T')[0]; // formato YYYY-MM-DD
+        const todayOperation = operations.find(op => op.date === today);
+
+        if (todayOperation) {
+          // Guardar el ID en localStorage para futuras consultas
+          localStorage.setItem('currentOperationId', todayOperation.id.toString());
+          observer.next(todayOperation);
+          observer.complete();
+        } else {
+          // No hay operación para hoy
+          observer.error({ status: 404, message: 'No hay operación para hoy' });
+        }
+      },
+      error: (err) => {
+        observer.error(err);
+      }
+    });
   }
 
-  private formatDate(date: Date): string {
-    const year = date.getFullYear();
-    const month = String(date.getMonth() + 1).padStart(2, '0');
-    const day = String(date.getDate()).padStart(2, '0');
-    return `${year}-${month}-${day}`;
+  /**
+   * Historial de operaciones del negocio
+   * Retorna array vacío si no hay operaciones
+   */
+  getOperationsHistory(): Observable<OperationResource[]> {
+    return this.http.get<OperationResource[]>(this.baseUrl);
   }
 
-  private formatTime(date: Date): string {
-    const hours = String(date.getHours()).padStart(2, '0');
-    const minutes = String(date.getMinutes()).padStart(2, '0');
-    return `${hours}:${minutes}`;
+  /**
+   * Verificar si hay una operación abierta actualmente
+   */
+  checkIfOperationIsOpen(): Observable<boolean> {
+    return new Observable(observer => {
+      this.getTodayOperations().subscribe({
+        next: (operation) => {
+          observer.next(operation?.status === 'OPEN');
+          observer.complete();
+        },
+        error: () => {
+          // 404 significa que no hay operación hoy
+          observer.next(false);
+          observer.complete();
+        }
+      });
+    });
   }
 }
-

@@ -1,41 +1,44 @@
 .table-container {
   overflow-x: auto;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-md);
 }
 
 .subscribers-table {
   width: 100%;
   border-collapse: collapse;
-  background: white;
-  font-size: 0.9rem;
+  background: var(--surface-white);
+  font-size: var(--text-sm);
 }
 
 .subscribers-table thead {
-  background-color: #f8f9fa;
-  border-bottom: 2px solid #e0e0e0;
+  background: var(--gray-50);
+  border-bottom: 2px solid var(--gray-200);
 }
 
 .subscribers-table th {
   padding: 1rem;
   text-align: left;
-  font-weight: 600;
-  color: #333;
+  font-weight: var(--font-semibold);
+  color: var(--gray-700);
   white-space: nowrap;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: var(--text-xs);
 }
 
 .subscribers-table tbody tr {
-  border-bottom: 1px solid #f0f0f0;
-  transition: background-color 0.2s;
+  border-bottom: 1px solid var(--gray-200);
+  transition: background-color var(--transition-fast);
 }
 
 .subscribers-table tbody tr:hover {
-  background-color: #f8f9fa;
+  background: var(--gray-50);
 }
 
 .subscribers-table td {
   padding: 1rem;
-  color: #555;
+  color: var(--gray-900);
 }
 
 .text-center {
@@ -48,50 +51,51 @@
 
 .no-data {
   text-align: center;
-  padding: 3rem !important;
-  color: #999;
+  padding: var(--spacing-2xl) !important;
+  color: var(--gray-500);
   font-style: italic;
 }
 
 .status-badge {
   display: inline-block;
   padding: 0.4rem 0.8rem;
-  border-radius: 20px;
-  font-size: 0.8rem;
-  font-weight: 500;
+  border-radius: var(--radius-full);
+  font-size: var(--text-xs);
+  font-weight: var(--font-medium);
   text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 .status-active {
-  background-color: #d4edda;
-  color: #155724;
+  background: var(--success-100);
+  color: var(--success-700);
 }
 
 .status-expired {
-  background-color: #f8d7da;
-  color: #721c24;
+  background: var(--error-100);
+  color: var(--error-700);
 }
 
 .status-pending {
-  background-color: #fff3cd;
-  color: #856404;
+  background: var(--warning-100);
+  color: var(--warning-600);
 }
 
 .btn-delete {
   background-color: transparent;
   border: none;
-  color: #f44336;
+  color: var(--error-500);
   cursor: pointer;
-  padding: 0.5rem;
-  border-radius: 6px;
-  transition: all 0.2s;
+  padding: var(--spacing-sm);
+  border-radius: var(--radius-md);
+  transition: all var(--transition-base);
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .btn-delete:hover {
-  background-color: #ffebee;
+  background-color: var(--error-50);
   transform: scale(1.1);
 }
 
@@ -102,7 +106,7 @@
 
 @media (max-width: 1200px) {
   .subscribers-table {
-    font-size: 0.85rem;
+    font-size: var(--text-xs);
   }
 
   .subscribers-table th,

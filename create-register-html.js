@@ -1,4 +1,8 @@
-<div class="register-container">
+const fs = require('fs');
+const path = require('path');
+
+// Template del archivo HTML del registro con el mensaje de éxito incluido
+const htmlContent = `<div class="register-container">
   <div class="register-card">
     <div class="register-header">
       <div class="logo-container">
@@ -335,3 +339,10 @@
     <div class="circle circle-3"></div>
   </div>
 </div>
+`;
+
+// Guardar el archivo
+const htmlPath = path.join(__dirname, 'src/app/iam/pages/register/register.page.html');
+fs.writeFileSync(htmlPath, htmlContent, 'utf8');
+console.log('✅ Archivo HTML del registro creado exitosamente con mensaje de éxito!');
+

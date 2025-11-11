@@ -7,6 +7,7 @@ export interface OperationsEntity extends BaseEntity {
   openTime?: string; // Hora de apertura
   closeTime?: string; // Hora de cierre
   status: OperationStatus;
+  businessId?: string;
 }
 
 export interface VehicleDebtEntity extends BaseEntity {
@@ -21,5 +22,5 @@ export interface VehicleDebtEntity extends BaseEntity {
   totalDebt: number; // Deuda total acumulada
   isPaid: boolean;
   lastUpdated: string; // Fecha y hora de última actualización
+  businessId?: string;
 }
-

@@ -1,7 +1,7 @@
 import { Component, input, output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
-import { SubscriberEntity } from '../../model/subscriber.entity';
+import { SubscriberResource } from '../../services/subscriber.service';
 
 @Component({
   selector: 'app-subscriber-table',
@@ -11,7 +11,7 @@ import { SubscriberEntity } from '../../model/subscriber.entity';
   styleUrls: ['./subscriber-table.component.css']
 })
 export class SubscriberTableComponent {
-  readonly subscribers = input.required<SubscriberEntity[]>();
+  readonly subscribers = input.required<SubscriberResource[]>();
   readonly onDelete = output<string>();
 
   deleteSubscriber(id: string): void {
@@ -28,4 +28,3 @@ export class SubscriberTableComponent {
     return start.toLocaleDateString('es-PE');
   }
 }
-

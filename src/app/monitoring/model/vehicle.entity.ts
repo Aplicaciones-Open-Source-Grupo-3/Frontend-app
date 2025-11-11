@@ -12,4 +12,5 @@ export interface VehicleEntity extends BaseEntity {
   status?: VehicleStatus;
   exitTime?: string;
   exitDate?: string;
+  businessId?: string;
 }

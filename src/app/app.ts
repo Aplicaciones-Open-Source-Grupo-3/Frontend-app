@@ -1,7 +1,8 @@
 import { ChangeDetectionStrategy, Component, computed, inject, signal } from '@angular/core';
-import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { Router, RouterLink, RouterLinkActive, RouterOutlet, NavigationEnd } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { filter } from 'rxjs';
 
 interface NavItem {
   label: string;
@@ -23,6 +24,7 @@ interface LanguageOption {
 })
 export class AppComponent {
   private readonly translate = inject(TranslateService);
+  private readonly router = inject(Router);
 
   readonly availableLangs: LanguageOption[] = [
     { label: 'EN', code: 'en' },
@@ -40,9 +42,23 @@ export class AppComponent {
 
   readonly currentLang = signal(this.translate.currentLang || this.translate.getDefaultLang() || 'en');
   readonly languageLabel = computed(() => this.currentLang().toUpperCase());
+  readonly isAuthPage = signal(false);
 
   constructor() {
     this.translate.onLangChange.subscribe(({ lang }) => this.currentLang.set(lang as 'en' | 'es'));
+
+    // Detectar si estamos en páginas de autenticación
+    this.router.events
+      .pipe(filter(event => event instanceof NavigationEnd))
+      .subscribe((event: NavigationEnd) => {
+        const authRoutes = ['/iam/login', '/iam/register'];
+        this.isAuthPage.set(authRoutes.some(route => event.url.startsWith(route)));
+      });
+
+    // Verificar la ruta inicial
+    const currentUrl = this.router.url;
+    const authRoutes = ['/iam/login', '/iam/register'];
+    this.isAuthPage.set(authRoutes.some(route => currentUrl.startsWith(route)));
   }
 
   switchLanguage(lang: 'en' | 'es'): void {

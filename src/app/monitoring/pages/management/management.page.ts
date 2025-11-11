@@ -89,39 +89,26 @@ export class MonitoringManagementPageComponent {
     const calculation = this.exitCalculation();
     if (!calculation) return;
 
-    // Actualizar el vehículo con estado 'out' y hora de salida
-    const now = new Date();
-    const exitDate = this.formatDate(now);
-    const exitTime = this.formatTime(now);
+    console.log('🚗 Registrando salida del vehículo:', id);
+    console.log('💰 Monto a pagar:', calculation.totalAmount);
 
-    this.vehicleService.updateVehicle(id, {
-      status: 'out',
-      exitDate,
-      exitTime
-    }).subscribe(() => {
-      // Crear el registro de contabilidad
-      const accountingRecord: Partial<AccountingRecord> = {
-        registrationNumber: calculation.vehicleId.toString(),
-        entryDate: calculation.entryDate,
-        exitDate: calculation.exitDate,
-        vehicleType: calculation.vehicleType === 'Moto' ? 'moto' : 'auto-camioneta',
-        plate: calculation.plate,
-        entryTime: calculation.entryTime,
-        exitTime: calculation.exitTime,
-        amountPaid: calculation.totalAmount,
-        currency: calculation.currency,
-        hoursParked: calculation.hoursParked,
-        hoursToPay: calculation.hoursToPay,
-        ratePerHour: calculation.ratePerHour
-      };
+    // Registrar la salida del vehículo con el monto pagado
+    this.vehicleService.registerExit(id, calculation.totalAmount).subscribe({
+      next: (response) => {
+        console.log('✅ Salida registrada correctamente:', response);
 
-      // Guardar el registro en la base de datos
-      this.accountingService.create(accountingRecord).subscribe(() => {
+        // Limpiar el cálculo de salida
         this.exitCalculation.set(null);
+
+        // Refrescar la lista de vehículos y capacidad
         this.vehicles$ = this.getVehiclesSorted();
         this.filterVehicles();
         this.refreshCapacity();
-      });
+      },
+      error: (err) => {
+        console.error('❌ Error al registrar salida:', err);
+        alert(`Error al registrar la salida: ${err.error?.message || 'Error desconocido'}`);
+      }
     });
   }
 

@@ -1,15 +1,14 @@
 {
   "parkingSettings": {
-    "id": 1,
     "openingTime": "08:00",
     "closingTime": "22:00",
     "motorcycleRate": 2,
     "carTruckRate": 4,
+    "nightRate": 20,
     "maxCapacity": 100,
     "currency": "PEN",
     "gracePeriodMinutes": 15,
-    "allowOvernight": true,
-    "nightRate": 20
+    "allowOvernight": true
   },
   "operations": [
     {
@@ -17,42 +16,48 @@
       "date": "2025-10-05",
       "openTime": "08:00",
       "closeTime": "22:15",
-      "status": "closed"
+      "status": "closed",
+      "businessId": "demo-business"
     },
     {
       "id": "op2",
       "date": "2025-10-06",
       "openTime": "08:05",
       "closeTime": "22:10",
-      "status": "closed"
+      "status": "closed",
+      "businessId": "demo-business"
     },
     {
       "id": "op3",
       "date": "2025-10-07",
       "openTime": "08:00",
       "closeTime": "22:20",
-      "status": "closed"
+      "status": "closed",
+      "businessId": "demo-business"
     },
     {
       "id": "op4",
       "date": "2025-10-08",
       "openTime": "08:10",
       "closeTime": "22:05",
-      "status": "closed"
+      "status": "closed",
+      "businessId": "demo-business"
     },
     {
       "id": "op5",
       "date": "2025-10-09",
       "openTime": "08:00",
       "closeTime": "22:00",
-      "status": "closed"
+      "status": "closed",
+      "businessId": "demo-business"
     },
     {
       "id": "a24d",
       "date": "2025-10-13",
       "openTime": "20:17",
       "status": "open",
-      "closeTime": "20:07"
+      "closeTime": "20:07",
+      "businessId": "demo-business"
     }
   ],
   "vehicle-debts": [
@@ -68,7 +73,8 @@
       "nightCharge": 40,
       "totalDebt": 62,
       "isPaid": false,
-      "lastUpdated": "2025-10-09T22:00:00"
+      "lastUpdated": "2025-10-09T22:00:00",
+      "businessId": "demo-business"
     },
     {
       "id": "84ad",
@@ -82,7 +88,8 @@
       "nightCharge": 20,
       "totalDebt": 215.272355,
       "isPaid": false,
-      "lastUpdated": "2025-10-14T01:03:10.239Z"
+      "lastUpdated": "2025-10-14T01:03:10.239Z",
+      "businessId": "demo-business"
     },
     {
       "id": "bd6e",
@@ -96,7 +103,8 @@
       "nightCharge": 20,
       "totalDebt": 415.21138,
       "isPaid": false,
-      "lastUpdated": "2025-10-14T01:03:10.242Z"
+      "lastUpdated": "2025-10-14T01:03:10.242Z",
+      "businessId": "demo-business"
     },
     {
       "id": "fd6c",
@@ -110,7 +118,8 @@
       "nightCharge": 60,
       "totalDebt": 1268.3355322222224,
       "isPaid": false,
-      "lastUpdated": "2025-10-14T01:07:16.147Z"
+      "lastUpdated": "2025-10-14T01:07:16.147Z",
+      "businessId": "demo-business"
     },
     {
       "id": "5429",
@@ -124,7 +133,8 @@
       "nightCharge": 20,
       "totalDebt": 420.81138888888887,
       "isPaid": false,
-      "lastUpdated": "2025-10-14T01:03:10.250Z"
+      "lastUpdated": "2025-10-14T01:03:10.250Z",
+      "businessId": "demo-business"
     }
   ],
   "incidents": [
@@ -133,21 +143,24 @@
       "time": "10:35",
       "location": "Space A12",
       "description": "Vehicle parked overtime",
-      "state": "open"
+      "state": "open",
+      "businessId": "demo-business"
     },
     {
       "id": "2",
       "time": "11:20",
       "location": "Space B05",
       "description": "Unauthorized vehicle detected",
-      "state": "in_progress"
+      "state": "in_progress",
+      "businessId": "demo-business"
     },
     {
       "id": "3",
       "time": "12:45",
       "location": "Space C21",
       "description": "Payment issue",
-      "state": "closed"
+      "state": "closed",
+      "businessId": "demo-business"
     }
   ],
   "vehicles": [
@@ -160,7 +173,8 @@
       "entryTime": "19:30",
       "status": "out",
       "exitDate": "13-10-2025",
-      "exitTime": "20:06"
+      "exitTime": "20:06",
+      "businessId": "demo-business"
     },
     {
       "id": "2",
@@ -171,7 +185,8 @@
       "entryTime": "18:25",
       "status": "out",
       "exitDate": "13-10-2025",
-      "exitTime": "20:06"
+      "exitTime": "20:06",
+      "businessId": "demo-business"
     },
     {
       "id": "3",
@@ -182,7 +197,8 @@
       "entryTime": "17:15",
       "status": "out",
       "exitDate": "13-10-2025",
-      "exitTime": "20:06"
+      "exitTime": "20:06",
+      "businessId": "demo-business"
     },
     {
       "id": "a8a0",
@@ -193,7 +209,8 @@
       "registrationNumber": "0004",
       "status": "out",
       "exitDate": "08-10-2025",
-      "exitTime": "15:50"
+      "exitTime": "15:50",
+      "businessId": "demo-business"
     },
     {
       "id": "dc26",
@@ -204,7 +221,8 @@
       "registrationNumber": "0006",
       "status": "out",
       "exitDate": "08-10-2025",
-      "exitTime": "14:59"
+      "exitTime": "14:59",
+      "businessId": "demo-business"
     },
     {
       "id": "6034",
@@ -215,7 +233,8 @@
       "registrationNumber": "0007",
       "status": "out",
       "exitDate": "08-10-2025",
-      "exitTime": "14:37"
+      "exitTime": "14:37",
+      "businessId": "demo-business"
     },
     {
       "id": "8a0b",
@@ -226,7 +245,8 @@
       "registrationNumber": "0008",
       "status": "out",
       "exitDate": "08-10-2025",
-      "exitTime": "15:51"
+      "exitTime": "15:51",
+      "businessId": "demo-business"
     },
     {
       "id": "92e4",
@@ -237,7 +257,8 @@
       "registrationNumber": "0009",
       "status": "out",
       "exitDate": "08-10-2025",
-      "exitTime": "15:11"
+      "exitTime": "15:11",
+      "businessId": "demo-business"
     },
     {
       "id": "3078",
@@ -248,7 +269,8 @@
       "registrationNumber": "0010",
       "status": "out",
       "exitDate": "13-10-2025",
-      "exitTime": "20:08"
+      "exitTime": "20:08",
+      "businessId": "demo-business"
     },
     {
       "id": "8eb0",
@@ -259,7 +281,8 @@
       "registrationNumber": "0011",
       "status": "out",
       "exitDate": "13-10-2025",
-      "exitTime": "20:06"
+      "exitTime": "20:06",
+      "businessId": "demo-business"
     },
     {
       "id": "dde1",
@@ -270,7 +293,8 @@
       "registrationNumber": "0012",
       "status": "out",
       "exitDate": "08-10-2025",
-      "exitTime": "15:54"
+      "exitTime": "15:54",
+      "businessId": "demo-business"
     },
     {
       "id": "fd44",
@@ -281,7 +305,8 @@
       "registrationNumber": "0013",
       "status": "out",
       "exitDate": "13-10-2025",
-      "exitTime": "20:37"
+      "exitTime": "20:37",
+      "businessId": "demo-business"
     },
     {
       "id": "3583",
@@ -290,7 +315,8 @@
       "entryDate": "13-10-2025",
       "entryTime": "20:34",
       "registrationNumber": "0014",
-      "status": "in-space"
+      "status": "in-space",
+      "businessId": "demo-business"
     },
     {
       "id": "0b57",
@@ -299,7 +325,8 @@
       "entryDate": "13-10-2025",
       "entryTime": "20:42",
       "registrationNumber": "0015",
-      "status": "in-space"
+      "status": "in-space",
+      "businessId": "demo-business"
     },
     {
       "id": "1669",
@@ -308,7 +335,8 @@
       "entryDate": "13-10-2025",
       "entryTime": "20:44",
       "registrationNumber": "0016",
-      "status": "in-space"
+      "status": "in-space",
+      "businessId": "demo-business"
     }
   ],
   "profiles": [
@@ -395,7 +423,8 @@
       "hoursToPay": 6,
       "ratePerHour": 4,
       "operationDate": "2025-10-05",
-      "nightCharge": 0
+      "nightCharge": 0,
+      "businessId": "demo-business"
     },
     {
       "id": "rec2",
@@ -412,7 +441,8 @@
       "hoursToPay": 4,
       "ratePerHour": 2,
       "operationDate": "2025-10-05",
-      "nightCharge": 0
+      "nightCharge": 0,
+      "businessId": "demo-business"
     },
     {
       "id": "rec3",
@@ -429,7 +459,8 @@
       "hoursToPay": 6,
       "ratePerHour": 4,
       "operationDate": "2025-10-05",
-      "nightCharge": 0
+      "nightCharge": 0,
+      "businessId": "demo-business"
     },
     {
       "id": "rec4",
@@ -446,7 +477,8 @@
       "hoursToPay": 3,
       "ratePerHour": 2,
       "operationDate": "2025-10-06",
-      "nightCharge": 0
+      "nightCharge": 0,
+      "businessId": "demo-business"
     },
     {
       "id": "rec5",
@@ -463,7 +495,8 @@
       "hoursToPay": 7,
       "ratePerHour": 4,
       "operationDate": "2025-10-06",
-      "nightCharge": 0
+      "nightCharge": 0,
+      "businessId": "demo-business"
     },
     {
       "id": "rec6",
@@ -480,7 +513,8 @@
       "hoursToPay": 5,
       "ratePerHour": 4,
       "operationDate": "2025-10-06",
-      "nightCharge": 0
+      "nightCharge": 0,
+      "businessId": "demo-business"
     },
     {
       "id": "rec7",
@@ -497,7 +531,8 @@
       "hoursToPay": 4,
       "ratePerHour": 2,
       "operationDate": "2025-10-07",
-      "nightCharge": 0
+      "nightCharge": 0,
+      "businessId": "demo-business"
     },
     {
       "id": "rec8",
@@ -514,7 +549,8 @@
       "hoursToPay": 8,
       "ratePerHour": 4,
       "operationDate": "2025-10-07",
-      "nightCharge": 0
+      "nightCharge": 0,
+      "businessId": "demo-business"
     },
     {
       "id": "rec9",
@@ -531,7 +567,8 @@
       "hoursToPay": 3,
       "ratePerHour": 2,
       "operationDate": "2025-10-07",
-      "nightCharge": 0
+      "nightCharge": 0,
+      "businessId": "demo-business"
     },
     {
       "id": "rec10",
@@ -549,7 +586,8 @@
       "ratePerHour": 4,
       "operationDate": "2025-10-08",
       "nightCharge": 20,
-      "debtId": "debt-old1"
+      "debtId": "debt-old1",
+      "businessId": "demo-business"
     },
     {
       "id": "b8e4",
@@ -566,7 +604,8 @@
       "hoursToPay": 3,
       "ratePerHour": 4,
       "operationDate": "2025-10-08",
-      "nightCharge": 0
+      "nightCharge": 0,
+      "businessId": "demo-business"
     },
     {
       "id": "4f30",
@@ -583,7 +622,8 @@
       "hoursToPay": 1,
       "ratePerHour": 4,
       "operationDate": "2025-10-08",
-      "nightCharge": 0
+      "nightCharge": 0,
+      "businessId": "demo-business"
     },
     {
       "id": "9f7d",
@@ -600,7 +640,8 @@
       "hoursToPay": 1,
       "ratePerHour": 2,
       "operationDate": "2025-10-08",
-      "nightCharge": 0
+      "nightCharge": 0,
+      "businessId": "demo-business"
     },
     {
       "id": "rec11",
@@ -617,7 +658,8 @@
       "hoursToPay": 3,
       "ratePerHour": 2,
       "operationDate": "2025-10-09",
-      "nightCharge": 0
+      "nightCharge": 0,
+      "businessId": "demo-business"
     },
     {
       "id": "rec12",
@@ -634,7 +676,8 @@
       "hoursToPay": 7,
       "ratePerHour": 4,
       "operationDate": "2025-10-09",
-      "nightCharge": 0
+      "nightCharge": 0,
+      "businessId": "demo-business"
     },
     {
       "id": "247e",
@@ -649,7 +692,8 @@
       "currency": "S/",
       "hoursParked": 100.25205472222223,
       "hoursToPay": 101,
-      "ratePerHour": 4
+      "ratePerHour": 4,
+      "businessId": "demo-business"
     },
     {
       "id": "18b7",
@@ -664,7 +708,8 @@
       "currency": "S/",
       "hoursParked": 98.85364611111112,
       "hoursToPay": 99,
-      "ratePerHour": 4
+      "ratePerHour": 4,
+      "businessId": "demo-business"
     },
     {
       "id": "b43b",
@@ -679,7 +724,8 @@
       "currency": "S/",
       "hoursParked": 97.68771444444444,
       "hoursToPay": 98,
-      "ratePerHour": 2
+      "ratePerHour": 2,
+      "businessId": "demo-business"
     },
     {
       "id": "e949",
@@ -694,7 +740,8 @@
       "currency": "S/",
       "hoursParked": 192.60520666666667,
       "hoursToPay": 193,
-      "ratePerHour": 4
+      "ratePerHour": 4,
+      "businessId": "demo-business"
     },
     {
       "id": "e380",
@@ -709,7 +756,8 @@
       "currency": "S/",
       "hoursParked": 100.74919027777777,
       "hoursToPay": 101,
-      "ratePerHour": 4
+      "ratePerHour": 4,
+      "businessId": "demo-business"
     },
     {
       "id": "3330",
@@ -724,7 +772,8 @@
       "currency": "S/",
       "hoursParked": 0.3215225,
       "hoursToPay": 1,
-      "ratePerHour": 4
+      "ratePerHour": 4,
+      "businessId": "demo-business"
     }
   ],
   "subscribers": [
@@ -738,7 +787,8 @@
       "amount": 300,
       "startDate": "2025-01-15",
       "paymentDate": "2025-01-15",
-      "status": "active"
+      "status": "active",
+      "businessId": "demo-business"
     },
     {
       "id": "sub2",
@@ -750,7 +800,8 @@
       "amount": 600,
       "startDate": "2024-11-01",
       "paymentDate": "2024-11-01",
-      "status": "active"
+      "status": "active",
+      "businessId": "demo-business"
     },
     {
       "id": "sub3",
@@ -762,7 +813,8 @@
       "amount": 150,
       "startDate": "2025-02-01",
       "paymentDate": "2025-02-01",
-      "status": "active"
+      "status": "active",
+      "businessId": "demo-business"
     },
     {
       "id": "sub4",
@@ -774,7 +826,8 @@
       "amount": 50,
       "startDate": "2024-10-15",
       "paymentDate": "2024-10-15",
-      "status": "expired"
+      "status": "expired",
+      "businessId": "demo-business"
     },
     {
       "id": "sub5",
@@ -786,7 +839,185 @@
       "amount": 300,
       "startDate": "2025-01-10",
       "paymentDate": "2025-01-10",
-      "status": "active"
+      "status": "active",
+      "businessId": "demo-business"
+    }
+  ],
+  "users": [
+    {
+      "id": "demo-admin",
+      "businessId": "demo-business",
+      "username": "admin",
+      "email": "admin@easypark.com",
+      "password": "admin123",
+      "role": "admin",
+      "name": "Administrator",
+      "createdAt": "2025-01-01T00:00:00.000Z",
+      "isActive": true
+    },
+    {
+      "id": "demo-operator",
+      "businessId": "demo-business",
+      "username": "operator",
+      "email": "operator@easypark.com",
+      "password": "operator123",
+      "role": "operator",
+      "name": "Operator Demo",
+      "createdAt": "2025-01-01T00:00:00.000Z",
+      "isActive": true
+    },
+    {
+      "id": "npz82p9",
+      "businessId": "upxo4ve",
+      "username": "juan",
+      "email": "juan@gmail.com",
+      "password": "123456",
+      "role": "admin",
+      "name": "Juan Fernando Quintero",
+      "createdAt": "2025-11-04T01:44:05.059Z",
+      "isActive": true
+    },
+    {
+      "id": "6a5nbhd",
+      "businessId": "j4yo7sp",
+      "username": "jose",
+      "email": "jose@gmail.com",
+      "password": "123456",
+      "role": "admin",
+      "name": "Allan Doe",
+      "createdAt": "2025-11-04T02:08:35.315Z",
+      "isActive": true
+    },
+    {
+      "id": "887scvl",
+      "businessId": "gbnbuzx",
+      "username": "user12",
+      "email": "robert@bayern.com",
+      "password": "123456",
+      "role": "admin",
+      "name": "Pedro Ramirez",
+      "createdAt": "2025-11-04T02:12:57.057Z",
+      "isActive": true
+    },
+    {
+      "id": "k8prjy6",
+      "businessId": "8mcc7kw",
+      "username": "user15",
+      "email": "robert@bayern.com",
+      "password": "123456",
+      "role": "admin",
+      "name": "Pedro Ramirez",
+      "createdAt": "2025-11-04T02:18:16.241Z",
+      "isActive": true
+    },
+    {
+      "id": "1g3eu8k",
+      "businessId": "v6pkq2m",
+      "username": "user19",
+      "email": "jose@gmail.com",
+      "password": "123456",
+      "role": "admin",
+      "name": "Juan Fernando Quintero",
+      "createdAt": "2025-11-04T02:24:23.792Z",
+      "isActive": true
+    }
+  ],
+  "businesses": [
+    {
+      "id": "demo-business",
+      "businessName": "EasyPark Demo",
+      "address": "Av. Principal 123, Lima, Peru",
+      "phone": "+51987654321",
+      "email": "contact@easypark.com",
+      "taxId": "20123456789",
+      "maxCapacity": 100,
+      "motorcycleRate": 2,
+      "carTruckRate": 4,
+      "nightRate": 20,
+      "openingTime": "08:00",
+      "closingTime": "22:00",
+      "currency": "PEN",
+      "createdAt": "2025-01-01T00:00:00.000Z"
+    },
+    {
+      "id": "upxo4ve",
+      "businessName": "Parking Central",
+      "address": "Calle Real 2054",
+      "phone": "+51995369889",
+      "email": "central@gmail.com",
+      "taxId": "20124578",
+      "maxCapacity": 50,
+      "motorcycleRate": 2,
+      "carTruckRate": 4,
+      "nightRate": 20,
+      "openingTime": "08:00",
+      "closingTime": "22:00",
+      "currency": "PEN",
+      "createdAt": "2025-11-04T01:44:05.059Z"
+    },
+    {
+      "id": "j4yo7sp",
+      "businessName": "Central Park",
+      "address": "Calle real 159",
+      "phone": "+51994452351",
+      "email": "central@gmail.com",
+      "taxId": "20124523",
+      "maxCapacity": 50,
+      "motorcycleRate": 2,
+      "carTruckRate": 4,
+      "nightRate": 20,
+      "openingTime": "08:00",
+      "closingTime": "22:00",
+      "currency": "PEN",
+      "createdAt": "2025-11-04T02:08:35.315Z"
+    },
+    {
+      "id": "gbnbuzx",
+      "businessName": "Real parking",
+      "address": "Tottenkoff",
+      "phone": "+51998758473",
+      "email": "robert@bayern.com",
+      "taxId": "20231532",
+      "maxCapacity": 50,
+      "motorcycleRate": 2,
+      "carTruckRate": 4,
+      "nightRate": 20,
+      "openingTime": "08:00",
+      "closingTime": "22:00",
+      "currency": "PEN",
+      "createdAt": "2025-11-04T02:12:57.057Z"
+    },
+    {
+      "id": "8mcc7kw",
+      "businessName": "Real parking",
+      "address": "Tottenkoff",
+      "phone": "+51998758473",
+      "email": "robert@bayern.com",
+      "taxId": "20231532",
+      "maxCapacity": 50,
+      "motorcycleRate": 2,
+      "carTruckRate": 4,
+      "nightRate": 20,
+      "openingTime": "08:00",
+      "closingTime": "22:00",
+      "currency": "PEN",
+      "createdAt": "2025-11-04T02:18:16.240Z"
+    },
+    {
+      "id": "v6pkq2m",
+      "businessName": "Real parking",
+      "address": "Tottenkoff",
+      "phone": "+51998758473",
+      "email": "robert@bayern.com",
+      "taxId": "20231532",
+      "maxCapacity": 50,
+      "motorcycleRate": 2,
+      "carTruckRate": 4,
+      "nightRate": 20,
+      "openingTime": "08:00",
+      "closingTime": "22:00",
+      "currency": "PEN",
+      "createdAt": "2025-11-04T02:24:23.792Z"
     }
   ]
 }

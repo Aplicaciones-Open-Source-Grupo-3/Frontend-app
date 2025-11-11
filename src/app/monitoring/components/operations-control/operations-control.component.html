@@ -1,9 +1,9 @@
 <div class="operations-control">
   <div class="operations-status">
-    <div class="status-badge" [class.open]="isOperationOpen" [class.closed]="!isOperationOpen">
-      <span class="status-icon">{{ isOperationOpen ? '🟢' : '🔴' }}</span>
+    <div class="status-badge" [class.open]="isOperationOpen()" [class.closed]="!isOperationOpen()">
+      <span class="status-icon">{{ isOperationOpen() ? '🟢' : '🔴' }}</span>
       <span class="status-text">
-        {{ isOperationOpen ? ('operations.open' | translate) : ('operations.closed' | translate) }}
+        {{ isOperationOpen() ? ('operations.open' | translate) : ('operations.closed' | translate) }}
       </span>
     </div>
 
@@ -23,20 +23,20 @@
   <div class="operations-actions">
     <button
       class="btn btn-start"
-      [disabled]="!canStartOperations || isLoading()"
+      [disabled]="!canStartOperations() || isLoading()"
       (click)="startOperations()">
       {{ isLoading() ? ('operations.starting' | translate) : ('operations.startDay' | translate) }}
     </button>
 
     <button
       class="btn btn-close"
-      [disabled]="!canCloseOperations || isLoading()"
+      [disabled]="!canCloseOperations() || isLoading()"
       (click)="requestCloseOperations()">
       {{ isLoading() ? ('operations.closing' | translate) : ('operations.closeDay' | translate) }}
     </button>
   </div>
 
-  @if (isOperationOpen) {
+  @if (isOperationOpen()) {
     <div class="vehicles-count-info">
       <span class="info-icon">🚗</span>
       <span>{{ 'operations.vehiclesInParking' | translate }}: <strong>{{ vehiclesInParking() }}</strong></span>

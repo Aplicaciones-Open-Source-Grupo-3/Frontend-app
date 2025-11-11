@@ -4,4 +4,6 @@ export interface EntryExitEntity extends BaseEntity {
   plate: string;
   entryTime: string;
   exitTime?: string;
+  type?: 'entry' | 'exit';
+  vehicleType?: string;
 }

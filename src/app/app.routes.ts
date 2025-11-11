@@ -1,9 +1,10 @@
 import { Routes } from '@angular/router';
+import { authGuard, adminGuard } from './iam/guards/auth.guard';
 
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: 'monitoring/dashboard',
+    redirectTo: 'iam/login',
     pathMatch: 'full'
   },
   {
@@ -21,6 +22,7 @@ export const routes: Routes = [
   },
   {
     path: 'profiles',
+    canActivate: [authGuard],
     children: [
       {
         path: 'overview',
@@ -30,6 +32,7 @@ export const routes: Routes = [
   },
   {
     path: 'monitoring',
+    canActivate: [authGuard],
     children: [
       {
         path: 'dashboard',
@@ -43,6 +46,7 @@ export const routes: Routes = [
   },
   {
     path: 'accounting',
+    canActivate: [authGuard],
     children: [
       {
         path: 'overview',
@@ -53,6 +57,7 @@ export const routes: Routes = [
   },
   {
     path: 'clients',
+    canActivate: [authGuard],
     children: [
       {
         path: '',
@@ -61,6 +66,7 @@ export const routes: Routes = [
       },
       {
         path: 'operators',
+        canActivate: [adminGuard],
         loadComponent: () =>
           import('./clients/pages/operators/operators.page').then((m) => m.ClientsOperatorsPageComponent)
       }
@@ -68,6 +74,7 @@ export const routes: Routes = [
   },
   {
     path: 'analytics',
+    canActivate: [authGuard],
     children: [
       {
         path: 'overview',
@@ -78,6 +85,6 @@ export const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: 'monitoring/dashboard'
+    redirectTo: 'iam/login'
   }
 ];

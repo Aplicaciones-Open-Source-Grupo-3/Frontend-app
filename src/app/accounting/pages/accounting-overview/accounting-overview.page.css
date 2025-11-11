@@ -11,12 +11,12 @@
 .accounting-overview__header-content h1 {
   font-size: 2rem;
   font-weight: 700;
-  color: #212529;
+  color: whitesmoke;
   margin-bottom: 0.5rem;
 }
 
 .accounting-overview__header-content p {
-  color: #6c757d;
+  color: whitesmoke;
   font-size: 1rem;
 }
 

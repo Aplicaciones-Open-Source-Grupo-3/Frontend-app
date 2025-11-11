@@ -86,7 +86,7 @@ export class AccountingOverviewPageComponent implements OnInit {
       this.accountingService.getAverageStayTime(),
       this.settingsService.getSettings()
     ]).pipe(
-      map(([totalRevenue, totalVehicles, revenueByType, avgStay, settings]) => ({
+      map(([totalRevenue, totalVehicles, revenueByType, avgStay, settings]: [number, number, any, number, any]) => ({
         totalRevenue,
         totalVehicles,
         carRevenue: revenueByType.cars,
