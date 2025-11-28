@@ -5,6 +5,7 @@ import { Subscription, forkJoin } from 'rxjs';
 import { AnalyticsService } from '../../services/analytics.service';
 import { ParkingSettingsService } from '../../../profiles/services/parking-settings.service';
 import { AccountingService } from '../../../accounting/services/accounting.service';
+import { ExportService } from '../../services/export.service';
 
 /**
  * Renders the Reports/Analytics Overview page.
@@ -23,6 +24,7 @@ export class AnalyticsOverviewPageComponent implements OnInit, OnDestroy {
   private readonly analyticsService = inject(AnalyticsService);
   private readonly parkingSettingsService = inject(ParkingSettingsService);
   private readonly accountingService = inject(AccountingService);
+  private readonly exportService = inject(ExportService);
   private readonly cdr = inject(ChangeDetectorRef);
   private subscription?: Subscription;
 
@@ -32,6 +34,22 @@ export class AnalyticsOverviewPageComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.loadAnalyticsData();
+  }
+
+  /**
+   * Exportar a PDF
+   */
+  exportPDF(): void {
+    console.log('📄 Exportando reporte a PDF...');
+    this.exportService.exportToPDF();
+  }
+
+  /**
+   * Exportar a Excel
+   */
+  exportExcel(): void {
+    console.log('📊 Exportando reporte a Excel...');
+    this.exportService.exportToExcel();
   }
 
   private loadAnalyticsData(): void {
@@ -83,8 +101,9 @@ export class AnalyticsOverviewPageComponent implements OnInit, OnDestroy {
         const revenueByType = this.calculateRevenueByType(data.accountingRecords);
         const vehiclesByType = this.calculateVehiclesByType(data.accountingRecords);
 
-        // Calcular estadía promedio desde accounting records del día actual
-        const averageStay = this.calculateAverageStayFromRecords(data.accountingRecords);
+        // IMPORTANTE: Calcular estadía promedio DIRECTAMENTE desde los datos del backend
+        // Usar el campo hoursParked que viene del backend
+        const averageStay = this.calculateAverageStayFromBackend(data.accountingRecords);
 
         console.log('🚗 Cálculo de ocupación:', {
           currentVehicles,
@@ -95,14 +114,14 @@ export class AnalyticsOverviewPageComponent implements OnInit, OnDestroy {
 
         console.log('💰 Revenue por tipo:', revenueByType);
         console.log('🚙 Vehículos por tipo:', vehiclesByType);
-        console.log('⏱️ Estadía promedio calculada:', averageStay.toFixed(2) + ' horas');
+        console.log('⏱️ Estadía promedio desde backend (hoursParked):', averageStay.toFixed(2) + ' horas');
 
         this.stats = {
           // Datos del endpoint /stats
           totalRevenue: data.stats.monthRevenue || 0,
           totalVehicles: data.stats.totalVehiclesToday || 0,
           currentVehicles: currentVehicles,
-          averageStay: averageStay,
+          averageStay: averageStay, // Usando datos del backend
 
           // Ocupancy rate calculado dinámicamente con capacidad REAL
           occupancyRate: calculatedOccupancyRate,
@@ -341,6 +360,33 @@ export class AnalyticsOverviewPageComponent implements OnInit, OnDestroy {
     console.log(`📏 Promedio de estadía calculado: ${averageStay.toFixed(2)} horas (${todayRecords.length} registros)`);
 
     return averageStay;
+  }
+
+  /**
+   * Calcular estadía promedio DIRECTAMENTE desde el campo hoursParked del backend
+   */
+  private calculateAverageStayFromBackend(records: any[]): number {
+    if (!records || records.length === 0) {
+      console.log('⚠️ No hay registros para calcular average stay');
+      return 0;
+    }
+
+    // Usar el campo hoursParked que viene directamente del backend
+    const totalHours = records.reduce((sum, record) => {
+      const hours = record.hoursParked || 0;
+      return sum + hours;
+    }, 0);
+
+    const average = totalHours / records.length;
+
+    console.log('📊 Cálculo de Average Stay:', {
+      totalRecords: records.length,
+      totalHours: totalHours.toFixed(2),
+      average: average.toFixed(2),
+      formula: `${totalHours.toFixed(2)} / ${records.length} = ${average.toFixed(2)} horas`
+    });
+
+    return average;
   }
 
   ngOnDestroy(): void {

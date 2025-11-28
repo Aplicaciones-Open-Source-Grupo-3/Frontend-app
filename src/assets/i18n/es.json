@@ -328,6 +328,10 @@
       "BUSIEST_TIMES": "Horarios con mayor afluencia",
       "ENTRIES": "entradas"
     },
+    "EXPORT": {
+      "PDF": "Exportar PDF",
+      "EXCEL": "Exportar Excel"
+    },
     "ACTIONS": {
       "EXPORT_PDF": "Exportar PDF",
       "EXPORT_EXCEL": "Exportar Excel"

@@ -327,6 +327,10 @@
       "BUSIEST_TIMES": "Busiest times",
       "ENTRIES": "entries"
     },
+    "EXPORT": {
+      "PDF": "Export PDF",
+      "EXCEL": "Export Excel"
+    },
     "ACTIONS": {
       "EXPORT_PDF": "Export PDF",
       "EXPORT_EXCEL": "Export Excel"
