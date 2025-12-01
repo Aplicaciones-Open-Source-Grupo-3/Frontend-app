@@ -1,17 +1,41 @@
-<section class="profile-details">
+<section class="profile-details" *ngIf="currentUser$ | async as user">
   <h2 class="profile-details__title">{{ 'PROFILES.DETAILS.TITLE' | translate }}</h2>
   <dl class="profile-details__grid">
     <div>
       <dt>{{ 'PROFILES.DETAILS.NAME' | translate }}</dt>
-      <dd>{{ profile.fullName }}</dd>
+      <dd>{{ user.name }}</dd>
     </div>
     <div>
       <dt>{{ 'PROFILES.DETAILS.EMAIL' | translate }}</dt>
-      <dd>{{ profile.email }}</dd>
+      <dd>{{ user.email }}</dd>
     </div>
     <div>
-      <dt>{{ 'PROFILES.DETAILS.PHONE' | translate }}</dt>
-      <dd>{{ profile.phone || ('PROFILES.DETAILS.NO_PHONE' | translate) }}</dd>
+      <dt>{{ 'PROFILES.DETAILS.USERNAME' | translate }}</dt>
+      <dd>{{ user.username }}</dd>
+    </div>
+    <div>
+      <dt>{{ 'PROFILES.DETAILS.ROLE' | translate }}</dt>
+      <dd>{{ getRoleLabel(user.role) | translate }}</dd>
     </div>
   </dl>
+
+  <div class="profile-details__business" *ngIf="currentBusiness$ | async as business">
+    <h3 class="profile-details__subtitle">{{ 'PROFILES.DETAILS.BUSINESS_INFO' | translate }}</h3>
+    <dl class="profile-details__grid">
+      <div>
+        <dt>{{ 'PROFILES.DETAILS.BUSINESS_NAME' | translate }}</dt>
+        <dd>{{ business.businessName || 'N/A' }}</dd>
+      </div>
+    </dl>
+  </div>
+
+  <button class="logout-button" (click)="onLogout()">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+      <polyline points="16 17 21 12 16 7"></polyline>
+      <line x1="21" y1="12" x2="9" y2="12"></line>
+    </svg>
+    {{ 'PROFILES.DETAILS.LOGOUT' | translate }}
+  </button>
 </section>
+

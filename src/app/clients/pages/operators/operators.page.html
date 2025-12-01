@@ -1,0 +1,47 @@
+<section class="subscribers">
+  <header class="subscribers__header">
+    <div>
+      <p class="subscribers__eyebrow">{{ 'CLIENTS.SUBSCRIBERS.EYEBROW' | translate }}</p>
+      <h1 class="subscribers__title">{{ 'CLIENTS.SUBSCRIBERS.TITLE' | translate }}</h1>
+    </div>
+    <div class="subscribers__toolbar">
+      <label class="subscribers__search">
+        <span aria-hidden="true">🔍</span>
+        <input
+          type="search"
+          [placeholder]="'CLIENTS.SUBSCRIBERS.SEARCH_PLACEHOLDER' | translate"
+          (input)="onSearch($event)"
+        />
+      </label>
+      <button type="button" class="subscribers__cta" (click)="openForm()">
+        {{ 'CLIENTS.SUBSCRIBERS.NEW_SUBSCRIBER' | translate }}
+      </button>
+    </div>
+  </header>
+
+  <section class="subscribers__content">
+    <div class="subscribers__content-header">
+      <h2>{{ 'CLIENTS.SUBSCRIBERS.ALL_SUBSCRIBERS' | translate }}</h2>
+      <p>{{ 'CLIENTS.SUBSCRIBERS.ALL_SUBSCRIBERS_DESCRIPTION' | translate }}</p>
+    </div>
+
+    <ng-container *ngIf="isLoading(); else subscriberTable">
+      <div class="subscribers__loading">
+        <p>{{ 'CLIENTS.SUBSCRIBERS.LOADING' | translate }}</p>
+      </div>
+    </ng-container>
+    <ng-template #subscriberTable>
+      <app-subscriber-table
+        [subscribers]="filteredSubscribers"
+        (onDelete)="handleDelete($event)"
+      ></app-subscriber-table>
+    </ng-template>
+  </section>
+
+  <ng-container *ngIf="showForm()">
+    <app-subscriber-form
+      (onCancel)="closeForm()"
+      (onSubmit)="handleSubmit($event)"
+    ></app-subscriber-form>
+  </ng-container>
+</section>

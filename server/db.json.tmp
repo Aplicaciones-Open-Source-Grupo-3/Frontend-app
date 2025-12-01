@@ -1,0 +1,810 @@
+{
+  "parkingSettings": {
+    "id": 1,
+    "openingTime": "08:00",
+    "closingTime": "22:00",
+    "motorcycleRate": 2,
+    "carTruckRate": 4,
+    "maxCapacity": 100,
+    "currency": "PEN",
+    "gracePeriodMinutes": 15,
+    "allowOvernight": true,
+    "nightRate": 20
+  },
+  "operations": [
+    {
+      "id": "op1",
+      "date": "2025-10-05",
+      "openTime": "08:00",
+      "closeTime": "22:15",
+      "status": "closed"
+    },
+    {
+      "id": "op2",
+      "date": "2025-10-06",
+      "openTime": "08:05",
+      "closeTime": "22:10",
+      "status": "closed"
+    },
+    {
+      "id": "op3",
+      "date": "2025-10-07",
+      "openTime": "08:00",
+      "closeTime": "22:20",
+      "status": "closed"
+    },
+    {
+      "id": "op4",
+      "date": "2025-10-08",
+      "openTime": "08:10",
+      "closeTime": "22:05",
+      "status": "closed"
+    },
+    {
+      "id": "op5",
+      "date": "2025-10-09",
+      "openTime": "08:00",
+      "closeTime": "22:00",
+      "status": "closed"
+    },
+    {
+      "id": "a24d",
+      "date": "2025-10-13",
+      "openTime": "20:17",
+      "status": "open",
+      "closeTime": "20:07"
+    }
+  ],
+  "vehicle-debts": [
+    {
+      "id": "debt1",
+      "vehicleId": "1",
+      "plate": "BYG475",
+      "vehicleType": "auto-camioneta",
+      "entryDate": "05-10-2025",
+      "entryTime": "19:30",
+      "regularHours": 5.5,
+      "regularAmount": 22,
+      "nightCharge": 40,
+      "totalDebt": 62,
+      "isPaid": false,
+      "lastUpdated": "2025-10-09T22:00:00"
+    },
+    {
+      "id": "84ad",
+      "vehicleId": "2",
+      "plate": "VTY451",
+      "vehicleType": "moto",
+      "entryDate": "09-10-2025",
+      "entryTime": "18:25",
+      "regularHours": 97.6361775,
+      "regularAmount": 195.272355,
+      "nightCharge": 20,
+      "totalDebt": 215.272355,
+      "isPaid": false,
+      "lastUpdated": "2025-10-14T01:03:10.239Z"
+    },
+    {
+      "id": "bd6e",
+      "vehicleId": "3",
+      "plate": "HYC784",
+      "vehicleType": "auto-camioneta",
+      "entryDate": "09-10-2025",
+      "entryTime": "17:15",
+      "regularHours": 98.802845,
+      "regularAmount": 395.21138,
+      "nightCharge": 20,
+      "totalDebt": 415.21138,
+      "isPaid": false,
+      "lastUpdated": "2025-10-14T01:03:10.242Z"
+    },
+    {
+      "id": "fd6c",
+      "vehicleId": "3078",
+      "plate": "TRE487",
+      "vehicleType": "auto-camioneta",
+      "entryDate": "09-10-2025",
+      "entryTime": "15:24",
+      "regularHours": 302.0838830555556,
+      "regularAmount": 1208.3355322222224,
+      "nightCharge": 60,
+      "totalDebt": 1268.3355322222224,
+      "isPaid": false,
+      "lastUpdated": "2025-10-14T01:07:16.147Z"
+    },
+    {
+      "id": "5429",
+      "vehicleId": "8eb0",
+      "plate": "UYG125",
+      "vehicleType": "auto-camioneta",
+      "entryDate": "09-10-2025",
+      "entryTime": "15:51",
+      "regularHours": 100.20284722222222,
+      "regularAmount": 400.81138888888887,
+      "nightCharge": 20,
+      "totalDebt": 420.81138888888887,
+      "isPaid": false,
+      "lastUpdated": "2025-10-14T01:03:10.250Z"
+    }
+  ],
+  "incidents": [
+    {
+      "id": "1",
+      "time": "10:35",
+      "location": "Space A12",
+      "description": "Vehicle parked overtime",
+      "state": "open"
+    },
+    {
+      "id": "2",
+      "time": "11:20",
+      "location": "Space B05",
+      "description": "Unauthorized vehicle detected",
+      "state": "in_progress"
+    },
+    {
+      "id": "3",
+      "time": "12:45",
+      "location": "Space C21",
+      "description": "Payment issue",
+      "state": "closed"
+    }
+  ],
+  "vehicles": [
+    {
+      "id": "1",
+      "registrationNumber": "0003",
+      "entryDate": "05-10-2025",
+      "vehicleType": "auto-camioneta",
+      "plate": "BYG475",
+      "entryTime": "19:30",
+      "status": "out",
+      "exitDate": "13-10-2025",
+      "exitTime": "20:06"
+    },
+    {
+      "id": "2",
+      "registrationNumber": "0002",
+      "entryDate": "09-10-2025",
+      "vehicleType": "moto",
+      "plate": "VTY451",
+      "entryTime": "18:25",
+      "status": "out",
+      "exitDate": "13-10-2025",
+      "exitTime": "20:06"
+    },
+    {
+      "id": "3",
+      "registrationNumber": "0001",
+      "entryDate": "09-10-2025",
+      "vehicleType": "auto-camioneta",
+      "plate": "HYC784",
+      "entryTime": "17:15",
+      "status": "out",
+      "exitDate": "13-10-2025",
+      "exitTime": "20:06"
+    },
+    {
+      "id": "a8a0",
+      "plate": "BKY714",
+      "vehicleType": "auto-camioneta",
+      "entryDate": "08-10-2025",
+      "entryTime": "13:11",
+      "registrationNumber": "0004",
+      "status": "out",
+      "exitDate": "08-10-2025",
+      "exitTime": "15:50"
+    },
+    {
+      "id": "dc26",
+      "plate": "TRY481",
+      "vehicleType": "auto-camioneta",
+      "entryDate": "08-10-2025",
+      "entryTime": "13:30",
+      "registrationNumber": "0006",
+      "status": "out",
+      "exitDate": "08-10-2025",
+      "exitTime": "14:59"
+    },
+    {
+      "id": "6034",
+      "plate": "GTY154",
+      "vehicleType": "moto",
+      "entryDate": "08-10-2025",
+      "entryTime": "13:30",
+      "registrationNumber": "0007",
+      "status": "out",
+      "exitDate": "08-10-2025",
+      "exitTime": "14:37"
+    },
+    {
+      "id": "8a0b",
+      "plate": "BTY655",
+      "vehicleType": "auto-camioneta",
+      "entryDate": "08-10-2025",
+      "entryTime": "14:52",
+      "registrationNumber": "0008",
+      "status": "out",
+      "exitDate": "08-10-2025",
+      "exitTime": "15:51"
+    },
+    {
+      "id": "92e4",
+      "plate": "ATH455",
+      "vehicleType": "moto",
+      "entryDate": "08-10-2025",
+      "entryTime": "14:59",
+      "registrationNumber": "0009",
+      "status": "out",
+      "exitDate": "08-10-2025",
+      "exitTime": "15:11"
+    },
+    {
+      "id": "3078",
+      "plate": "TRE487",
+      "vehicleType": "auto-camioneta",
+      "entryDate": "09-10-2025",
+      "entryTime": "15:24",
+      "registrationNumber": "0010",
+      "status": "out",
+      "exitDate": "13-10-2025",
+      "exitTime": "20:08"
+    },
+    {
+      "id": "8eb0",
+      "plate": "UYG125",
+      "vehicleType": "auto-camioneta",
+      "entryDate": "09-10-2025",
+      "entryTime": "15:51",
+      "registrationNumber": "0011",
+      "status": "out",
+      "exitDate": "13-10-2025",
+      "exitTime": "20:06"
+    },
+    {
+      "id": "dde1",
+      "plate": "RTC487",
+      "vehicleType": "moto",
+      "entryDate": "08-10-2025",
+      "entryTime": "15:52",
+      "registrationNumber": "0012",
+      "status": "out",
+      "exitDate": "08-10-2025",
+      "exitTime": "15:54"
+    },
+    {
+      "id": "fd44",
+      "plate": "QWE124",
+      "vehicleType": "auto-camioneta",
+      "entryDate": "13-10-2025",
+      "entryTime": "20:18",
+      "registrationNumber": "0013",
+      "status": "out",
+      "exitDate": "13-10-2025",
+      "exitTime": "20:37"
+    },
+    {
+      "id": "3583",
+      "plate": "RTX490",
+      "vehicleType": "auto-camioneta",
+      "entryDate": "13-10-2025",
+      "entryTime": "20:34",
+      "registrationNumber": "0014",
+      "status": "in-space"
+    },
+    {
+      "id": "0b57",
+      "plate": "QWE200",
+      "vehicleType": "auto-camioneta",
+      "entryDate": "13-10-2025",
+      "entryTime": "20:42",
+      "registrationNumber": "0015",
+      "status": "in-space"
+    },
+    {
+      "id": "1669",
+      "plate": "SED154",
+      "vehicleType": "moto",
+      "entryDate": "13-10-2025",
+      "entryTime": "20:44",
+      "registrationNumber": "0016",
+      "status": "in-space"
+    }
+  ],
+  "entryExit": [
+    {
+      "id": "1",
+      "plate": "ABC-102",
+      "entryTime": "10:15"
+    },
+    {
+      "id": "2",
+      "plate": "JSD-421",
+      "entryTime": "10:42"
+    },
+    {
+      "id": "3",
+      "plate": "HGX-993",
+      "entryTime": "11:10"
+    }
+  ],
+  "profiles": [
+    {
+      "id": "1",
+      "fullName": "Rober Lewandoski",
+      "email": "robert.lewandoski@easypark.io",
+      "phone": "+1 555 010 2030",
+      "userType": "administrator",
+      "companyName": "EasyPark Central"
+    }
+  ],
+  "subscriptions": [
+    {
+      "id": "1",
+      "planId": 1,
+      "status": "active",
+      "renewsAt": "2024-12-01"
+    },
+    {
+      "id": "2",
+      "planId": 2,
+      "status": "active",
+      "renewsAt": "2024-12-15"
+    }
+  ],
+  "plans": [
+    {
+      "id": "1",
+      "name": "Standard",
+      "price": 79,
+      "benefits": [
+        "Up to 100 active clients",
+        "Email support"
+      ]
+    },
+    {
+      "id": "2",
+      "name": "Professional",
+      "price": 149,
+      "benefits": [
+        "Unlimited clients",
+        "Priority support",
+        "Advanced analytics"
+      ]
+    }
+  ],
+  "reports": [
+    {
+      "id": "1",
+      "title": "Revenue",
+      "period": "This month",
+      "kpi": 12500,
+      "trend": 12
+    },
+    {
+      "id": "2",
+      "title": "Occupancy",
+      "period": "This week",
+      "kpi": 78,
+      "trend": 5
+    },
+    {
+      "id": "3",
+      "title": "Incidents",
+      "period": "This week",
+      "kpi": 3,
+      "trend": -8
+    }
+  ],
+  "accounting-records": [
+    {
+      "id": "rec1",
+      "registrationNumber": "v001",
+      "entryDate": "05-10-2025",
+      "exitDate": "05-10-2025",
+      "vehicleType": "auto-camioneta",
+      "plate": "ABC123",
+      "entryTime": "09:15",
+      "exitTime": "14:30",
+      "amountPaid": 24,
+      "currency": "S/",
+      "hoursParked": 5.25,
+      "hoursToPay": 6,
+      "ratePerHour": 4,
+      "operationDate": "2025-10-05",
+      "nightCharge": 0
+    },
+    {
+      "id": "rec2",
+      "registrationNumber": "v002",
+      "entryDate": "05-10-2025",
+      "exitDate": "05-10-2025",
+      "vehicleType": "moto",
+      "plate": "XYZ789",
+      "entryTime": "10:00",
+      "exitTime": "13:45",
+      "amountPaid": 8,
+      "currency": "S/",
+      "hoursParked": 3.75,
+      "hoursToPay": 4,
+      "ratePerHour": 2,
+      "operationDate": "2025-10-05",
+      "nightCharge": 0
+    },
+    {
+      "id": "rec3",
+      "registrationNumber": "v003",
+      "entryDate": "05-10-2025",
+      "exitDate": "05-10-2025",
+      "vehicleType": "auto-camioneta",
+      "plate": "DEF456",
+      "entryTime": "11:20",
+      "exitTime": "16:50",
+      "amountPaid": 24,
+      "currency": "S/",
+      "hoursParked": 5.5,
+      "hoursToPay": 6,
+      "ratePerHour": 4,
+      "operationDate": "2025-10-05",
+      "nightCharge": 0
+    },
+    {
+      "id": "rec4",
+      "registrationNumber": "v004",
+      "entryDate": "06-10-2025",
+      "exitDate": "06-10-2025",
+      "vehicleType": "moto",
+      "plate": "GHI741",
+      "entryTime": "08:30",
+      "exitTime": "11:15",
+      "amountPaid": 6,
+      "currency": "S/",
+      "hoursParked": 2.75,
+      "hoursToPay": 3,
+      "ratePerHour": 2,
+      "operationDate": "2025-10-06",
+      "nightCharge": 0
+    },
+    {
+      "id": "rec5",
+      "registrationNumber": "v005",
+      "entryDate": "06-10-2025",
+      "exitDate": "06-10-2025",
+      "vehicleType": "auto-camioneta",
+      "plate": "JKL852",
+      "entryTime": "12:00",
+      "exitTime": "18:30",
+      "amountPaid": 28,
+      "currency": "S/",
+      "hoursParked": 6.5,
+      "hoursToPay": 7,
+      "ratePerHour": 4,
+      "operationDate": "2025-10-06",
+      "nightCharge": 0
+    },
+    {
+      "id": "rec6",
+      "registrationNumber": "v006",
+      "entryDate": "06-10-2025",
+      "exitDate": "06-10-2025",
+      "vehicleType": "auto-camioneta",
+      "plate": "MNO963",
+      "entryTime": "15:45",
+      "exitTime": "20:20",
+      "amountPaid": 20,
+      "currency": "S/",
+      "hoursParked": 4.58,
+      "hoursToPay": 5,
+      "ratePerHour": 4,
+      "operationDate": "2025-10-06",
+      "nightCharge": 0
+    },
+    {
+      "id": "rec7",
+      "registrationNumber": "v007",
+      "entryDate": "07-10-2025",
+      "exitDate": "07-10-2025",
+      "vehicleType": "moto",
+      "plate": "PQR147",
+      "entryTime": "09:00",
+      "exitTime": "12:30",
+      "amountPaid": 8,
+      "currency": "S/",
+      "hoursParked": 3.5,
+      "hoursToPay": 4,
+      "ratePerHour": 2,
+      "operationDate": "2025-10-07",
+      "nightCharge": 0
+    },
+    {
+      "id": "rec8",
+      "registrationNumber": "v008",
+      "entryDate": "07-10-2025",
+      "exitDate": "07-10-2025",
+      "vehicleType": "auto-camioneta",
+      "plate": "STU258",
+      "entryTime": "10:15",
+      "exitTime": "17:45",
+      "amountPaid": 32,
+      "currency": "S/",
+      "hoursParked": 7.5,
+      "hoursToPay": 8,
+      "ratePerHour": 4,
+      "operationDate": "2025-10-07",
+      "nightCharge": 0
+    },
+    {
+      "id": "rec9",
+      "registrationNumber": "v009",
+      "entryDate": "07-10-2025",
+      "exitDate": "07-10-2025",
+      "vehicleType": "moto",
+      "plate": "VWX369",
+      "entryTime": "14:20",
+      "exitTime": "16:50",
+      "amountPaid": 6,
+      "currency": "S/",
+      "hoursParked": 2.5,
+      "hoursToPay": 3,
+      "ratePerHour": 2,
+      "operationDate": "2025-10-07",
+      "nightCharge": 0
+    },
+    {
+      "id": "rec10",
+      "registrationNumber": "v010",
+      "entryDate": "07-10-2025",
+      "exitDate": "08-10-2025",
+      "vehicleType": "auto-camioneta",
+      "plate": "YZA741",
+      "entryTime": "20:00",
+      "exitTime": "09:30",
+      "amountPaid": 30,
+      "currency": "S/",
+      "hoursParked": 13.5,
+      "hoursToPay": 2.5,
+      "ratePerHour": 4,
+      "operationDate": "2025-10-08",
+      "nightCharge": 20,
+      "debtId": "debt-old1"
+    },
+    {
+      "id": "b8e4",
+      "registrationNumber": "a8a0",
+      "entryDate": "08-10-2025",
+      "exitDate": "08-10-2025",
+      "vehicleType": "auto-camioneta",
+      "plate": "BKY714",
+      "entryTime": "13:11",
+      "exitTime": "15:50",
+      "amountPaid": 12,
+      "currency": "S/",
+      "hoursParked": 2.65,
+      "hoursToPay": 3,
+      "ratePerHour": 4,
+      "operationDate": "2025-10-08",
+      "nightCharge": 0
+    },
+    {
+      "id": "4f30",
+      "registrationNumber": "8a0b",
+      "entryDate": "08-10-2025",
+      "exitDate": "08-10-2025",
+      "vehicleType": "auto-camioneta",
+      "plate": "BTY655",
+      "entryTime": "14:52",
+      "exitTime": "15:51",
+      "amountPaid": 4,
+      "currency": "S/",
+      "hoursParked": 0.98,
+      "hoursToPay": 1,
+      "ratePerHour": 4,
+      "operationDate": "2025-10-08",
+      "nightCharge": 0
+    },
+    {
+      "id": "9f7d",
+      "registrationNumber": "dde1",
+      "entryDate": "08-10-2025",
+      "exitDate": "08-10-2025",
+      "vehicleType": "moto",
+      "plate": "RTC487",
+      "entryTime": "15:52",
+      "exitTime": "15:54",
+      "amountPaid": 2,
+      "currency": "S/",
+      "hoursParked": 0.03,
+      "hoursToPay": 1,
+      "ratePerHour": 2,
+      "operationDate": "2025-10-08",
+      "nightCharge": 0
+    },
+    {
+      "id": "rec11",
+      "registrationNumber": "v011",
+      "entryDate": "09-10-2025",
+      "exitDate": "09-10-2025",
+      "vehicleType": "moto",
+      "plate": "BCD852",
+      "entryTime": "08:45",
+      "exitTime": "11:20",
+      "amountPaid": 6,
+      "currency": "S/",
+      "hoursParked": 2.58,
+      "hoursToPay": 3,
+      "ratePerHour": 2,
+      "operationDate": "2025-10-09",
+      "nightCharge": 0
+    },
+    {
+      "id": "rec12",
+      "registrationNumber": "v012",
+      "entryDate": "09-10-2025",
+      "exitDate": "09-10-2025",
+      "vehicleType": "auto-camioneta",
+      "plate": "EFG963",
+      "entryTime": "13:00",
+      "exitTime": "19:15",
+      "amountPaid": 28,
+      "currency": "S/",
+      "hoursParked": 6.25,
+      "hoursToPay": 7,
+      "ratePerHour": 4,
+      "operationDate": "2025-10-09",
+      "nightCharge": 0
+    },
+    {
+      "id": "247e",
+      "registrationNumber": "8eb0",
+      "entryDate": "09-10-2025",
+      "exitDate": "13-10-2025",
+      "vehicleType": "auto-camioneta",
+      "plate": "UYG125",
+      "entryTime": "15:51",
+      "exitTime": "20:06",
+      "amountPaid": 404,
+      "currency": "S/",
+      "hoursParked": 100.25205472222223,
+      "hoursToPay": 101,
+      "ratePerHour": 4
+    },
+    {
+      "id": "18b7",
+      "registrationNumber": "3",
+      "entryDate": "09-10-2025",
+      "exitDate": "13-10-2025",
+      "vehicleType": "auto-camioneta",
+      "plate": "HYC784",
+      "entryTime": "17:15",
+      "exitTime": "20:06",
+      "amountPaid": 396,
+      "currency": "S/",
+      "hoursParked": 98.85364611111112,
+      "hoursToPay": 99,
+      "ratePerHour": 4
+    },
+    {
+      "id": "b43b",
+      "registrationNumber": "2",
+      "entryDate": "09-10-2025",
+      "exitDate": "13-10-2025",
+      "vehicleType": "moto",
+      "plate": "VTY451",
+      "entryTime": "18:25",
+      "exitTime": "20:06",
+      "amountPaid": 196,
+      "currency": "S/",
+      "hoursParked": 97.68771444444444,
+      "hoursToPay": 98,
+      "ratePerHour": 2
+    },
+    {
+      "id": "e949",
+      "registrationNumber": "1",
+      "entryDate": "05-10-2025",
+      "exitDate": "13-10-2025",
+      "vehicleType": "auto-camioneta",
+      "plate": "BYG475",
+      "entryTime": "19:30",
+      "exitTime": "20:06",
+      "amountPaid": 772,
+      "currency": "S/",
+      "hoursParked": 192.60520666666667,
+      "hoursToPay": 193,
+      "ratePerHour": 4
+    },
+    {
+      "id": "e380",
+      "registrationNumber": "3078",
+      "entryDate": "09-10-2025",
+      "exitDate": "13-10-2025",
+      "vehicleType": "auto-camioneta",
+      "plate": "TRE487",
+      "entryTime": "15:24",
+      "exitTime": "20:08",
+      "amountPaid": 404,
+      "currency": "S/",
+      "hoursParked": 100.74919027777777,
+      "hoursToPay": 101,
+      "ratePerHour": 4
+    },
+    {
+      "id": "3330",
+      "registrationNumber": "fd44",
+      "entryDate": "13-10-2025",
+      "exitDate": "13-10-2025",
+      "vehicleType": "auto-camioneta",
+      "plate": "QWE124",
+      "entryTime": "20:18",
+      "exitTime": "20:37",
+      "amountPaid": 4,
+      "currency": "S/",
+      "hoursParked": 0.3215225,
+      "hoursToPay": 1,
+      "ratePerHour": 4
+    }
+  ],
+  "subscribers": [
+    {
+      "id": "sub1",
+      "name": "Carlos Mendoza Pérez",
+      "phone": "987654321",
+      "email": "carlos.mendoza@email.com",
+      "vehiclePlate": "ABC123",
+      "subscriptionMonths": 6,
+      "amount": 300,
+      "startDate": "2025-01-15",
+      "paymentDate": "2025-01-15",
+      "status": "active"
+    },
+    {
+      "id": "sub2",
+      "name": "María González Torres",
+      "phone": "912345678",
+      "email": "maria.gonzalez@email.com",
+      "vehiclePlate": "XYZ789",
+      "subscriptionMonths": 12,
+      "amount": 600,
+      "startDate": "2024-11-01",
+      "paymentDate": "2024-11-01",
+      "status": "active"
+    },
+    {
+      "id": "sub3",
+      "name": "José Ramírez Silva",
+      "phone": "923456789",
+      "email": "jose.ramirez@email.com",
+      "vehiclePlate": "DEF456",
+      "subscriptionMonths": 3,
+      "amount": 150,
+      "startDate": "2025-02-01",
+      "paymentDate": "2025-02-01",
+      "status": "active"
+    },
+    {
+      "id": "sub4",
+      "name": "Ana Flores Morales",
+      "phone": "934567890",
+      "email": "ana.flores@email.com",
+      "vehiclePlate": "GHI789",
+      "subscriptionMonths": 1,
+      "amount": 50,
+      "startDate": "2024-10-15",
+      "paymentDate": "2024-10-15",
+      "status": "expired"
+    },
+    {
+      "id": "sub5",
+      "name": "Luis Vargas Campos",
+      "phone": "945678901",
+      "email": "luis.vargas@email.com",
+      "vehiclePlate": "JKL012",
+      "subscriptionMonths": 6,
+      "amount": 300,
+      "startDate": "2025-01-10",
+      "paymentDate": "2025-01-10",
+      "status": "active"
+    }
+  ]
+}
+

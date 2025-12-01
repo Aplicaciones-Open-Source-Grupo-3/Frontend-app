@@ -14,4 +14,12 @@ import { ReportEntity } from '../../model/report.entity';
 })
 export class DashboardWidgetComponent {
   @Input({ required: true }) report!: ReportEntity;
+
+  get titleKey(): string {
+    return `ANALYTICS.KPIS.${this.report.title.toUpperCase().replace(/\s+/g, '_')}`;
+  }
+
+  get periodKey(): string {
+    return `ANALYTICS.KPIS.${this.report.period.toUpperCase().replace(/\s+/g, '_')}`;
+  }
 }

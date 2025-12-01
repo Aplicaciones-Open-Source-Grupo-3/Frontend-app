@@ -1,9 +1,10 @@
 import { Routes } from '@angular/router';
+import { authGuard, adminGuard } from './iam/guards/auth.guard';
 
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: 'monitoring/dashboard',
+    redirectTo: 'iam/login',
     pathMatch: 'full'
   },
   {
@@ -21,6 +22,7 @@ export const routes: Routes = [
   },
   {
     path: 'profiles',
+    canActivate: [authGuard],
     children: [
       {
         path: 'overview',
@@ -30,29 +32,49 @@ export const routes: Routes = [
   },
   {
     path: 'monitoring',
+    canActivate: [authGuard],
     children: [
       {
         path: 'dashboard',
         loadComponent: () => import('./monitoring/pages/dashboard/dashboard.page').then((m) => m.MonitoringDashboardPageComponent)
       },
       {
-        path: 'incidents',
-        loadComponent: () => import('./monitoring/pages/incidents/incidents.page').then((m) => m.MonitoringIncidentsPageComponent)
+        path: 'management',
+        loadComponent: () => import('./monitoring/pages/management/management.page').then((m) => m.MonitoringManagementPageComponent)
       }
     ]
   },
   {
-    path: 'subscription',
+    path: 'accounting',
+    canActivate: [authGuard],
     children: [
       {
         path: 'overview',
         loadComponent: () =>
-          import('./subscription/pages/subscriptions-overview/subscriptions-overview.page').then((m) => m.SubscriptionsOverviewPageComponent)
+          import('./accounting/pages/accounting-overview/accounting-overview.page').then((m) => m.AccountingOverviewPageComponent)
+      }
+    ]
+  },
+  {
+    path: 'clients',
+    canActivate: [authGuard],
+    children: [
+      {
+        path: '',
+        pathMatch: 'full',
+        redirectTo: 'operators'
+      },
+      {
+        path: 'operators',
+        canActivate: [adminGuard],
+        loadComponent: () =>
+          import('./clients/pages/operators/operators.page').then((m) => m.ClientsOperatorsPageComponent)
       }
     ]
   },
   {
     path: 'analytics',
+    canActivate: [authGuard],
     children: [
       {
         path: 'overview',
@@ -63,6 +85,6 @@ export const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: 'monitoring/dashboard'
+    redirectTo: 'iam/login'
   }
 ];

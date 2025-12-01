@@ -6,4 +6,5 @@ export interface IncidentEntity extends BaseEntity {
   location: string;
   description: string;
   state: IncidentState;
+  businessId?: string;
 }
